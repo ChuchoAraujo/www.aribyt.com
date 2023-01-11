@@ -3,6 +3,7 @@ import { Context } from "../../store/appContext";
 import { Horas } from "../../component/horas/horas";
 import "../../../styles/home.css";
 import { Link, useNavigate } from "react-router-dom";
+import { FooterCajas } from "../../component/footerCajas";
 
 export const Vista_clasificadora = () => {
   const { store, actions } = useContext(Context);
@@ -17,6 +18,7 @@ export const Vista_clasificadora = () => {
         <Link to={"/rechazos"}>
           <button className="botonRechazos">------ Rechazos ------</button>
         </Link>
+        <FooterCajas/>
       </div>
     </>
   );

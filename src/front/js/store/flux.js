@@ -3,13 +3,14 @@ const getState = ({ getStore, getActions, setStore }) => {
     store: {
       horas: ["1", "2", "3", "4", "5", "6", "7", "8"],
       hora: "",
-      horamec:"",
-      userId:"",
+      horamec: "",
+      userId: "",
       message: null,
       role: "",
       user: [],
       clasificadora: [],
       mecanico: [],
+      contadorCajas: 0,
       demo: [
         {
           title: "FIRST",
@@ -46,21 +47,27 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log("Se ha seleccionado la hora:" + hora);
       },
 
+      sumaCajas: (cajas) => {
+        // const store = getStore()
+        setStore({ contadorCajas : cajas });
+        console.log("Se han seleccionado las cajas:" + cajas);
+      },
+
       fetchUser: () => {
-         fetch(process.env.BACKEND_URL + "/api/encargado", {
-           method: "GET",
-           headers: {
-             "Content-Type": "application/json",
-             Authorization: "Bearer " + localStorage.getItem("token"),
-           },
-         })
-           .then((response) => response.json())
-           .then((result) => {
-             setStore({ user: result.user });
-              setStore({ clasificadora: result.clasificadora });
-               setStore({ mecanico: result.mecanico });
-           })
-           .catch((error) => console.log("error", error));
+        fetch(process.env.BACKEND_URL + "/api/encargado", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            setStore({ user: result.user });
+            setStore({ clasificadora: result.clasificadora });
+            setStore({ mecanico: result.mecanico });
+          })
+          .catch((error) => console.log("error", error));
       },
 
       getMessage: async () => {

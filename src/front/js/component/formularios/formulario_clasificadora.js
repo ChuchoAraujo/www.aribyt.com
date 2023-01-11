@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
-import { store } from "../../store/flux";
+import { store, actions } from "../../store/flux";
 import { Context } from "../../store/appContext";
 import { number } from "prop-types";
 
 export const Formulario_clasificadora = () => {
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
   const [enviarFormulario, setFormulario] = useState(false);
   const navigate = useNavigate();
   const [cajas, setCajas] = useState("");
@@ -128,6 +128,8 @@ export const Formulario_clasificadora = () => {
     })
       .then((response) => response.json())
       .then((result) => {
+        setCajas(parseInt(cajas));
+        console.log("entro en el fecht de formulario clasificadora "+store.contadorCajas);
         console.log(result);
       })
       .catch((error) => console.log("error", error));
@@ -180,8 +182,8 @@ export const Formulario_clasificadora = () => {
         onSubmit={(valores, { resetForm }) => {
           resetForm();
           console.log("Formulario enviado");
+          actions.sumaCajas(...valores.cajas)
           setFormulario(true);
-          setCajas(valores.cajas);
           setArticulo(valores.articulo);
           setLote(valores.lote);
           setJaulas(valores.jaulas);

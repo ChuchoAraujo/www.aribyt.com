@@ -228,12 +228,17 @@ def get_join():
     fecha1 = request.json.get('fecha')
     array=[]
     array1=[]
+    array2=[]
     resultado = db.session.query(User,TablaClasificadora). \
         select_from(User).join(TablaClasificadora). \
             filter(TablaClasificadora.turno==turno1).filter(TablaClasificadora.fecha==fecha1).all()
     resultado1 = db.session.query(User,TablaMecanico). \
         select_from(User).join(TablaMecanico). \
             filter(TablaMecanico.turno==turno1).filter(TablaMecanico.fecha==fecha1).all()    
+
+    resultado2 = db.session.query(User,TablaRechazos). \
+        select_from(User).join(TablaRechazos). \
+            filter(TablaRechazos.turno==turno1).filter(TablaRechazos.fecha==fecha1).all()  
 
     for usuario,clasificadora in resultado:
         array.append({
@@ -253,6 +258,7 @@ def get_join():
             'velocidad': clasificadora.velocidad,
             'gramos':clasificadora.gramos
             })
+
     for usuario,mecanico in resultado1:
         array1.append({
             'usuarioMecanico': filtro_usuario(mecanico.user_id),
@@ -261,7 +267,16 @@ def get_join():
             'accionMecanico':mecanico.accion,
             'horaDelMecanico':mecanico.horas
             })
-    return jsonify({'clasificadora': array, 'mecanico': array1 })
+
+    for usuario,rechazos in resultado2:
+        array2.append({
+            'usuarioRechazos': filtro_usuario(rechazos.user_id),
+            'fichas':rechazos.fichas,
+            'paneles':rechazos.paneles,
+            'jaula':rechazos.jaula
+            })
+
+    return jsonify({'clasificadora': array, 'mecanico': array1 ,'rechazos':array2})
 
 
 

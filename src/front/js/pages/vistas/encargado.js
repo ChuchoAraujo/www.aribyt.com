@@ -11,6 +11,7 @@ import "../../../styles/home.css";
 export const Encargado = () => {
   const [resultJoin, setResultJoin] = useState([]);
   const [resultMecanico, setResultMecanido] = useState([]);
+  const [resultRechazos, setResultRechazos] = useState([]);
 
   const [turno, setTurno] = useState("");
   const [fecha, setFecha] = useState("");
@@ -55,6 +56,8 @@ export const Encargado = () => {
       .then((result) => {
         setResultJoin(result.clasificadora);
         setResultMecanido(result.mecanico);
+        setResultRechazos(result.rechazos);
+        console.log("este es el result:", result.rechazos)
       })
       .catch((error) => console.log("error", error));
   };
@@ -264,6 +267,7 @@ export const Encargado = () => {
         )}
       </Formik>
       <div className="row m-4">
+        <h4 className="p-2 text-center"> --- Filtros avanzados ---</h4>
         {/*-------------------Filtro lote---------------*/}
         <div className="col-1 text-center">
           <div className="card">
@@ -481,7 +485,7 @@ export const Encargado = () => {
       </div>
 
       <div className="container-fluid text-center p-5">
-        <h4 className="p-2"> --- Filtros avanzados ---</h4>
+        <h4 className="p-2"> --- Clasificadora ---</h4>
         <table className="table p-2">
           <thead className="tableColor">
             <tr>
@@ -713,6 +717,30 @@ export const Encargado = () => {
             </>
           ))}
         </table>
+        <h4 className="p-2"> --- Rechazos ---</h4>
+        <table className="table">
+          <thead className="table tableColor">
+            <tr>
+              <th scope="col">Usuario</th>
+              <th scope="col">Fichas</th>
+              <th scope="col">Paneles</th>
+              <th scope="col">Jaula</th>
+            </tr>
+          </thead>
+          {resultRechazos.map((item, index) => (
+            <>
+              <tbody key={index}>
+                <tr>
+                  <th scope="row">{item.usuarioRechazos}</th>
+                  <td>{item.fichas}</td>
+                  <td>{item.paneles}</td>
+                  <td>{item.jaula}</td>
+                </tr>
+              </tbody>
+            </>
+          ))}
+        </table>
+        <h4 className="p-2"> --- Mecánico ---</h4>
         <table className="table">
           <thead className="table tableColor">
             <tr>

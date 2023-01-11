@@ -3,6 +3,7 @@ import { Context } from "../../store/appContext";
 import { Formulario_clasificadora } from "../../component/formularios/formulario_clasificadora";
 import "../../../styles/home.css";
 import { useNavigate } from "react-router-dom";
+import { FooterCajas } from "../../component/footerCajas";
 
 export const Container_clasificadora = () => {
   const { store, actions } = useContext(Context);
@@ -21,6 +22,7 @@ export const Container_clasificadora = () => {
           <Formulario_clasificadora />
         </div>
         <div className="col-3"></div>
+        <FooterCajas/>
       </div>
     </>
   );
