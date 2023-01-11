@@ -296,7 +296,7 @@ def rechazos():
         turno=turno,
         fichas=fichas, 
         paneles=paneles,
-        jaula=jaulas)
+        jaula=jaula)
 
         db.session.add(newRegister)
         db.session.commit()

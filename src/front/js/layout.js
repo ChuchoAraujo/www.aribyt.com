@@ -20,6 +20,7 @@ import { Usuarios } from "./pages/usuarios";
 import { Clasificadora } from "./pages/clasificadora";
 import { Mecanico } from "./pages/mecanico";
 import { Encargado } from "./pages/vistas/encargado";
+import { Formulario_rechazos } from "./component/formularios/formulario_rechazos";
 
 
 //create your first component
@@ -71,10 +72,8 @@ const Layout = () => {
               element={<Clasificadora />}
               path="/vista_login/vista_encargado/clasificadora"
             />
-            <Route
-              element={<Encargado />}
-              path="/encargado"
-            />
+            <Route element={<Encargado />} path="/encargado" />
+            <Route element={<Formulario_rechazos />} path="/rechazos" />
 
             <Route element={<Demo />} path="/demo" />
             <Route element={<Single />} path="/single/:theid" />
