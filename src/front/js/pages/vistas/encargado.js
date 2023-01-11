@@ -50,10 +50,7 @@ export const Encargado = () => {
 
   console.log(`${month}/${day}/${year}`);
   console.log("esta es la fecha de Josgredh", fecha)
-  console.log(`${month}/${day}/${year}`);
-  console.log("esta es la fecha de Josgredh", fecha);
-  console.log(`${month}/${day}/${year}`);
-  console.log("esta es la fecha de Josgredh", fecha);
+ 
   return (
     <>
       <Formik
