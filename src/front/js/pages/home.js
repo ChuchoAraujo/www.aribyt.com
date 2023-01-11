@@ -2,12 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { Page_logo } from "./page_logo/page_logo";
 import "../../styles/home.css";
-import { Page_roles } from "./page_roles/page_Roles";
-import { Page_login } from "./page_login/vista_login";
 import { Vista_login } from "./page_login/vista_login";
-import { Prueba } from "./prueba";
-import { Transition } from "@headlessui/react";
-import { DatePicker } from "@material-ui/pickers";
+
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -23,7 +19,7 @@ export const Home = () => {
      setlogin("opacityDone");
    }, []);
 
-
+console.log("dios soy yo de nuevo")
 
 //---------------- PRUEBA APARECER Y DESAPARECER ------------------------------------------
      const [logoAribyt, setLogoAribyt] = useState("");

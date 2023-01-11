@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Context } from "../../store/appContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { DatePicker } from "@material-ui/pickers";
 
 
 export const Encargado = () => {
@@ -117,16 +116,6 @@ export const Encargado = () => {
             </div>
             {/*----------------------FECHA MUI-------------------*/}
 
-            <div className="p-2 text-center">
-              <h3 htmlFor="fecha">----- Fecha -----</h3>
-              <DatePicker
-                id="fecha"
-                name="fecha"
-                onChange={setFechaSeleccionada}
-                value={fechaSeleccionada}
-                className="text-center"
-              />
-            </div>
 
             {/*----------------------FeNVIO DATOS-------------------*/}
             <div className="text-center botonSagrado"><button onClick={setFecha(fechaConvertida)}>Click</button></div>
