@@ -1,6 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Context } from "../../store/appContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import DatePicker from "react-date-picker";
+import "../../../styles/calendar.css"
+import "../../../styles/home.css";
+
 
 
 export const Encargado = () => {
@@ -14,6 +18,9 @@ export const Encargado = () => {
   const [enviarFormulario, setFormulario] = useState(false);
   const [role, setRole] = useState("");
 
+  const [value, onChange] = useState(new Date());
+
+  
   // ----------------- FECHA ----------------
    const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
      let day =fechaSeleccionada.getDate();
@@ -60,9 +67,9 @@ export const Encargado = () => {
         }}
       >
         {() => (
-          <Form className="formulario">
+          <Form className="formularioEncargado">
             <div className="text-center p-2">
-              <h3>------ Turnos ------</h3>
+              <h4>--- Turnos ---</h4>
               <button
                 onClick={(e) => {
                   setTurno(e.target.value), setRole("seleccionNocheTardeGris");
@@ -115,11 +122,21 @@ export const Encargado = () => {
               </button>
             </div>
             {/*----------------------FECHA MUI-------------------*/}
-
-
+            <div className="text-center">
+              <h4>--- Fecha ---</h4>
+              <DatePicker
+                id="calendar"
+                onChange={setFechaSeleccionada}
+                value={fechaSeleccionada}
+                calendarClassName="react-calendar"
+                // tyle={{ backgroundColor: fff }}
+              />
+            </div>
             {/*----------------------FeNVIO DATOS-------------------*/}
-            <div className="text-center botonSagrado"><button onClick={setFecha(fechaConvertida)}>Click</button></div>
-            <div className="d-flex justify-content-center">
+            <div className="text-center botonSagrado">
+              <button onClick={setFecha(fechaConvertida)}>Click</button>
+            </div>
+            <div className="d-flex justify-content-center mt-2">
               <button type="submit" onClick={sendDataEncargado}>
                 Enviar
               </button>
@@ -138,7 +155,6 @@ export const Encargado = () => {
           </Form>
         )}
       </Formik>
-
       <div className="container text-center p-5">
         <h1 className="p-2">Encargado</h1>
         <table className="table p-2">

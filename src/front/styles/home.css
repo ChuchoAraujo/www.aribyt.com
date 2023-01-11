@@ -124,6 +124,8 @@ button{
 	color: #1f1f1f;
 }
 
+
+
 .formulario input:focus {
 	outline: none;
 	border: 2px solid #0085FF;
@@ -165,6 +167,63 @@ button{
 }
 
 .formulario input[type="radio"] {
+	width: auto;
+}
+
+.formularioEncargado input,
+.formularioEncargado textarea {
+	font-family: 'Open Sans', sans-serif;
+	width: auto;
+	height: auto;
+	font-size: 18px;
+	padding: 10px;
+	margin-bottom: 5px;
+	color: #1f1f1f;
+}
+
+
+
+.formularioEncargado input:focus {
+	outline: none;
+	border: 2px solid #0085FF;
+}
+
+.formularioEncargado .error {
+	color: #e92b2d;
+	font-weight: 600;
+	font-size: 12px;
+}
+
+.formularioEncargado button[type="submit"] {
+	display: block;
+	background: #4dada4;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+	transition: .3s ease all;
+	width:200px
+}
+
+.formularioEncargado button[type="submit"]:hover {
+	background: #218379;
+	width:200px
+}
+
+.formularioEncargado .exito {
+	text-align: center;
+	font-size: 14px;
+	padding-top: 20px;
+	color: #02a802;
+	width:200px
+}
+
+.formularioEncargado input[type="radio"] {
 	width: auto;
 }
 
@@ -417,4 +476,15 @@ pruebas opacidad*/
 /*Boton sagrado*/
 .botonSagrado{
 	display: none;
+}
+
+.react-date-picker-color {
+	background-color: #4dada4;
+}
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  display: block;
+  width: 50%;
+  color:red;
 }
