@@ -460,12 +460,42 @@ pruebas opacidad*/
 }
 
 /*Vista encargado pruebas mostrar ocultar columnas*/
-
 .visible {
 	display: block;
 }
 
 .esconder {
+	display: none;
+}
+.iconFiltro {
+	color: white;
+	font-size: 30px;
+}
+
+.iconBotonAgregar {
+	color: white;
+	font-size: 20px;
+	background-color: #e2e2e2;
+	margin: 2px;
+	padding: 2px;
+	background-color: #4dada4;
+}
+
+.iconBotonEliminar {
+	color: white;
+	font-size: 20px;
+	background-color: #e2e2e2;
+	margin: 2px;
+	padding: 2px;
+	background-color: #ecc24d;
+}
+.botonVisible {
+	visibility: visible;
+	display: block;
+}
+
+.botonEsconder {
+	visibility: hidden;
 	display: none;
 }
 

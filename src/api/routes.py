@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 '''
 from flask import Flask, request, jsonify, url_for, Blueprint,Response,json
-from api.models import db, User, TablaClasificadora, TablaMecanico
+from api.models import db, User, TablaClasificadora, TablaMecanico, TablaRechazos
 from api.utils import generate_sitemap, APIException
 import json
 from flask_jwt_extended import create_access_token
@@ -263,3 +263,49 @@ def get_join():
             })
     return jsonify({'clasificadora': array, 'mecanico': array1 })
 
+
+
+#---------------------------------------- TABLA RECHAZOS ----------------------------------------#
+
+@api.route('/rechazos', methods=['GET'])
+def get_rechazos():
+    get_rechazos =TablaRechazos.query.all()
+    result = [element.serialize() for element in get_rechazos]
+    response_body = {'msg': 'Get Rechazos OK'}
+    return jsonify(result), 200
+
+
+@api.route('/rechazos', methods=['POST'])
+@cross_origin()
+@jwt_required()
+def rechazos():
+
+    user_id = request.json.get('user_id', None)
+    fecha = request.json.get('fecha', None)
+    turno = request.json.get('turno', None)
+    fichas = request.json.get('fichas', None)
+    paneles = request.json.get('paneles', None)
+    jaula = request.json.get('jaula',None)
+
+    user_id = user_id = get_jwt_identity()
+
+    try:
+        newRegister = TablaRechazos(
+        user_id=user_id,
+        fecha=fecha, 
+        turno=turno,
+        fichas=fichas, 
+        paneles=paneles,
+        jaula=jaulas)
+
+        db.session.add(newRegister)
+        db.session.commit()
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 402
+
+
+    return jsonify({
+        'register': newRegister.serialize(),
+        'identity': get_jwt_identity()
+    }), 201
