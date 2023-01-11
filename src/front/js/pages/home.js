@@ -52,16 +52,6 @@ console.log(fechaSeleccionada)
         {/* <button onClick={comenzar}>Comenzar!</button> */}
       </div>
       <div>
-        <main className="p-2 text-center">
-          <h3 htmlFor="fecha">----- Fecha -----</h3>
-          <DatePicker
-            id="fecha"
-            name="fecha"
-            onChange={setFechaSeleccionada}
-            value={fechaSeleccionada}
-            className="text-center"
-          />
-        </main>
       </div>
       <div className={pageLogin === "hidden" ? "visibility" : "hidden"}>
         <Vista_login />
