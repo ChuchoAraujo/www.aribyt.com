@@ -44,6 +44,7 @@ export const Home = () => {
    }
 
 console.log(fechaSeleccionada)
+console.log("funciona!!")
 
   return (
     <div className="container-fluid logo" onLoad={myTimeout}>
