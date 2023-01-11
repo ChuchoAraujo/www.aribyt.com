@@ -1,32 +1,26 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState } from "react";
 import { Context } from "../../store/appContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import DatePicker from "react-date-picker";
-import "../../../styles/calendar.css"
+import "../../../styles/calendar.css";
 import "../../../styles/home.css";
 
-
-
 export const Encargado = () => {
-  const { store, actions } = useContext(Context);
   const [resultJoin, setResultJoin] = useState([]);
   const [resultMecanico, setResultMecanido] = useState([]);
-  const [indice, setIndice] = useState([]);
 
   const [turno, setTurno] = useState("");
   const [fecha, setFecha] = useState("");
   const [enviarFormulario, setFormulario] = useState(false);
   const [role, setRole] = useState("");
+  const [botonUsername, setBotonUsername] = useState("");
 
-  const [value, onChange] = useState(new Date());
-
-  
   // ----------------- FECHA ----------------
-   const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
-     let day =fechaSeleccionada.getDate();
-     let month = fechaSeleccionada.getMonth() + 1;
-     let year = fechaSeleccionada.getFullYear();
-     let fechaConvertida = `${month}/${day}/${year}`;
+  const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
+  let day = fechaSeleccionada.getDate();
+  let month = fechaSeleccionada.getMonth() + 1;
+  let year = fechaSeleccionada.getFullYear();
+  let fechaConvertida = `${month}/${day}/${year}`;
 
   const sendDataEncargado = () => {
     fetch(process.env.BACKEND_URL + "/api/join", {
@@ -48,9 +42,10 @@ export const Encargado = () => {
       .catch((error) => console.log("error", error));
   };
 
-  console.log(`${month}/${day}/${year}`);
-  console.log("esta es la fecha de Josgredh", fecha)
- 
+  const ocultarUsername = () => {
+    setBotonUsername("visible");
+  };
+  
   return (
     <>
       <Formik
@@ -156,13 +151,22 @@ export const Encargado = () => {
           </Form>
         )}
       </Formik>
+
       <div className="container text-center p-5">
         <h1 className="p-2">Encargado</h1>
+        <button onClick={ocultarUsername}>UserName</button>
+       
         <table className="table p-2">
           <thead className="tableColor">
             <tr>
               <th scope="col">hora clasificadora</th>
-              <th scope="col">Email Clasificadora</th>
+              <th
+                scope="col"
+                className={(botonUsername ? "esconder" : "visible"
+                )}
+              >
+                UserName Clasificadora
+              </th>
               <th scope="col">Fecha</th>
               <th scope="col">Cajas</th>
               <th scope="col">Articulo</th>
