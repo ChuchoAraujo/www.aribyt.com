@@ -21,6 +21,7 @@ import { Clasificadora } from "./pages/clasificadora";
 import { Mecanico } from "./pages/mecanico";
 
 import { Formulario_rechazos } from "./component/formularios/formulario_rechazos";
+import { Admin } from "./pages/admin/admin";
 
 
 //create your first component
@@ -74,6 +75,7 @@ const Layout = () => {
             />
 
             <Route element={<Formulario_rechazos />} path="/rechazos" />
+            <Route element={<Admin />} path="/admin" />
 
             <Route element={<Demo />} path="/demo" />
             <Route element={<Single />} path="/single/:theid" />
