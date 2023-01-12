@@ -1,29 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Callusers } from "./callUsers";
 import { FormularioUsuarios } from "./formularioUsuarios";
+import { Context } from "../../store/appContext";
+import { store, actions } from "../../store/flux";
 
 
 export const Admin = () => {
+  const { store , actions} = useContext(Context);
     const [users, setUsers]= useState([])
   // ---------------------------- GET / USERS----------------------------------//
   const verTodos = () => {
-    console.log("test");
-    fetch(process.env.BACKEND_URL + "/api/users", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log("Usuarios:", result);
-        setUsers(result)
-        // if (!result.done) {
-        //   navigate("/");
-        // }
-      })
-      .catch((error) => console.log("error", error));
+    actions.fetchUser()
   };
 
   return (
@@ -38,7 +25,7 @@ export const Admin = () => {
 
       </div>
       <FormularioUsuarios />
-      <Callusers users={users} />
+      <Callusers />
     </div>
   );
 };

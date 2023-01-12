@@ -63,6 +63,37 @@ def register():
         db.session.commit()
         return jsonify({'user': new_user.serialize()}), 200
 
+#---------------------------------------- DELETE USER ----------------------------------------# 
+# 
+# ### DELETE PLANET
+@api.route('/delete', methods= ['POST', 'PUT'])
+def deleteUser():
+    if request.method =='POST':
+        user_id = request.json.get('user_id')
+        byeMember = db.session.query(User).get(user_id)
+        db.session.delete(byeMember)
+        db.session.commit()
+
+        response_body = {"msg": "User borrado","user": user_id}
+        return jsonify(response_body) 
+    
+    if request.method =='PUT':
+        user_id = request.json.get('user_id')
+        username = request.json.get('username')
+        email = request.json.get('email')
+        password = request.json.get('password')
+        role = request.json.get('role')
+        editMember = db.session.query(User).get(user_id)
+        editMember.username = username
+        editMember.email = email
+        editMember.password = password
+        editMember.role = role
+        db.session.commit()
+
+        return jsonify({"message": "Todo list name changed successfully"}), 200
+
+    
+
 #---------------------------------------- PRIVATE ----------------------------------------#
 
 @api.route('/private', methods=['GET'])
