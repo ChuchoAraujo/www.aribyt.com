@@ -195,6 +195,7 @@ export const Formulario_clasificadora = () => {
           setVelocidad(valores.velocidad);
           setGramos(valores.gramos);
           setTurno(valores.turno);
+          setCajas(valores.cajas)
           console.log(valores);
           setTimeout(() => setFormulario(false), 5000);
         }}
@@ -207,7 +208,7 @@ export const Formulario_clasificadora = () => {
                 <label htmlFor="cajas">Cajas</label>
                 <Field
                   className="inputsFormulario"
-                  type="text"
+                  type="number"
                   id="cajas"
                   name="cajas"
                   placeholder="Número de cajas"

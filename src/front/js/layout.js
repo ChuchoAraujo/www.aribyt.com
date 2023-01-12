@@ -19,7 +19,7 @@ import { Vista_login } from "./pages/page_login/vista_login";
 import { Usuarios } from "./pages/usuarios";
 import { Clasificadora } from "./pages/clasificadora";
 import { Mecanico } from "./pages/mecanico";
-import { Encargado } from "./pages/vistas/encargado";
+
 import { Formulario_rechazos } from "./component/formularios/formulario_rechazos";
 
 
@@ -72,7 +72,7 @@ const Layout = () => {
               element={<Clasificadora />}
               path="/vista_login/vista_encargado/clasificadora"
             />
-            <Route element={<Encargado />} path="/encargado" />
+
             <Route element={<Formulario_rechazos />} path="/rechazos" />
 
             <Route element={<Demo />} path="/demo" />

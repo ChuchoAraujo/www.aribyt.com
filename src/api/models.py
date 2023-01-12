@@ -32,7 +32,7 @@ class TablaClasificadora(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     horas = db.Column(db.String, unique=False, nullable=True)
     fecha = db.Column(db.String, unique=False, nullable=True)
-    cajas = db.Column(db.String, unique=False, nullable=True)
+    cajas = db.Column(db.Integer, unique=False, nullable=True)
     articulo = db.Column(db.String, unique=False, nullable=True)
     lote = db.Column(db.String, unique=False, nullable=False)
     jaulas = db.Column(db.String, unique=False, nullable=False)
