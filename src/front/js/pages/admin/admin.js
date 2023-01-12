@@ -10,6 +10,18 @@ export const Admin = () => {
   const { store , actions} = useContext(Context);
     const [users, setUsers]= useState([])
     const[boton,setBoton]=useState(false);
+     const [pagina1, setpagina1] = useState("");
+     const [pagina2, setPagina2] = useState("");
+
+      const printCondicitional = () => {
+        if (pagina1 === pagina1) {
+          setpagina1("visibility");
+          setPagina2("hidden");
+        } else {
+          console.log("nada");
+        }
+      };
+
   // ---------------------------- GET / USERS----------------------------------//
   const verTodos = () => {
     actions.fetchUser()
@@ -32,8 +44,12 @@ export const Admin = () => {
           Agregar usuario
         </button>
       </div>
-      <div>{boton ? <FormularioUsuarios/> : null}</div>
-      <Callusers />
+      <div>{boton ? <FormularioUsuarios /> : null}</div>
+
+      <div>
+        <Callusers/>
+      </div>
+
     </div>
   );
 };
