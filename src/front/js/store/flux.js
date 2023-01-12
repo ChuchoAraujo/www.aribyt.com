@@ -47,12 +47,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         console.log("Se ha seleccionado la hora:" + hora);
       },
 
-      sumaCajas: (cajas) => {
-        // const store = getStore()
-        setStore({ contadorCajas : cajas });
-        console.log("Se han seleccionado las cajas:" + cajas);
-      },
-
       fetchUser: () => {
         fetch(process.env.BACKEND_URL + "/api/encargado", {
           method: "GET",

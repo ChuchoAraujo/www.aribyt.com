@@ -228,6 +228,8 @@ def get_join():
     array=[]
     array1=[]
     array2=[]
+    suma=[]
+    
     resultado = db.session.query(User,TablaClasificadora). \
         select_from(User).join(TablaClasificadora). \
             filter(TablaClasificadora.turno==turno1).filter(TablaClasificadora.fecha==fecha1).all()
@@ -257,6 +259,9 @@ def get_join():
             'velocidad': clasificadora.velocidad,
             'gramos':clasificadora.gramos
             })
+    for usuario,clasificadora in resultado:
+        suma.append(clasificadora.cajas)
+    valorSuma=sum(suma)
 
     for usuario,mecanico in resultado1:
         array1.append({
@@ -275,7 +280,7 @@ def get_join():
             'jaula':rechazos.jaula
             })
 
-    return jsonify({'clasificadora': array, 'mecanico': array1 ,'rechazos':array2})
+    return jsonify({'clasificadora': array, 'mecanico': array1 ,'rechazos':array2,'sumaCajas':valorSuma})
 
 
 

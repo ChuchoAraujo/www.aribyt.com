@@ -99,7 +99,26 @@ export const Formulario_clasificadora = () => {
       })
       .catch((error) => console.log("error", error));
   }, []);
-
+  // ---------------------------- GET / SUMACAJAS----------------------------------//
+  const suma=()=>{
+      fetch(process.env.BACKEND_URL + "/api/join", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          fecha: `${month}/${day}/${year}`,
+          turno: turno,
+        }),
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          store.contadorCajas=result.sumaCajas
+          console.log("el valor de la suma es",store.contadorCajas)
+        })
+        .catch((error) => console.log("error", error));
+  }
   // ---------------------------- POST / CLASIFICADORA----------------------------------//
   const sendDataClasificadora = () => {
     fetch(process.env.BACKEND_URL + "/api/clasificadora", {
@@ -128,12 +147,14 @@ export const Formulario_clasificadora = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        setCajas(parseInt(cajas));
-        console.log("entro en el fecht de formulario clasificadora "+store.contadorCajas);
         console.log(result);
+        suma();
       })
       .catch((error) => console.log("error", error));
-  };
+      
+    }
+  //obtener sumatoria de cajas
+
 
   return (
     <>
@@ -181,8 +202,6 @@ export const Formulario_clasificadora = () => {
         }}
         onSubmit={(valores, { resetForm }) => {
           resetForm();
-          console.log("Formulario enviado");
-          actions.sumaCajas(...valores.cajas)
           setFormulario(true);
           setArticulo(valores.articulo);
           setLote(valores.lote);
@@ -196,7 +215,6 @@ export const Formulario_clasificadora = () => {
           setGramos(valores.gramos);
           setTurno(valores.turno);
           setCajas(valores.cajas)
-          console.log(valores);
           setTimeout(() => setFormulario(false), 5000);
         }}
       >

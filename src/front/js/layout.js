@@ -16,9 +16,7 @@ import { Vista_mecanico } from "./pages/mecanico/vista_mecanico";
 import { Vista_encargado } from "./pages/encargado/vista_encargado";
 import { Page_logo } from "./pages/page_logo/page_logo";
 import { Vista_login } from "./pages/page_login/vista_login";
-import { Usuarios } from "./pages/usuarios";
-import { Clasificadora } from "./pages/clasificadora";
-import { Mecanico } from "./pages/mecanico";
+
 
 import { Formulario_rechazos } from "./component/formularios/formulario_rechazos";
 import { Admin } from "./pages/admin/admin";
@@ -29,8 +27,6 @@ const Layout = () => {
   //the basename is used when your project is published in a subdirectory and not in the root of the domain
   // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
   const basename = process.env.BASENAME || "";
-
-
   return (
     <div>
       <BrowserRouter basename={basename}>
@@ -59,19 +55,6 @@ const Layout = () => {
             <Route
               element={<Vista_encargado />}
               path="/vista_login/vista_encargado"
-            />
-            <Route
-              element={<Usuarios />}
-              path="/vista_login/vista_encargado/usuarios"
-            />
-            <Route
-              element={<Mecanico />}
-              path="/vista_login/vista_encargado/mecanico"
-            />
-
-            <Route
-              element={<Clasificadora />}
-              path="/vista_login/vista_encargado/clasificadora"
             />
 
             <Route element={<Formulario_rechazos />} path="/rechazos" />
