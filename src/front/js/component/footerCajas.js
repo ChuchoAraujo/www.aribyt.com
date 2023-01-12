@@ -9,7 +9,6 @@ export const FooterCajas = () => {
 return (
   <div className="bg-secondary container-fluid text-center">
     <footer className="mt-4">
-      <p>Soy el footer hola hola hola</p>
       <div>
         <h1>Suma de las cajas {store.contadorCajas}</h1>
       </div>
