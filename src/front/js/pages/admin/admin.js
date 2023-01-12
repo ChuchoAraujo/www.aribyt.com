@@ -3,15 +3,21 @@ import { Callusers } from "./callUsers";
 import { FormularioUsuarios } from "./formularioUsuarios";
 import { Context } from "../../store/appContext";
 import { store, actions } from "../../store/flux";
+import ReactDOM from "react-dom";
 
 
 export const Admin = () => {
   const { store , actions} = useContext(Context);
     const [users, setUsers]= useState([])
+    const[boton,setBoton]=useState(false);
   // ---------------------------- GET / USERS----------------------------------//
   const verTodos = () => {
     actions.fetchUser()
   };
+
+  const agregarUsuario = () => {
+       setBoton(true)
+  }
 
   return (
     <div className="container-fluid">
@@ -22,9 +28,11 @@ export const Admin = () => {
         <button className="m-2" onClick={verTodos}>
           Ver todo
         </button>
-
+        <button className="m-2" onClick={agregarUsuario}>
+          Agregar usuario
+        </button>
       </div>
-      <FormularioUsuarios />
+      <div>{boton ? <FormularioUsuarios/> : null}</div>
       <Callusers />
     </div>
   );

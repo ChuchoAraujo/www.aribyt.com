@@ -242,7 +242,11 @@ button{
 	background-color: #4dada4;
 }
 
+/*Formulario inputs usuarios*/
 
+.bloquearInput input:disabled{
+	background-color: #0085FF;
+}
 /*---------------------------------------Roles--------------------------------------*/
 
 .containerRoles {

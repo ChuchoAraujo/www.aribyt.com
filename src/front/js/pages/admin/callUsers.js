@@ -3,6 +3,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { AiFillEdit } from "react-icons/ai";
 import { Context } from "../../store/appContext";
 import { store, actions } from "../../store/flux";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 
 export const Callusers = () => {
   const { store, actions } = useContext(Context);
@@ -67,12 +68,19 @@ export const Callusers = () => {
       .catch((error) => console.log("error", error));
   };
 
+  const input = () => {
+    <div>
+      <input>Hola soy el div</input>
+    </div>;
+    
+  }
+
   return (
     <div className="container-fluid">
       <div className="row">
         {store.user.map((item, index) => (
           <>
-            <div className="col card text-center p-2" key={index}>
+          <div className="col card text-center p-2" key={index}>
               <p className="mt-3 fw-bold">Username: {item.username}</p>
               <hr />
               <p>Id usuario: {item.id}</p>
@@ -82,7 +90,7 @@ export const Callusers = () => {
                 <button
                   className="btn btn-danger"
                   onClick={() => {
-                    eliminar(item.id, index)
+                    eliminar(item.id, index);
                   }}
                 >
                   <AiFillDelete />
