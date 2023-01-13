@@ -5,8 +5,10 @@ import { Context } from "../../store/appContext";
 import { store, actions } from "../../store/flux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FormularioUsuarios } from "./formularioUsuarios";
+import { useNavigate } from "react-router-dom";
 
 export const Callusers = () => {
+  const navigate = useNavigate();
   const { store, actions } = useContext(Context);
   const [borrar, setBorrar] = useState("");
   const [enviarAlerta, setEnviarAlerta] = useState("");
@@ -16,6 +18,7 @@ export const Callusers = () => {
   const [role, setRole] = useState("");
   const [boton, setBoton] = useState(false);
   const [objeto, setObjeto] = useState({});
+  const [id, setId]= useState("")
 
 
 
@@ -78,29 +81,32 @@ export const Callusers = () => {
   };
 
   // FETCH EDIT PUT
-  const sendDataEdit = (user_id) => {
-    fetch(process.env.BACKEND_URL + "/api/delete", {
+  const sendDataEdit = () => {
+    console.log("Numero de id:",id)
+    fetch(process.env.BACKEND_URL + "/api/modificar", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify({
-        user_id: user_id,
+        user_id: id,
+        username: username,
+        email: email,
+        password: password,
+        role: role,
       }),
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
+        if(result){
+          window.location.reload(true)
+        }
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => {console.log("error", error)
+    alert("ingresa bien los datos")});
   };
 
-  const input = () => {
-    <div>
-      <input>Hola soy el div</input>
-    </div>;
-  };
 
   const formularioEditar = () => {
     return (
@@ -108,6 +114,7 @@ export const Callusers = () => {
         <div>
           <Formik
             initialValues={{
+              id: objeto.id,
               username: objeto.username,
               email: objeto.email,
               password: objeto.password,
@@ -132,19 +139,33 @@ export const Callusers = () => {
               return errores;
             }}
             onSubmit={(valores, { resetForm }) => {
-              resetForm();
-              console.log("Formulario enviado");
-              setFormulario(true);
+              setId(valores.id);
               setUsername(valores.username);
               setEmail(valores.email);
               setPassword(valores.password);
               setRole(valores.role);
+              
+              resetForm();
+              setFormulario(true);
 
               setTimeout(() => setFormulario(false), 5000);
             }}
           >
             {({ errors }) => (
               <Form className="formulario">
+                <div>
+                  <label htmlFor="id">Id</label>
+                  <Field
+                    // disabled
+                    type="text"
+                    id="id"
+                    name="id"
+                    value={objeto.id}
+                    placeholder="id"
+                    onClick={(e) => {setId(objeto.id)
+                    e.disabled}}
+                  />
+                </div>
                 <div>
                   <label htmlFor="username">Username</label>
                   <Field
@@ -207,7 +228,9 @@ export const Callusers = () => {
                     component={() => <div className="error">{errors.role}</div>}
                   />
                 </div>
-                <button type="submit">Enviar</button>
+                <button type="submit" onClick={sendDataEdit}>
+                  Enviar
+                </button>
               </Form>
             )}
           </Formik>
@@ -249,6 +272,7 @@ export const Callusers = () => {
                       agregarUsuario();
                       printCondicitional()
                       setObjeto(item);
+                      console.log("objeto:", item.id)
                     }}
                   >
                     <AiFillEdit />

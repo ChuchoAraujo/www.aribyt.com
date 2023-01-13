@@ -84,6 +84,7 @@ def register():
 
 #---------------------------------------- DELETE USER ----------------------------------------# 
 # 
+
 # ### DELETE USERS
 @api.route('/delete', methods= ['POST', 'PUT'])
 def deleteUser():
@@ -95,23 +96,25 @@ def deleteUser():
 
         response_body = {"msg": "User borrado","user": user_id}
         return jsonify(response_body) 
+
     
-    if request.method =='PUT':
-        user_id = request.json.get('user_id')
-        username = request.json.get('username')
-        email = request.json.get('email')
-        password = request.json.get('password')
-        role = request.json.get('role')
-        editMember = db.session.query(User).get(user_id)
+@api.route('/modificar',methods=['PUT'])
+def modificarUser():
+    user_id = request.json.get('user_id')
+    username = request.json.get('username')
+    email = request.json.get('email')
+    password = request.json.get('password')
+    role = request.json.get('role')
+    editMember = db.session.query(User).get(user_id)
+    if editMember==None:
+        return jsonify({'mensaje':'No entra'}),401
+    else:
         editMember.username = username
         editMember.email = email
         editMember.password = password
         editMember.role = role
         db.session.commit()
-
-        return jsonify({"message": "Se modifico el usuario con exito"}), 200
-
-    
+        return jsonify({"message": "modificado correctamente"}),200
 
 #---------------------------------------- PRIVATE ----------------------------------------#
 
