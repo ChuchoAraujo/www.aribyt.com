@@ -105,16 +105,18 @@ def modificarUser():
     email = request.json.get('email')
     password = request.json.get('password')
     role = request.json.get('role')
-    editMember = db.session.query(User).get(user_id)
-    if editMember==None:
-        return jsonify({'mensaje':'No entra'}),401
-    else:
+    
+    try:
+        editMember = db.session.query(User).get(user_id)
         editMember.username = username
         editMember.email = email
         editMember.password = password
         editMember.role = role
         db.session.commit()
         return jsonify({"message": "modificado correctamente"}),200
+
+    except error:
+        return  jsonify({"message": "Campos incorrectos"}),401 
 
 #---------------------------------------- PRIVATE ----------------------------------------#
 

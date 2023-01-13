@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import DatePicker from "react-date-picker";
 import { AiOutlineEye } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
+import emailjs from "@emailjs/browser";
 ;
 import "../../../styles/calendar.css";
 import "../../../styles/home.css";
@@ -159,6 +160,21 @@ export const Vista_encargado = () => {
   };
   const mostrarGramos = () => {
     setBotonGramos("botonEsconder");
+  };
+
+  // ------------ ENVIO DE REPORTE AL MAIL----------------- //
+  const sendEmail = (event) => {
+    event.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_6p62m98",
+        "template_z6vm3gr",
+        event,
+        "B7IcTLJgEZSaQvry6"
+      )
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -763,6 +779,7 @@ export const Vista_encargado = () => {
             </>
           ))}
         </table>
+        <button type="submit" className="btn btn-danger" onClick={sendEmail}>Send</button>
       </div>
     </>
   );

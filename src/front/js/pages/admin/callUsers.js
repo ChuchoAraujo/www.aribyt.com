@@ -2,49 +2,58 @@ import React, { useContext, useEffect, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { AiFillEdit } from "react-icons/ai";
 import { Context } from "../../store/appContext";
-import { store, actions } from "../../store/flux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { FormularioUsuarios } from "./formularioUsuarios";
 import { useNavigate } from "react-router-dom";
 
 export const Callusers = () => {
   const navigate = useNavigate();
   const { store, actions } = useContext(Context);
-  const [borrar, setBorrar] = useState("");
-  const [enviarAlerta, setEnviarAlerta] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
   const [boton, setBoton] = useState(false);
   const [objeto, setObjeto] = useState({});
-  const [id, setId]= useState("")
 
-
+  // FETCH EDIT PUT
+  const sendDataEdit = (valores) => {
+    fetch(process.env.BACKEND_URL + "/api/modificar", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        user_id: objeto.id,
+        username: valores.username,
+        email: valores.email,
+        password: valores.password,
+        role: valores.role,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result) {
+          window.location.reload(true);
+        }
+      })
+      .catch((error) => {
+        console.log("error", error);
+        alert("ingresa bien los datos");
+      });
+  };
 
   // EDITAR USUARIOS
-       const [pagina1, setpagina1] = useState("");
-       const [pagina2, setPagina2] = useState("");
+  const [pagina1, setpagina1] = useState("");
+  const [pagina2, setPagina2] = useState("");
 
-       const printCondicitional = () => {
-         if (pagina1 === pagina1) {
-           setpagina1("visibility container-fluid");
-           setPagina2("hidden");
-         } else {
-           console.log("nada");
-         }
-       };
+  const printCondicitional = () => {
+    if (pagina1 === pagina1) {
+      setpagina1("visibility container-fluid");
+      setPagina2("hidden");
+    } else {
+      console.log("nada");
+    }
+  };
 
-        const agregarUsuario = () => {
-          console.log("soy el editado")
-          setBoton(true);
-        };
-
-
-  // BORRAR EN PANTALLA USUARIO
-  const deleteUser = (index) => {
-    console.log("soy los users:", store.user);
-    store.user.filter((users) => users !== index);
+  const agregarUsuario = () => {
+    setBoton(true);
   };
 
   // Funcion alerta
@@ -74,39 +83,9 @@ export const Callusers = () => {
       .then((response) => response.json())
       .then((result) => {
         actions.fetchUser();
-        setBorrar(result);
-        console.log(result);
       })
       .catch((error) => console.log("error", error));
   };
-
-  // FETCH EDIT PUT
-  const sendDataEdit = () => {
-    console.log("Numero de id:",id)
-    fetch(process.env.BACKEND_URL + "/api/modificar", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        user_id: id,
-        username: username,
-        email: email,
-        password: password,
-        role: role,
-      }),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        if(result){
-          window.location.reload(true)
-        }
-      })
-      .catch((error) => {console.log("error", error)
-    alert("ingresa bien los datos")});
-  };
-
 
   const formularioEditar = () => {
     return (
@@ -139,33 +118,15 @@ export const Callusers = () => {
               return errores;
             }}
             onSubmit={(valores, { resetForm }) => {
-              setId(valores.id);
-              setUsername(valores.username);
-              setEmail(valores.email);
-              setPassword(valores.password);
-              setRole(valores.role);
-              
+              sendDataEdit(valores);
               resetForm();
               setFormulario(true);
-
               setTimeout(() => setFormulario(false), 5000);
             }}
           >
             {({ errors }) => (
               <Form className="formulario">
-                <div>
-                  <label htmlFor="id">Id</label>
-                  <Field
-                    // disabled
-                    type="text"
-                    id="id"
-                    name="id"
-                    value={objeto.id}
-                    placeholder="id"
-                    onClick={(e) => {setId(objeto.id)
-                    e.disabled}}
-                  />
-                </div>
+                
                 <div>
                   <label htmlFor="username">Username</label>
                   <Field
@@ -173,7 +134,7 @@ export const Callusers = () => {
                     id="username"
                     name="username"
                     placeholder="username"
-                    onKeyUp={(e) => setUsername(e.target.value)}
+                    
                   />
                   <ErrorMessage
                     name="username"
@@ -189,7 +150,7 @@ export const Callusers = () => {
                     id="email"
                     name="email"
                     placeholder="email"
-                    onKeyUp={(e) => setEmail(e.target.value)}
+                    
                   />
                   <ErrorMessage
                     name="email"
@@ -205,7 +166,7 @@ export const Callusers = () => {
                     id="password"
                     name="password"
                     placeholder="password"
-                    onKeyUp={(e) => setPassword(e.target.value)}
+                    
                   />
                   <ErrorMessage
                     name="password"
@@ -221,23 +182,21 @@ export const Callusers = () => {
                     id="role"
                     name="role"
                     placeholder="role"
-                    onKeyUp={(e) => setRole(e.target.value)}
+                    
                   />
                   <ErrorMessage
                     name="role"
                     component={() => <div className="error">{errors.role}</div>}
                   />
                 </div>
-                <button type="submit" onClick={sendDataEdit}>
-                  Enviar
-                </button>
+                <button type="submit">Enviar</button>
               </Form>
             )}
           </Formik>
         </div>
       </>
     );
-  }
+  };
   return (
     <>
       <div>{boton ? formularioEditar() : null}</div>
@@ -270,9 +229,8 @@ export const Callusers = () => {
                     className="btn btn-warning"
                     onClick={() => {
                       agregarUsuario();
-                      printCondicitional()
-                      setObjeto(item);
-                      console.log("objeto:", item.id)
+                      printCondicitional();
+                      setObjeto(item);;
                     }}
                   >
                     <AiFillEdit />
