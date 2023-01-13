@@ -16,6 +16,7 @@ import { Vista_mecanico } from "./pages/mecanico/vista_mecanico";
 import { Vista_encargado } from "./pages/encargado/vista_encargado";
 import { Page_logo } from "./pages/page_logo/page_logo";
 import { Vista_login } from "./pages/page_login/vista_login";
+import { Vista_Login_Admin } from "./pages/page_login/vista_login_admin";
 
 
 import { Formulario_rechazos } from "./component/formularios/formulario_rechazos";
@@ -36,6 +37,7 @@ const Layout = () => {
             <Route element={<Home />} path="/" />
             <Route element={<Page_logo />} path="/" />
             <Route element={<Vista_login />} path="/vista_login" />
+            <Route element={<Vista_Login_Admin />} path="/loginAdmin" />
             <Route
               element={<Vista_clasificadora />}
               path="/vista_login/vista_clasificadora"
@@ -58,7 +60,7 @@ const Layout = () => {
             />
 
             <Route element={<Formulario_rechazos />} path="/rechazos" />
-            <Route element={<Admin />} path="/admin" />
+            <Route element={<Admin />} path="loginAdmin/admin" />
 
             <Route element={<Demo />} path="/demo" />
             <Route element={<Single />} path="/single/:theid" />

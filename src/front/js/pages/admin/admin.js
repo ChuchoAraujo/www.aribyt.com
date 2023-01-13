@@ -4,9 +4,29 @@ import { FormularioUsuarios } from "./formularioUsuarios";
 import { Context } from "../../store/appContext";
 import { store, actions } from "../../store/flux";
 import ReactDOM from "react-dom";
+import {useNavigate } from "react-router-dom";
 
 
-export const Admin = () => {
+export const  Admin = () => {
+  const navigate = useNavigate();
+        // ---------------------------- GET / AREA PRIVADA----------------------------------//
+         useEffect(() => {
+         fetch(process.env.BACKEND_URL + "/api/administrador", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          })
+            .then((response) => response.json())
+            .then((result) => {
+              console.log("resultado", result);
+              if (!result.current_user) {
+                navigate("/");
+              }
+            })
+            .catch((error) => console.log("error", error));
+        }, []);
   const { store , actions} = useContext(Context);
     const [users, setUsers]= useState([])
     const[boton,setBoton]=useState(false);
@@ -21,7 +41,6 @@ export const Admin = () => {
           console.log("nada");
         }
       };
-
   // ---------------------------- GET / USERS----------------------------------//
   const verTodos = () => {
     actions.fetchUser()

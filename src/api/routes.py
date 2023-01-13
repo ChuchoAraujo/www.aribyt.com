@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 '''
 from flask import Flask, request, jsonify, url_for, Blueprint,Response,json
-from api.models import db, User, TablaClasificadora, TablaMecanico, TablaRechazos
+from api.models import db, User, TablaClasificadora, TablaMecanico, TablaRechazos,TablaAdmin
 from api.utils import generate_sitemap, APIException
 import json
 from flask_jwt_extended import create_access_token
@@ -44,6 +44,25 @@ def login():
         return jsonify({'token': access_token,"user":user.id}), 200 
 
 
+#---------------------------------------- LOGIN ADMINISTRADOR----------------------------------------#
+
+@api.route('/accesoAdmin', methods=['POST'])
+def loginAdmin():
+    username = request.json.get('username', None)
+    email = request.json.get('email', None)
+    password = request.json.get('password', None)
+    role = request.json.get('role', None)
+
+    user = TablaAdmin.query.filter_by(email=email).filter_by(password=password).first()
+  
+    if user == None:
+        return jsonify({'msg': 'User, password or role Not exist!'}), 401
+    
+    if user:
+        access_token = create_access_token(identity=user.id)
+        return jsonify({'token': access_token,"user":user.id}), 200 
+
+
 #---------------------------------------- REGISTER ----------------------------------------#  
 @api.route('/register', methods=['POST'])
 def register():
@@ -65,7 +84,7 @@ def register():
 
 #---------------------------------------- DELETE USER ----------------------------------------# 
 # 
-# ### DELETE PLANET
+# ### DELETE USERS
 @api.route('/delete', methods= ['POST', 'PUT'])
 def deleteUser():
     if request.method =='POST':
@@ -90,7 +109,7 @@ def deleteUser():
         editMember.role = role
         db.session.commit()
 
-        return jsonify({"message": "Todo list name changed successfully"}), 200
+        return jsonify({"message": "Se modifico el usuario con exito"}), 200
 
     
 
@@ -101,6 +120,21 @@ def deleteUser():
 def token_acces():
    current_user_id = get_jwt_identity()
    user = User.query.get(current_user_id)
+   
+   if user == None:
+        return jsonify({'msg': 'User, password or role Not exist!'}), 401
+   
+   return jsonify({
+    'user': user.serialize(),
+    'current_user' : current_user_id
+   }), 200
+
+
+@api.route('/administrador', methods=['GET'])
+@jwt_required()
+def token_accesAdmin():
+   current_user_id = get_jwt_identity()
+   user = TablaAdmin.query.get(current_user_id)
    
    if user == None:
         return jsonify({'msg': 'User, password or role Not exist!'}), 401
