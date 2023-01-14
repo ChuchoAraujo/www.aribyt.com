@@ -3,6 +3,8 @@ import { Context } from "../store/appContext";
 import { Page_logo } from "./page_logo/page_logo";
 import "../../styles/home.css";
 import { Vista_login } from "./page_login/vista_login";
+import { Mailer } from "../component/mailer/mailer";
+
 
 
 export const Home = () => {
@@ -53,6 +55,7 @@ console.log("funciona!!")
       <div className={pageLogin === "hidden" ? "visibility" : "hidden"}>
         <Vista_login />
       </div>
+      <div><Mailer/></div>
     </div>
   );
 };

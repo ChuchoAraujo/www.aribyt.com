@@ -23,6 +23,7 @@ export const  Admin = () => {
               console.log("resultado", result);
               if (!result.current_user) {
                 navigate("/");
+                alert("vete de aqui intruso!!!")
               }
             })
             .catch((error) => console.log("error", error));
@@ -51,24 +52,25 @@ export const  Admin = () => {
   }
 
   return (
-    <div className="container-fluid">
-      <div className="text-center p-3">
-        <h1>Administrador de usuarios</h1>
-      </div>
-      <div className="text-center p-2">
-        <button className="m-2" onClick={verTodos}>
-          Ver todo
-        </button>
-        <button className="m-2" onClick={agregarUsuario}>
-          Agregar usuario
-        </button>
-      </div>
-      <div>{boton ? <FormularioUsuarios /> : null}</div>
+    localStorage.getItem("token") && (
+      <div className="container-fluid">
+        <div className="text-center p-3">
+          <h1>Administrador de usuarios</h1>
+        </div>
+        <div className="text-center p-2">
+          <button className="m-2" onClick={verTodos}>
+            Ver todo
+          </button>
+          <button className="m-2" onClick={agregarUsuario}>
+            Agregar usuario
+          </button>
+        </div>
+        <div>{boton ? <FormularioUsuarios /> : null}</div>
 
-      <div>
-        <Callusers/>
+        <div>
+          <Callusers />
+        </div>
       </div>
-
-    </div>
+    )
   );
 };
