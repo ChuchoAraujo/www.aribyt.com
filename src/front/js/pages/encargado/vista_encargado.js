@@ -4,11 +4,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import DatePicker from "react-date-picker";
 import { AiOutlineEye } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
-;
 import "../../../styles/calendar.css";
 import "../../../styles/home.css";
 
+
 export const Vista_encargado = () => {
+  
+  
   const [resultJoin, setResultJoin] = useState([]);
   const [resultMecanico, setResultMecanido] = useState([]);
   const [resultRechazos, setResultRechazos] = useState([]);
