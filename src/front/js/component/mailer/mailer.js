@@ -24,16 +24,19 @@ return (
       <form className="form-mail" onSubmit={sendEmail}>
         <label>Name</label>
         <input type="text" name="user_name" />
-        <hr />
+        <br />
 
         <label>Email</label>
         <input type="email" name="user_email" />
-        <hr />
+        <br />
 
         <label>Message</label>
         <textarea name="user_message" id="" cols="30" rows="10"></textarea>
-        <hr />
+        <br />
         <button type="submit">Send</button>
+        <br />
+        <input type="file"></input>
+        <input type="submit"></input>
       </form>
     </div>
   </div>

@@ -9,10 +9,17 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_cors import CORS, cross_origin
 from sqlalchemy import text
+from mailjet_rest import Client
+
+
 
 api = Blueprint('api', __name__)
 
 CORS(api)
+
+API_KEY = ("56ee6826d943f4fa88828699d5563fd3")
+SECRET_MAIL = ("9e33e2db8a1cf750936f4457c746e094")
+mailjet = Client(auth=(API_KEY, SECRET_MAIL), version='v3.1')
 
 #-------------------------------------------------- USERS --------------------------------------------------------------------------------------#
 
@@ -295,24 +302,42 @@ def filtro_usuario(valor):
 def get_join():
     turno1 = request.json.get('turno')
     fecha1 = request.json.get('fecha')
-    array=[]
-    array1=[]
-    array2=[]
+    arrayClasificadora=[]
+    arrayMecanico=[]
+    arrayRechazos=[]
     suma=[]
+    usuarioClasificadora=[]
+    usuarioClasificadora=[]
+    idclasificadora=[]
+    problemaClasificadora=[]
+    horaClasificadora=[]
+    cajas=[]
+    fecha=[]
+    articulo=[]
+    lote=[]
+    jaulas=[]
+    pedido=[]
+    personal=[]
+    accionClasificadora=[]
+    tiempo=[]
+    velocidad=[]
+    gramos=[]
+
     
-    resultado = db.session.query(User,TablaClasificadora). \
+    resultadoClasificadora = db.session.query(User,TablaClasificadora). \
         select_from(User).join(TablaClasificadora). \
             filter(TablaClasificadora.turno==turno1).filter(TablaClasificadora.fecha==fecha1).all()
-    resultado1 = db.session.query(User,TablaMecanico). \
+    
+    resultadoMecanico = db.session.query(User,TablaMecanico). \
         select_from(User).join(TablaMecanico). \
             filter(TablaMecanico.turno==turno1).filter(TablaMecanico.fecha==fecha1).all()    
 
-    resultado2 = db.session.query(User,TablaRechazos). \
+    resultadoRechazos = db.session.query(User,TablaRechazos). \
         select_from(User).join(TablaRechazos). \
             filter(TablaRechazos.turno==turno1).filter(TablaRechazos.fecha==fecha1).all()  
 
-    for usuario,clasificadora in resultado:
-        array.append({
+    for usuario,clasificadora in resultadoClasificadora:
+        arrayClasificadora.append({
             'usuarioClasificadora': filtro_usuario(clasificadora.user_id),
             'idclasificadora':clasificadora.user_id,
             'problemaClasificadora':clasificadora.problema,
@@ -329,12 +354,13 @@ def get_join():
             'velocidad': clasificadora.velocidad,
             'gramos':clasificadora.gramos
             })
-    for usuario,clasificadora in resultado:
+    
+    for usuario,clasificadora in resultadoClasificadora:
         suma.append(clasificadora.cajas)
     valorSuma=sum(suma)
 
-    for usuario,mecanico in resultado1:
-        array1.append({
+    for usuario,mecanico in resultadoMecanico:
+        arrayMecanico.append({
             'usuarioMecanico': filtro_usuario(mecanico.user_id),
             'userMecanico':usuario.username,
             'problemaMecanico':mecanico.problema,
@@ -342,15 +368,45 @@ def get_join():
             'horaDelMecanico':mecanico.horas
             })
 
-    for usuario,rechazos in resultado2:
-        array2.append({
+    for usuario,rechazos in resultadoRechazos:
+        arrayRechazos.append({
             'usuarioRechazos': filtro_usuario(rechazos.user_id),
             'fichas':rechazos.fichas,
             'paneles':rechazos.paneles,
             'jaula':rechazos.jaula
             })
+    for elemento in arrayClasificadora:
+        usuarioClasificadora.append(elemento["usuarioClasificadora"])
+        
+    htmlUsuarioClasificadora=""
+    for elemento in usuarioClasificadora:
+        htmlUsuarioClasificadora.join(elemento)
+    print("hola",htmlUsuarioClasificadora)
 
-    return jsonify({'clasificadora': array, 'mecanico': array1 ,'rechazos':array2,'sumaCajas':valorSuma})
+    data = {
+        'Messages': [
+            {
+                "From": {
+                    "Email": "josgrehd@aribyt.com  ",
+                    "Name": "PRUEBA"
+                },
+                "To": [
+                    {
+                        "Email": "josgrehd@aribyt.com  ",
+                        "Name": "josgrehd"
+                    }
+                ],
+                "Subject": "mensaje de prueba",
+                "TextPart": "My first Mailjet email",
+                "HTMLPart": htmlUsuarioClasificadora,
+                "CustomID": "AppGettingStartedTest"
+            }
+        ]
+    }
+    result = mailjet.send.create(data=data)
+
+
+    return jsonify({'clasificadora': arrayClasificadora, 'mecanico': arrayMecanico ,'rechazos':arrayRechazos,'sumaCajas':valorSuma})
 
 
 

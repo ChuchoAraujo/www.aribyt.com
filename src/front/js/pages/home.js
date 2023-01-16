@@ -7,6 +7,7 @@ import { Mailer } from "../component/mailer/mailer";
 
 
 
+
 export const Home = () => {
   const { store, actions } = useContext(Context);
   const [logo, setLogo] = useState("");
@@ -27,9 +28,6 @@ console.log("dios soy yo de nuevo")
      const [logoAribyt, setLogoAribyt] = useState("");
      const [pageLogin, setPageLogin] = useState("");
 
-  const myTimeout = () => {
-    setTimeout(alert("hola"), 5000);
-  } 
 
    const comenzar = () => {
   
@@ -41,21 +39,17 @@ console.log("dios soy yo de nuevo")
       }
    }
 
-console.log(fechaSeleccionada)
-console.log("funciona!!")
 
   return (
-    <div className="container-fluid logo" onLoad={myTimeout}>
+    <div className="container-fluid logo">
       <div className={logoAribyt === "visibility" ? "hidden" : "visibility"}>
         <Page_logo />
         {/* <button onClick={comenzar}>Comenzar!</button> */}
       </div>
-      <div>
-      </div>
+      <div></div>
       <div className={pageLogin === "hidden" ? "visibility" : "hidden"}>
         <Vista_login />
       </div>
-      <div><Mailer/></div>
     </div>
   );
 };

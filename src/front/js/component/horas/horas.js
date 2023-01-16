@@ -6,9 +6,6 @@ import { Context } from "../../store/appContext";
 export const Horas = () => {
   const { store, actions } = useContext(Context);
   
-  // const clickHora = (hora)=>{
-  //   console.log(store.saveHora);
-  // } 
 
   return store.horas.map((element, key) => {
     

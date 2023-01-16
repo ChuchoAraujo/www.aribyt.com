@@ -75,7 +75,6 @@ export const Formulario_rechazos = () => {
         }}
         onSubmit={(valores, { resetForm }) => {
           resetForm();
-          console.log("Formulario enviado");
           setFormulario(true);
           setTurno(valores.turno);
           setFichas(valores.fichas);

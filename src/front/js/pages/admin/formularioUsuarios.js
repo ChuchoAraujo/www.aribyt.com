@@ -62,7 +62,6 @@ export const FormularioUsuarios = () => {
         }}
         onSubmit={(valores, { resetForm }) => {
           resetForm();
-          console.log("Formulario enviado");
           setFormulario(true);
           setUsername(valores.username);
           setEmail(valores.email);
