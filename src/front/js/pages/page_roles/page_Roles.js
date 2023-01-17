@@ -8,9 +8,7 @@ export const Page_roles = () => {
 
   return (
        <div>
-          
-                <Roles />
-        
+            <Roles />
       </div>
   
   );

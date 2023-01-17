@@ -179,12 +179,12 @@ text-decoration: none;
 	color: #fff;
 	font-size: 16px;
 	transition: .3s ease all;
-	width:200px
+	width:1000px
 }
 
 .formulario button[type="submit"]:hover {
 	background: #218379;
-	width:200px
+	width:1000px
 }
 
 .formulario .exito {
@@ -279,38 +279,98 @@ text-decoration: none;
 /*---------------------------------------Roles--------------------------------------*/
 
 .containerRoles {
+	margin: 10px;
+	padding: 10px;
 	justify-content: center;
 }
-
 .tituloRoles {
+	font-size: 40px;
+	font-weight: 700;
+	margin: 20px;
+	padding: 20px;
 	color: #828282;
 }
-.iconRoles {
+
+.iconClasificadoraGray {
 	width: 60px;
 	align-items: center ;
 	margin-top: 25px;
 	fill:#828282;
 }
-.iconRoles2 {
+.iconClasificadoraGreen {
 	width: 60px;
 	align-items: center ;
 	margin-top: 25px;
-	fill: #828282;
+	fill: white
 }
-
-.tituloRoles {
-	font-size: 30px;
-	padding: 20px;
+.iconMecanicoGray {
+	width: 60px;
+	align-items: center ;
+	margin-top: 25px;
+	fill:#828282;
+}
+.iconMecanicoGreen {
+	width: 60px;
+	align-items: center ;
+	margin-top: 25px;
+	fill: white
+}
+.iconEncargadoGray {
+	width: 60px;
+	align-items: center ;
+	margin-top: 25px;
+	fill:#828282;
+}
+.iconEncargadoGreen {
+	width: 60px;
+	align-items: center ;
+	margin-top: 25px;
+	fill: white
+}
+/*Titulos roles*/
+.tituloClasificadoraGray {
 	color: #828282;
+	font-size: 30px;
+	font-weight: 700;
+	padding: 15px;
 }
-
+.tituloClasificadoraGreen {
+	color: white;
+	font-size: 30px;
+	font-weight: 700;
+	padding: 15px;
+}
+.tituloMecanicoGray {
+	color: #828282;
+	font-size: 30px;
+	font-weight: 700;
+	padding: 15px;
+}
+.tituloMecanicoGreen {
+	color: white;
+	font-size: 30px;
+	font-weight: 700;
+	padding: 15px;
+}
+.tituloEncargadoGray {
+	color: #828282;
+	font-size: 30px;
+	font-weight: 700;
+	padding: 15px;
+}
+.tituloEncargadoGreen {
+	color: white;
+	font-size: 30px;
+	font-weight: 700;
+	padding: 15px;
+}
 /*------------------------Use state cambio de color----------------------*/
 
 .roleMecanicoGreen {
+	background-color: #4dada4;
 	border-radius: 30px;
 	transition-duration: 1s;
-	border: 5px solid #4dada4;;
-	fill: white;
+	border: 5px solid #4dada4;
 	cursor: pointer;
 }
 .roleMecanicoGray{
@@ -319,6 +379,7 @@ text-decoration: none;
 	cursor: pointer;
 }
 .roleClasificadoraGreen {
+	background-color: #4dada4;
 	border-radius: 30px;
 	transition-duration: 1s;
 	border: 5px solid #4dada4;
@@ -330,6 +391,7 @@ text-decoration: none;
 	cursor: pointer;
 }
 .roleEncargadoGreen {
+	background-color: #4dada4;
 	border-radius: 30px;
 	transition-duration: 1s;
 	border: 5px solid #4dada4;
@@ -339,6 +401,40 @@ text-decoration: none;
 	border-radius: 30px;
 	border: 5px solid #828282;
 	cursor: pointer;
+}
+
+.botonRolesSiguiente {
+	background-color: #4dada4;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 10px;
+	width: 200px;
+	border: none;
+	color: white;
+	font-size: 15px;
+	font-weight: 600;
+}
+.botonRolesSiguiente:hover {
+	background-color: #287870;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 10px;
+	width: 200px;
+	border: none;
+	color: white;
+	font-size: 15px;
+	font-weight: 600;
+}
+.botonRolesVolver {
+	background-color: #828282;
+	padding: 10px;
+	margin: 30px;
+	border-radius: 10px;
+	width: 200px;
+	border: none;
+	color: white;
+	font-size: 15px;
+	font-weight: 600;
 }
 
 
