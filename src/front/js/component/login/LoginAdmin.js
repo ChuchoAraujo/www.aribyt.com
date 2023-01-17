@@ -31,10 +31,8 @@ export const LoginAdmin = () => {
           localStorage.setItem("token", result.token);
           navigate(urlRole);
           store.userId=result.user
-          console.log("valor de user id "+store.userId)
         }
         console.log(result)
-        console.log("Bienvenido! ... Token creado");
 
       })
       .catch((error) => console.log("error", error));
@@ -65,11 +63,6 @@ export const LoginAdmin = () => {
 
           if (!valores.password) {
             errores.password = "Por favor ingresa el password";
-            // } else if (
-            //   !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
-            //     valores.password
-            //   )
-            // ) {
             errores.password =
               "El email solo puede contener letras, numeros, puntos, guiones y guión bajo";
           }

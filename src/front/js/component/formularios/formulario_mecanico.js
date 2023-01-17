@@ -31,10 +31,7 @@ export const Formulario_mecanico = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log("Muy bien !! ... Token encontrado", result);
-        // if (!result.done) {
-        //   navigate("/");
-        // }
+        console.log(result);
       })
       .catch((error) => console.log("error", error));
   }, []);
@@ -72,7 +69,6 @@ export const Formulario_mecanico = () => {
         }}
         onSubmit={(valores, { resetForm }) => {
           resetForm();
-          console.log("Formulario enviado");
           setFormulario(true);
           setProblema(valores.problema);
           setAccion(valores.accion);

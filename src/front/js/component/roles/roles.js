@@ -9,69 +9,112 @@ import { store, actions } from "../../store/flux"
 export const Roles = () => {
   const { store, actions } = useContext(Context);
   const [role, setRole] =useState("")
+  const [icon, setIcon] = useState("");
+  const [titulo, setTitulo] = useState("");
 
   return (
-    <div className="text-center mt-5 row containerRoles">
-      <h1 className="mb-4">Selecciona tu área</h1>
-
+    <div className="container-fluid text-center containerRoles">
+      <h3 className="tituloRoles">Selecciona tu área</h3>
       <div className="row containerRoles onLogo">
-        <div
-          className="botonRoles col-4"
-          onClick={() => {
-            actions.selectionRoles("clasificadora");
-          }}
-        >
+        <div className="botonRoles col-4">
           <div
             className={
               role === "roleClasificadoraGray"
                 ? "roleClasificadoraGreen"
                 : "roleClasificadoraGray"
             }
-            onClick={() => setRole("roleClasificadoraGray")}
+            onClick={() => {
+              setRole("roleClasificadoraGray");
+              actions.selectionRoles("clasificadora");
+              setIcon("iconClasificadoraGray")
+              setTitulo("tituloClasificadoraGray");
+            }}
           >
             {" "}
-            <Icon_clasificadora className="iconRoles" />
-            <h1 className="tituloRoles">Clasificadora</h1>
+            <Icon_clasificadora
+              className={
+                icon === "iconClasificadoraGray"
+                  ? "iconClasificadoraGreen"
+                  : "iconClasificadoraGray"
+              }
+            />
+            <h1
+              className={
+                titulo === "tituloClasificadoraGray"
+                  ? "tituloClasificadoraGreen"
+                  : "tituloClasificadoraGray"
+              }
+            >
+              Clasificadora
+            </h1>
           </div>
         </div>
 
-        <div
-          className="botonRoles col-4"
-          onClick={() => {
-            actions.selectionRoles("mecanico");
-          }}
-        >
+        <div className="botonRoles col-4" onClick={() => {}}>
           <div
             className={
               role === "roleMecanicoGray"
                 ? "roleMecanicoGreen"
                 : "roleMecanicoGray"
             }
-            onClick={() => setRole("roleMecanicoGray")}
+            onClick={() => {
+              setRole("roleMecanicoGray");
+              actions.selectionRoles("mecanico");
+              setIcon("iconMecanicoGray");
+              setTitulo("tituloMecanicoGray");
+            }}
           >
             {" "}
-            <Icon_mecanico className="iconRoles" />
-            <h1 className="tituloRoles">Mecanico</h1>
+            <Icon_mecanico
+              className={
+                icon === "iconMecanicoGray"
+                  ? "iconMecanicoGreen"
+                  : "iconMecanicoGray"
+              }
+            />
+            <h1
+              className={
+                titulo === "tituloMecanicoGray"
+                  ? "tituloMecanicoGreen"
+                  : "tituloMecanicoGray"
+              }
+            >
+              Mecanico
+            </h1>
           </div>
         </div>
 
-        <div
-          className="botonRoles col-4"
-          onClick={() => {
-            actions.selectionRoles("encargado");
-          }}
-        >
+        <div className="botonRoles col-4" onClick={() => {}}>
           <div
             className={
               role === "roleEncargadoGray"
                 ? "roleEncargadoGreen"
                 : "roleEncargadoGray"
             }
-            onClick={() => setRole("roleEncargadoGray")}
+            onClick={() => {
+              setRole("roleEncargadoGray");
+              actions.selectionRoles("encargado");
+              setIcon("iconEncargadoGray");
+              setTitulo("tituloEncargadoGray");
+            }}
           >
             {" "}
-            <Icon_encargado className="iconRoles" />
-            <h1 className="tituloRoles">Encargado</h1>
+            <Icon_encargado
+              className={
+                icon === "iconEncargadoGray"
+                  ? "iconEncargadoGreen"
+                  : "iconEncargadoGray"
+              }
+            />
+            <h1
+              className={
+                titulo === "tituloEncargadoGray"
+                  ? "tituloEncargadoGreen"
+                  : "tituloEncargadoGray"
+              }
+            >
+              Encargado
+            </h1>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ export const Logo = () => {
 
 
   return (
-    <div className="container-fluid">
+    <div>
       <div className="row">
         <div className="col-2"></div>
         <div className="col-8 ">

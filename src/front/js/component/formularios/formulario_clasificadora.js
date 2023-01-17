@@ -29,14 +29,11 @@ export const Formulario_clasificadora = () => {
   let year = today.getFullYear();
   var todayHora = new Date();
   var nowHora = parseFloat(todayHora.toLocaleTimeString("en-US"));
-
   const horaActual = new Intl.DateTimeFormat(undefined, {
     timeStyle: "short",
   }).format(new Date());
-  console.log("Esta es la hora actual con formato 24hrs: ", horaActual);
-
   const horaConvertida = parseFloat(horaActual);
-  console.log("Esta es la hora convertida: ", horaConvertida);
+  
 
 // ----------------------- PAGINACION FORMULARIO --------------------------------------//
  const [pagina1, setpagina1] = useState("");
@@ -93,9 +90,6 @@ export const Formulario_clasificadora = () => {
       .then((response) => response.json())
       .then((result) => {
         console.log("Muy bien !! ... Token encontrado", result);
-        // if (!result.done) {
-        //   navigate("/");
-        // }
       })
       .catch((error) => console.log("error", error));
   }, []);
@@ -153,7 +147,6 @@ export const Formulario_clasificadora = () => {
       .catch((error) => console.log("error", error));
       
     }
-  //obtener sumatoria de cajas
 
 
   return (

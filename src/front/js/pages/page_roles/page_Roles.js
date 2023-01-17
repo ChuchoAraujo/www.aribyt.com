@@ -5,15 +5,10 @@ import "../../../styles/home.css";
 
 export const Page_roles = () => {
   const { store, actions } = useContext(Context);
-  const [mostrarComponente, setMostrarComponente] = useState(true);
 
   return (
-       <div className="text-center">
-            <div>
-                <Roles />
-            </div>
-
-       
+       <div>
+            <Roles />
       </div>
   
   );

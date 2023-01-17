@@ -41,44 +41,6 @@ export const Vista_encargado = () => {
   let fechaConvertida = `${month}/${day}/${year}`;
 
   //------------ ENVIO DE REPORTE AL MAIL----------------- //
-  const enviarEmail = () => {
-    const mailjet = Mailjet.apiConnect(
-      "56ee6826d943f4fa88828699d5563fd3",
-      "9e33e2db8a1cf750936f4457c746e094"
-    );
-
-    const request = mailjet
-      .post("send", { version: "v3.1", "Access-Control-Allow-Origin": "*" })
-      .request({
-        Messages: [
-          {
-            From: {
-              Email: "josgrehd@aribyt.com",
-              Name: "Me",
-            },
-            To: [
-              {
-                Email: "josgrehd@aribyt.com",
-                Name: "You",
-              },
-            ],
-            Subject: "My first Mailjet Email!",
-            TextPart:
-              "Dear passenger 1, welcome to Mailjet! May the delivery force be with you!",
-            HTMLPart:
-              '<h3>Dear passenger 1, welcome to <a href="https://www.mailjet.com/">Mailjet</a>!</h3><br />May the delivery force be with you!',
-          },
-        ],
-      });
-
-    request
-      .then((result) => {
-        console.log(result.body);
-      })
-      .catch((err) => {
-        console.log(err.statusCode);
-      });
-  };
 
   const sendDataEncargado = () => {
     fetch(process.env.BACKEND_URL + "/api/join", {
@@ -97,7 +59,6 @@ export const Vista_encargado = () => {
         setResultJoin(result.clasificadora);
         setResultMecanido(result.mecanico);
         setResultRechazos(result.rechazos);
-        console.log("este es el result:", result.rechazos);
       })
       .catch((error) => console.log("error", error));
   };
@@ -804,9 +765,6 @@ export const Vista_encargado = () => {
           ))}
         </table>
       </div>
-      <button onClick={enviarEmail} className="btn btn-danger">
-        Send email
-      </button>
     </>
   );
 };

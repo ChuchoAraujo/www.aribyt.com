@@ -29,7 +29,6 @@ export const  Admin = () => {
             .catch((error) => console.log("error", error));
         }, []);
   const { store , actions} = useContext(Context);
-    const [users, setUsers]= useState([])
     const[boton,setBoton]=useState(false);
      const [pagina1, setpagina1] = useState("");
      const [pagina2, setPagina2] = useState("");
