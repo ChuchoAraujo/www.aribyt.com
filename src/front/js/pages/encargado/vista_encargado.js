@@ -3,18 +3,12 @@ import { Context } from "../../store/appContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import DatePicker from "react-date-picker";
 import { AiOutlineEye } from "react-icons/ai";
+import Mailjet from "node-mailjet";
 import { TiDeleteOutline } from "react-icons/ti";
-<<<<<<< HEAD
-=======
-import emailjs from "@emailjs/browser";
->>>>>>> refs/remotes/origin/main
+
 import "../../../styles/calendar.css";
 import "../../../styles/home.css";
-
-
 export const Vista_encargado = () => {
-  
-  
   const [resultJoin, setResultJoin] = useState([]);
   const [resultMecanico, setResultMecanido] = useState([]);
   const [resultRechazos, setResultRechazos] = useState([]);
@@ -46,54 +40,44 @@ export const Vista_encargado = () => {
   let year = fechaSeleccionada.getFullYear();
   let fechaConvertida = `${month}/${day}/${year}`;
 
-  useEffect(() => {
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append(
-      "Authorization",
-      "Basic NTZlZTY4MjZkOTQzZjRmYTg4ODI4Njk5ZDU1NjNmZDM6OWUzM2UyZGI4YTFjZjc1MDkzNmY0NDU3Yzc0NmUwOTQ="
-    );
-    let raw = JSON.stringify({
-      Messages: [
-        {
-          From: {
-            Email: "josgrehd@aribyt.com",
-            Name: "Me",
-          },
-          To: [
-            {
-              Email: "josgrehd@aribyt.com",
-              Name: "You",
-            },
-          ],
-          Subject: "My first Mailjet Email!",
-          TextPart: "Greetings from Mailjet!",
-          HTMLPart:
-            '<h3>Dear passenger 1, welcome to <a href="https://www.mailjet.com/">Mailjet!</a></h3><br />May the delivery force be with you!',
-        },
-      ],
-    });
-    let requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow",
-      };
-    fetch("https://api.mailjet.com/v3.1/send", requestOptions)
-        .then((response) => response.json())
-        .then((result) => console.log(result))
-        .catch((error) => console.log("error", error));
-    console.log("entre en el useEffect")
-  },[])
-  
-
-
-
   //------------ ENVIO DE REPORTE AL MAIL----------------- //
   const enviarEmail = () => {
-    console.log("estoy entrando: a enviar el email");
+    const mailjet = Mailjet.apiConnect(
+      "56ee6826d943f4fa88828699d5563fd3",
+      "9e33e2db8a1cf750936f4457c746e094"
+    );
 
-    
+    const request = mailjet
+      .post("send", { version: "v3.1", "Access-Control-Allow-Origin": "*" })
+      .request({
+        Messages: [
+          {
+            From: {
+              Email: "josgrehd@aribyt.com",
+              Name: "Me",
+            },
+            To: [
+              {
+                Email: "josgrehd@aribyt.com",
+                Name: "You",
+              },
+            ],
+            Subject: "My first Mailjet Email!",
+            TextPart:
+              "Dear passenger 1, welcome to Mailjet! May the delivery force be with you!",
+            HTMLPart:
+              '<h3>Dear passenger 1, welcome to <a href="https://www.mailjet.com/">Mailjet</a>!</h3><br />May the delivery force be with you!',
+          },
+        ],
+      });
+
+    request
+      .then((result) => {
+        console.log(result.body);
+      })
+      .catch((err) => {
+        console.log(err.statusCode);
+      });
   };
 
   const sendDataEncargado = () => {
