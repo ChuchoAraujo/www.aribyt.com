@@ -3,7 +3,6 @@ import { Context } from "../../store/appContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import DatePicker from "react-date-picker";
 import { AiOutlineEye } from "react-icons/ai";
-import Mailjet from "node-mailjet";
 import { TiDeleteOutline } from "react-icons/ti";
 
 import "../../../styles/calendar.css";

@@ -39,6 +39,7 @@ export const Formulario_clasificadora = () => {
  const [pagina1, setpagina1] = useState("");
  const [pagina2, setPagina2] = useState("");
  const [pagina3, setPagina3] = useState("");
+ const [pagina4, setPagina4] = useState("");
 
  const printCondicitional = () => {
    if (pagina1 === pagina1) {
@@ -56,6 +57,14 @@ export const Formulario_clasificadora = () => {
       console.log("nada");
     }
   };
+    const printCondicitional3 = () => {
+      if (pagina3 === pagina3) {
+        setPagina3("visibility");
+        setPagina4("hidden");
+      } else {
+        console.log("nada");
+      }
+    };
 
   // ---------------------------- FUNCION OBTENER HORA-TURNOS----------------------------------//
 
@@ -207,7 +216,7 @@ export const Formulario_clasificadora = () => {
           setVelocidad(valores.velocidad);
           setGramos(valores.gramos);
           setTurno(valores.turno);
-          setCajas(valores.cajas)
+          setCajas(valores.cajas);
           setTimeout(() => setFormulario(false), 5000);
         }}
       >
@@ -256,16 +265,6 @@ export const Formulario_clasificadora = () => {
                   onKeyUp={(e) => setLote(e.target.value)}
                 />
               </div>
-              <div>
-                <label htmlFor="jaulas">Jaulas</label>
-                <Field
-                  type="text"
-                  id="jaulas"
-                  name="jaulas"
-                  placeholder="Numero de Jaulas"
-                  onKeyUp={(e) => setJaulas(e.target.value)}
-                />
-              </div>
               <button
                 onClick={printCondicitional}
                 className="botonSiguienteFormulario"
@@ -276,6 +275,16 @@ export const Formulario_clasificadora = () => {
 
             {/*--------------------------Formulario pagina2*-------------------*/}
             <div className={pagina2 === "hidden" ? "visibility" : "hidden"}>
+              <div>
+                <label htmlFor="jaulas">Jaulas</label>
+                <Field
+                  type="text"
+                  id="jaulas"
+                  name="jaulas"
+                  placeholder="Numero de Jaulas"
+                  onKeyUp={(e) => setJaulas(e.target.value)}
+                />
+              </div>
               <div>
                 <label htmlFor="pedido">pedido</label>
                 <Field
@@ -296,6 +305,15 @@ export const Formulario_clasificadora = () => {
                   onKeyUp={(e) => setPersonal(e.target.value)}
                 />
               </div>
+              <button
+                onClick={printCondicitional2}
+                className="botonSiguienteFormulario"
+              >
+                Siguiente
+              </button>
+            </div>
+            {/*--------------------------Formulario pagina3*-------------------*/}
+            <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
               <div>
                 <label htmlFor="problema">problema</label>
                 <Field
@@ -315,16 +333,16 @@ export const Formulario_clasificadora = () => {
                   placeholder="Solucion al problema o problemas"
                   onKeyUp={(e) => setAccion(e.target.value)}
                 />
+                <button
+                  onClick={printCondicitional3}
+                  className="botonSiguienteFormulario"
+                >
+                  Siguiente
+                </button>
               </div>
-              <button
-                onClick={printCondicitional2}
-                className="botonSiguienteFormulario"
-              >
-                Siguiente
-              </button>
             </div>
-            {/*--------------------------Formulario pagina3*-------------------*/}
-            <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
+            {/*--------------------------Formulario pagina4*-------------------*/}
+            <div className={pagina4 === "hidden" ? "visibility" : "hidden"}>
               <div>
                 <label htmlFor="tiempo">tiempo</label>
                 <Field
@@ -365,19 +383,28 @@ export const Formulario_clasificadora = () => {
                   component={() => <div className="error">{errors.gramos}</div>}
                 />
               </div>
-              <div>
+              <Field as="select" name="color" className="selectTurno">
+                <option value="red">Mañana</option>
+                <option value="green">Tarde</option>
+                <option value="blue">Noche</option>
+              </Field>
+              <button
+                className="botonSiguienteFormulario"
+                onClick={sendDataClasificadora}
+              >
+                Enviar
+              </button>
+              {/* <div>
                 <label htmlFor="turno">turno</label>
                 <Field
-                  type="text"
+                  type="select"
                   id="turno"
                   name="turno"
                   placeholder="turno"
                   onKeyUp={(e) => setTurno(e.target.value)}
                 />
-              </div>
-              <button type="submit" onClick={sendDataClasificadora}>
-                Enviar
-              </button>
+              </div> */}
+
               {enviarFormulario && (
                 <div class="alert alert-primary" role="alert">
                   Registro realizado!

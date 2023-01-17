@@ -23,16 +23,21 @@ button{
 
 /*ICONOS SVG*/
 .iconoAribyt {
-	fill: whitesmoke;
-	width: 800px;
-	height: auto;
-	padding: 150px;
+	fill: #4dada4;
+	width: 600px;
 }
+.logo {
+	background-color: white;
+	width: auto;
+	margin: 30px;
+	padding: 50px;
+}
+
 
 
 /*------------------------------------------NAVEGADOR--------------------------------------------------------*/
 .EstiloNav {
-	background-color: white;
+	background-color: #4dada4;
 	padding: 12px;
 }
 
@@ -51,7 +56,7 @@ text-decoration: none;
 	border-radius: 5px;
 	border-style: none;
 	padding: 15px;
-	background-color: whitesmoke;
+	background-color: white;
 	color: #4dada4;
 	font-weight: 700;
 	border-radius: 15px;
@@ -62,7 +67,7 @@ text-decoration: none;
 	border-style: none;
 	border-radius: 5px;
 	padding: 6px;
-	background-color: whitesmoke;
+	background-color: white;
 	color: #4dada4;
 	font-weight: 700;
 }
@@ -70,14 +75,15 @@ text-decoration: none;
 .boton_home {
 	font-size: 35px;
 	margin-right: 5px;
-	color: #4dada4;
+	color: white;
 }
 
 /*------------------------------------FOOTER---------------------------------------*/
 .iconos_footer {
 	font-size: 30px;
+	margin-top: 15px;
 	margin-right: 5px;
-	color: #4dada4;
+	color: white;
 	cursor: pointer;
 }
 .iconos_footer:hover {
@@ -87,9 +93,8 @@ text-decoration: none;
 	cursor: pointer;
 }
 .footer {
-	background-color: white;
-	padding: 20px;
-	margin-top: 15px;
+	background-color: #4dada4;
+	padding: 30px;
 	color: #4dada4;
 	align-items: center;
 	height: auto;
@@ -97,9 +102,11 @@ text-decoration: none;
 .textoFooter1 {
 	margin-top: 15px;
 	font-weight: 600;
+	color: white;
 }
 .textoFooter2 {
 	font-weight: 600;
+	color: white;
 }
 /*-----------------------------------FORMULARIO-----------------------------------------*/
 
@@ -255,6 +262,21 @@ text-decoration: none;
 .formularioEncargado input[type="radio"] {
 	width: auto;
 }
+.botonEnviarFormulario {
+	display: block;
+	background: #4dada4;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+	transition: .3s ease all;
+	width:600px
+}
 
 
 .containerFormClasificadora{
@@ -276,11 +298,19 @@ text-decoration: none;
 .bloquearInput input:disabled{
 	background-color: #0085FF;
 }
+
+.selectTurno{
+	background-color: #4dada4;
+	width: 120px;
+	color: white;
+	margin: 10px;
+	padding-inline-start: 10px;
+}
 /*---------------------------------------Roles--------------------------------------*/
 
 .containerRoles {
-	margin: 10px;
-	padding: 10px;
+	margin: 20px;
+	padding: 20px;
 	justify-content: center;
 }
 .tituloRoles {
@@ -289,6 +319,39 @@ text-decoration: none;
 	margin: 20px;
 	padding: 20px;
 	color: #828282;
+}
+.botonRolesSiguiente {
+	background-color: #4dada4;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	width: 200px;
+	border: none;
+	color: white;
+	font-size: 15px;
+	font-weight: 600;
+}
+.botonRolesSiguiente:hover {
+	background-color: #287870;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 10px;
+	width: 200px;
+	border: none;
+	color: white;
+	font-size: 15px;
+	font-weight: 600;
+}
+.botonRolesVolver {
+	background-color: #828282;
+	padding: 10px;
+	margin: 30px;
+	border-radius: 10px;
+	width: 200px;
+	border: none;
+	color: white;
+	font-size: 15px;
+	font-weight: 600;
 }
 
 .iconClasificadoraGray {
@@ -403,46 +466,9 @@ text-decoration: none;
 	cursor: pointer;
 }
 
-.botonRolesSiguiente {
-	background-color: #4dada4;
-	padding: 10px;
-	margin: 10px;
-	border-radius: 10px;
-	width: 200px;
-	border: none;
-	color: white;
-	font-size: 15px;
-	font-weight: 600;
-}
-.botonRolesSiguiente:hover {
-	background-color: #287870;
-	padding: 10px;
-	margin: 10px;
-	border-radius: 10px;
-	width: 200px;
-	border: none;
-	color: white;
-	font-size: 15px;
-	font-weight: 600;
-}
-.botonRolesVolver {
-	background-color: #828282;
-	padding: 10px;
-	margin: 30px;
-	border-radius: 10px;
-	width: 200px;
-	border: none;
-	color: white;
-	font-size: 15px;
-	font-weight: 600;
-}
 
 
-.logo {
-	background-color: #4dada4;
-	width: auto;
-	padding: 40px;
-}
+
 
 /*SELECCION DE AREAS ENCARGADO*/
 
