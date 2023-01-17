@@ -20,11 +20,6 @@ button{
 	height: 800px;
 }
 
-.footer {
-	background-color: #e2e2e2;
-	padding: 50px;
-}
-
 
 /*ICONOS SVG*/
 .iconoAribyt {
@@ -48,21 +43,18 @@ text-decoration: none;
 .dropdownTexto:hover {
 	background-color: #e2e2e2;
 	color: #4dada4;
-}
-.iconos_footer {
-	font-size: 30px;
-	margin-right: 5px;
-	color: #4dada4;
+	cursor: pointer;
 }
 
 .botonUsuarios {
 	width: auto;
 	border-radius: 5px;
 	border-style: none;
-	padding: 12px;
+	padding: 15px;
 	background-color: whitesmoke;
 	color: #4dada4;
 	font-weight: 700;
+	border-radius: 15px;
 }
 
 .botonLogin {
@@ -81,7 +73,34 @@ text-decoration: none;
 	color: #4dada4;
 }
 
-
+/*------------------------------------FOOTER---------------------------------------*/
+.iconos_footer {
+	font-size: 30px;
+	margin-right: 5px;
+	color: #4dada4;
+	cursor: pointer;
+}
+.iconos_footer:hover {
+	font-size: 30px;
+	margin-right: 5px;
+	color: #4dada4;
+	cursor: pointer;
+}
+.footer {
+	background-color: white;
+	padding: 20px;
+	margin-top: 15px;
+	color: #4dada4;
+	align-items: center;
+	height: auto;
+}
+.textoFooter1 {
+	margin-top: 15px;
+	font-weight: 600;
+}
+.textoFooter2 {
+	font-weight: 600;
+}
 /*-----------------------------------FORMULARIO-----------------------------------------*/
 
 .formulario {
@@ -92,6 +111,7 @@ text-decoration: none;
 	padding: 20px;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
+
 
 .formulario > div {
 	margin-bottom: 10px;
@@ -262,55 +282,63 @@ text-decoration: none;
 	justify-content: center;
 }
 
+.tituloRoles {
+	color: #828282;
+}
 .iconRoles {
 	width: 60px;
 	align-items: center ;
 	margin-top: 25px;
-	fill: black;
+	fill:#828282;
+}
+.iconRoles2 {
+	width: 60px;
+	align-items: center ;
+	margin-top: 25px;
+	fill: #828282;
 }
 
 .tituloRoles {
 	font-size: 30px;
 	padding: 20px;
-	color: black;
-}
-
-.botonRoles {
-	background-color: white;
-	color: #bbbcbb;
-	border-radius: 50px;
-	cursor: pointer;
-	
+	color: #828282;
 }
 
 /*------------------------Use state cambio de color----------------------*/
 
 .roleMecanicoGreen {
-	background-color: #4dada4;
 	border-radius: 30px;
 	transition-duration: 1s;
+	border: 5px solid #4dada4;;
+	fill: white;
+	cursor: pointer;
 }
 .roleMecanicoGray{
-	background-color: #e2e2e2;
 	border-radius: 30px;
+	border: 5px solid #828282;
+	cursor: pointer;
 }
 .roleClasificadoraGreen {
-	background-color: #4dada4;
 	border-radius: 30px;
 	transition-duration: 1s;
+	border: 5px solid #4dada4;
+	cursor: pointer;
 }
 .roleClasificadoraGray{
-	background-color: #e2e2e2;
 	border-radius: 30px;
+	border: 5px solid #828282;
+	cursor: pointer;
 }
 .roleEncargadoGreen {
-	background-color: #4dada4;
 	border-radius: 30px;
 	transition-duration: 1s;
+	border: 5px solid #4dada4;
+	cursor: pointer;
 }
 .roleEncargadoGray{
-	background-color: #e2e2e2;
 	border-radius: 30px;
+	border: 5px solid #828282;
+	cursor: pointer;
 }
 
 

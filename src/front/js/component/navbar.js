@@ -24,7 +24,8 @@ export const Navbar = () => {
               <ImHome className="boton_home" />
             </Link>
           </div>
-          <div className="col-9"></div>
+          <div className="col"></div>
+          <div className="col"></div>
           <div className="col-2 text-center">
             <div className="dropdown">
               <button

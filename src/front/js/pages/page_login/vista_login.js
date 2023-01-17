@@ -14,19 +14,19 @@ export const Vista_login = () => {
 	return (
     <div className="container-fluid text-center pageLogin">
       <div className="row containerRoles">
-        <div className="col-3"></div>
-        <div className="paginaLogo col-6">
+        <div className="col-2"></div>
+        <div className="paginaLogo col-8">
           <Roles />
         </div>
-        <div className="col-3"></div>
+        <div className="col-2"></div>
       </div>
 
       <div className="row">
-        <div className="col-4"></div>
-        <div className="paginaLogo col-4">
+        <div className="col-2"></div>
+        <div className="paginaLogo col-8">
           <Login />
         </div>
-        <div className="col-4"></div>
+        <div className="col-2"></div>
       </div>
     </div>
   );
