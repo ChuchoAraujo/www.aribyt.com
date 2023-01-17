@@ -306,22 +306,6 @@ def get_join():
     arrayMecanico=[]
     arrayRechazos=[]
     suma=[]
-    usuarioClasificadora=[]
-    usuarioClasificadora=[]
-    idclasificadora=[]
-    problemaClasificadora=[]
-    horaClasificadora=[]
-    cajas=[]
-    fecha=[]
-    articulo=[]
-    lote=[]
-    jaulas=[]
-    pedido=[]
-    personal=[]
-    accionClasificadora=[]
-    tiempo=[]
-    velocidad=[]
-    gramos=[]
 
     
     resultadoClasificadora = db.session.query(User,TablaClasificadora). \
@@ -377,12 +361,15 @@ def get_join():
             })
     for elemento in arrayClasificadora:
         usuarioClasificadora.append(elemento["usuarioClasificadora"])
-        
-    htmlUsuarioClasificadora=""
-    for elemento in usuarioClasificadora:
-        htmlUsuarioClasificadora.join(elemento)
-    print("hola",htmlUsuarioClasificadora)
+        idclasificadora.append(elemento["idclasificadora"])
+        problemaClasificadora.append(elemento["problemaClasificadora"])
 
+    html_string="<ul>\n"
+    for item in arrayClasificadora:
+        html_string+="<li>"+str(item)+"</li>\n"
+    html_string+="</ul>"
+
+    
     data = {
         'Messages': [
             {
@@ -396,9 +383,9 @@ def get_join():
                         "Name": "josgrehd"
                     }
                 ],
-                "Subject": "mensaje de prueba",
-                "TextPart": "My first Mailjet email",
-                "HTMLPart": htmlUsuarioClasificadora,
+                "Subject": "Datos de consulta",
+                "TextPart": "estos son los datos",
+                "HTMLPart": "<h1>Datos de Clasificadora</h1>"+html_string,
                 "CustomID": "AppGettingStartedTest"
             }
         ]
