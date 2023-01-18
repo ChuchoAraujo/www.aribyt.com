@@ -29,6 +29,11 @@ export const Formulario_clasificadora = () => {
   const [problemaRecurrente, setProblemaRecurrente] = useState("");
   const [iconProblema, setIconProblema] = useState("")
   const [tituloProblema, setTituloProblema] = useState("");
+  const [inputProblema, setInputProblema] = useState("");
+  
+
+  const valueProblema = [store.problema]
+
   //OBTENER FECHA Y HORA
   let today = new Date();
   let day = today.getDate();
@@ -72,6 +77,9 @@ export const Formulario_clasificadora = () => {
     }
   };
 
+  const obtenerValue = () => {
+    console.log(e.target.value)
+  }
   // ---------------------------- FUNCION OBTENER HORA-TURNOS----------------------------------//
 
   // function getPrueba() {
@@ -315,7 +323,7 @@ export const Formulario_clasificadora = () => {
             {/*--------------------------Formulario pagina3*-------------------*/}
             <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
               <div className="row p-3 d-flex justify-content-center text-center">
-                <div
+                <button
                   onClick={() => {
                     actions.selectionProblema("mantenimiento");
                     setProblemaRecurrente(
@@ -323,6 +331,7 @@ export const Formulario_clasificadora = () => {
                     );
                     setIconProblema("iconManteGray");
                     setTituloProblema("tituloManteGray");
+                    console.log(value);
                   }}
                   className={
                     problemaRecurrente ===
@@ -347,11 +356,11 @@ export const Formulario_clasificadora = () => {
                   >
                     Mantenimiento
                   </h6>
-                </div>
+                </button>
 
                 <div
                   onClick={() => {
-                    actions.selectionProblema("papel");
+                    actions.selectionProblema("Falta papel");
                     setProblemaRecurrente(
                       "problemaPapelGray col-3 text-center buttonIconsFormClasificadora"
                     );
@@ -457,9 +466,12 @@ export const Formulario_clasificadora = () => {
                   as="textarea"
                   id="problema"
                   name="problema"
-                  placeholder="Problemas ocurridos"
-                  onKeyUp={(e) => setProblema(e.target.value)}
-                />
+                  placeholder="¿Qué ha pasado?"
+                  value={[...valueProblema]}
+                  onKeyUp={(e) => {setProblema(e.target.value), value}}
+                >
+                  <h4>Soy el problema: </h4>
+                </Field>
               </div>
               <div>
                 <label htmlFor="accion">accion</label>
