@@ -32,7 +32,7 @@ export const Formulario_clasificadora = () => {
   const [inputProblema, setInputProblema] = useState("");
   
 
-  const valueProblema = [store.problema]
+  const valueProblema = store.problema
 
   //OBTENER FECHA Y HORA
   let today = new Date();
@@ -78,7 +78,7 @@ export const Formulario_clasificadora = () => {
   };
 
   const obtenerValue = () => {
-    console.log(e.target.value)
+    setProblema("prueba")
   }
   // ---------------------------- FUNCION OBTENER HORA-TURNOS----------------------------------//
 
@@ -226,9 +226,10 @@ export const Formulario_clasificadora = () => {
           setTurno(valores.turno);
           setCajas(valores.cajas);
           setTimeout(() => setFormulario(false), 5000);
+          console.log(valores)
         }}
       >
-        {({ errors }) => (
+        {({ errors, setFieldValue }) => (
           <Form className="formulario">
             {/*--------------------------Formulario pagina1*-------------------*/}
             <div className={pagina1 === "visibility" ? "hidden" : "visibility"}>
@@ -325,7 +326,7 @@ export const Formulario_clasificadora = () => {
               <div className="row p-3 d-flex justify-content-center text-center">
                 <button
                   onClick={() => {
-                    actions.selectionProblema("mantenimiento");
+                    setFieldValue("problema", "Se ha realizado mantenimiento");
                     setProblemaRecurrente(
                       "problemaClasificadoraGray col-3 text-center buttonIconsFormClasificadora"
                     );
@@ -360,7 +361,7 @@ export const Formulario_clasificadora = () => {
 
                 <div
                   onClick={() => {
-                    actions.selectionProblema("Falta papel");
+                    setFieldValue("problema", "Falta papel")
                     setProblemaRecurrente(
                       "problemaPapelGray col-3 text-center buttonIconsFormClasificadora"
                     );
@@ -394,7 +395,7 @@ export const Formulario_clasificadora = () => {
 
                 <div
                   onClick={() => {
-                    actions.selectionProblema("inyector");
+                    setFieldValue("problema", "Problemas con el inyector");
                     setProblemaRecurrente(
                       "problemaInyectorGray col-3 text-center buttonIconsFormClasificadora"
                     );
@@ -428,7 +429,7 @@ export const Formulario_clasificadora = () => {
 
                 <div
                   onClick={() => {
-                    actions.selectionProblema("bidon");
+                    setFieldValue("problema", "Se ha averiado el bidón");
                     setProblemaRecurrente(
                       "problemaBidonGray col-3 text-center buttonIconsFormClasificadora"
                     );
@@ -467,10 +468,10 @@ export const Formulario_clasificadora = () => {
                   id="problema"
                   name="problema"
                   placeholder="¿Qué ha pasado?"
-                  value={[...valueProblema]}
-                  onKeyUp={(e) => {setProblema(e.target.value), value}}
+                  onKeyUp={(e) => {
+                    setProblema(e.target.value);
+                  }}
                 >
-                  <h4>Soy el problema: </h4>
                 </Field>
               </div>
               <div>
