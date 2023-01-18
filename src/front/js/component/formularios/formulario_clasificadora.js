@@ -323,6 +323,7 @@ export const Formulario_clasificadora = () => {
             </div>
             {/*--------------------------Formulario pagina3*-------------------*/}
             <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
+              <h6>--- Problemas recurrentes ---</h6>
               <div className="row p-3 d-flex justify-content-center text-center">
                 <button
                   onClick={() => {
@@ -395,7 +396,7 @@ export const Formulario_clasificadora = () => {
 
                 <div
                   onClick={() => {
-                    setFieldValue("problema", "Problemas con el inyector");
+                    setFieldValue("problema", "Problemas con el inyector")
                     setProblemaRecurrente(
                       "problemaInyectorGray col-3 text-center buttonIconsFormClasificadora"
                     );
@@ -533,7 +534,9 @@ export const Formulario_clasificadora = () => {
                   component={() => <div className="error">{errors.gramos}</div>}
                 />
               </div>
-              <Field as="select" name="turno" className="selectTurno">
+              <Field
+              onClick={(e)=> setTurno(e.target.value)}
+               as="select" name="turno" className="selectTurno">
                 <option value="mañana">Mañana</option>
                 <option value="tarde">Tarde</option>
                 <option value="noche">Noche</option>
