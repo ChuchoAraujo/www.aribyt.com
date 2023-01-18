@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       userId: "",
       message: null,
       role: "",
+      problema: "",
       user: [],
       clasificadora: [],
       mecanico: [],
@@ -39,12 +40,15 @@ const getState = ({ getStore, getActions, setStore }) => {
       selectionHora: (hora) => {
         // const store = getStore()
         setStore({ hora: hora });
-        console.log("Se ha seleccionado la hora:" + hora);
+      },
+      selectionProblema: (problema) => {
+        // const store = getStore()
+        setStore({ problema: problema });
+        console.log("Se ha seleccionado el problema:" + problema);
       },
       selectionHoraMec: (hora) => {
         // const store = getStore()
         setStore({ horamec: hora });
-        console.log("Se ha seleccionado la hora:" + hora);
       },
 
       fetchUser: () => {

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { store, actions } from "../../store/flux";
 import { Context } from "../../store/appContext";
 import { number } from "prop-types";
-import Mantenimiento from "../icons/mantenimeinto"
+import Mantenimiento from "../icons/mantenimeinto";
 import Inyector from "../icons/inyector";
 import Papel from "../icons/papel";
 import Bidon from "../icons/bidon";
@@ -26,7 +26,9 @@ export const Formulario_clasificadora = () => {
   const [velocidad, setVelocidad] = useState("");
   const [gramos, setGramos] = useState("");
   const [turno, setTurno] = useState("");
-
+  const [problemaRecurrente, setProblemaRecurrente] = useState("");
+  const [iconProblema, setIconProblema] = useState("")
+  const [tituloProblema, setTituloProblema] = useState("");
   //OBTENER FECHA Y HORA
   let today = new Date();
   let day = today.getDate();
@@ -38,22 +40,21 @@ export const Formulario_clasificadora = () => {
     timeStyle: "short",
   }).format(new Date());
   const horaConvertida = parseFloat(horaActual);
-  
 
-// ----------------------- PAGINACION FORMULARIO --------------------------------------//
- const [pagina1, setpagina1] = useState("");
- const [pagina2, setPagina2] = useState("");
- const [pagina3, setPagina3] = useState("");
- const [pagina4, setPagina4] = useState("");
+  // ----------------------- PAGINACION FORMULARIO --------------------------------------//
+  const [pagina1, setpagina1] = useState("");
+  const [pagina2, setPagina2] = useState("");
+  const [pagina3, setPagina3] = useState("");
+  const [pagina4, setPagina4] = useState("");
 
- const printCondicitional = () => {
-   if (pagina1 === pagina1) {
-     setpagina1("visibility");
-     setPagina2("hidden");
-   } else {
-     console.log("nada");
-   }
- };
+  const printCondicitional = () => {
+    if (pagina1 === pagina1) {
+      setpagina1("visibility");
+      setPagina2("hidden");
+    } else {
+      console.log("nada");
+    }
+  };
   const printCondicitional2 = () => {
     if (pagina2 === pagina2) {
       setPagina2("visibility");
@@ -62,30 +63,30 @@ export const Formulario_clasificadora = () => {
       console.log("nada");
     }
   };
-    const printCondicitional3 = () => {
-      if (pagina3 === pagina3) {
-        setPagina3("visibility");
-        setPagina4("hidden");
-      } else {
-        console.log("nada");
-      }
-    };
+  const printCondicitional3 = () => {
+    if (pagina3 === pagina3) {
+      setPagina3("visibility");
+      setPagina4("hidden");
+    } else {
+      console.log("nada");
+    }
+  };
 
   // ---------------------------- FUNCION OBTENER HORA-TURNOS----------------------------------//
 
-  function getPrueba() {
-    if (horaConvertida >= 6 && horaConvertida <= 14) {
-      console.log("Eres turno de mañana, tu hora es: " + horaConvertida);
-    } else if (horaConvertida >= 14 && horaConvertida <= 22) {
-      console.log("Eres turno de tarde, tu hora es: " + horaConvertida);
-    } else if (horaConvertida >= 22 && horaConvertida <= 6) {
-      console.log("Eres turno de noche, tu hora es: " + horaConvertida);
-    } else {
-      console.log("No tienes turno");
-    }
-  }
+  // function getPrueba() {
+  //   if (horaConvertida >= 6 && horaConvertida <= 14) {
+  //     console.log("Eres turno de mañana, tu hora es: " + horaConvertida);
+  //   } else if (horaConvertida >= 14 && horaConvertida <= 22) {
+  //     console.log("Eres turno de tarde, tu hora es: " + horaConvertida);
+  //   } else if (horaConvertida >= 22 && horaConvertida <= 6) {
+  //     console.log("Eres turno de noche, tu hora es: " + horaConvertida);
+  //   } else {
+  //     console.log("No tienes turno");
+  //   }
+  // }
 
-  getPrueba(horaConvertida);
+  // getPrueba(horaConvertida);
 
   // ---------------------------- FUNCION REGRESAR DE PAGINA----------------------------------//
 
@@ -102,31 +103,28 @@ export const Formulario_clasificadora = () => {
       },
     })
       .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-      })
+      .then((result) => {})
       .catch((error) => console.log("error", error));
   }, []);
   // ---------------------------- GET / SUMACAJAS----------------------------------//
-  const suma=()=>{
-      fetch(process.env.BACKEND_URL + "/api/join", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-        body: JSON.stringify({
-          fecha: `${month}/${day}/${year}`,
-          turno: turno,
-        }),
+  const suma = () => {
+    fetch(process.env.BACKEND_URL + "/api/join", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        fecha: `${month}/${day}/${year}`,
+        turno: turno,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        store.contadorCajas = result.sumaCajas;
       })
-        .then((response) => response.json())
-        .then((result) => {
-          store.contadorCajas=result.sumaCajas
-          console.log("el valor de la suma es",store.contadorCajas)
-        })
-        .catch((error) => console.log("error", error));
-  }
+      .catch((error) => console.log("error", error));
+  };
   // ---------------------------- POST / CLASIFICADORA----------------------------------//
   const sendDataClasificadora = () => {
     fetch(process.env.BACKEND_URL + "/api/clasificadora", {
@@ -150,18 +148,15 @@ export const Formulario_clasificadora = () => {
         gramos: gramos,
         fecha: `${month}/${day}/${year}`,
         horas: store.hora,
-        turno: turno
+        turno: turno,
       }),
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         suma();
       })
       .catch((error) => console.log("error", error));
-      
-    }
-
+  };
 
   return (
     <>
@@ -320,24 +315,141 @@ export const Formulario_clasificadora = () => {
             {/*--------------------------Formulario pagina3*-------------------*/}
             <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
               <div className="row p-3 d-flex justify-content-center text-center">
-                <button className="col-3 text-center buttonIconsFormClasificadora">
-                  <Mantenimiento className="iconFormClasificadora" />
-                  <h6 className="tituloIconsFormClasificadora">
+                <div
+                  onClick={() => {
+                    actions.selectionProblema("mantenimiento");
+                    setProblemaRecurrente(
+                      "problemaClasificadoraGray col-3 text-center buttonIconsFormClasificadora"
+                    );
+                    setIconProblema("iconManteGray");
+                    setTituloProblema("tituloManteGray");
+                  }}
+                  className={
+                    problemaRecurrente ===
+                    "problemaClasificadoraGray col-3 text-center buttonIconsFormClasificadora"
+                      ? "problemaClasificadoraGreen col-3 text-center buttonIconsFormClasificadora"
+                      : "problemaClasificadoraGray col-3 text-center buttonIconsFormClasificadora"
+                  }
+                >
+                  <Mantenimiento
+                    className={
+                      iconProblema === "iconManteGray"
+                        ? "iconManteWhite "
+                        : "iconManteGray "
+                    }
+                  />
+                  <h6
+                    className={
+                      tituloProblema === "tituloManteGray"
+                        ? "tituloManteWhite"
+                        : "tituloManteGray"
+                    }
+                  >
                     Mantenimiento
                   </h6>
-                </button>
-                <button className="col-3 buttonIconsFormClasificadora">
-                  <Papel className="iconFormClasificadora" />
-                  <h6 className="tituloIconsFormClasificadora">Papel</h6>
-                </button>
-                <button className="col-3 buttonIconsFormClasificadora">
-                  <Inyector className="iconFormClasificadora2" />
-                  <h6 className="tituloIconsFormClasificadora">Inyector</h6>
-                </button>
-                <button className="col-3 buttonIconsFormClasificadora">
-                  <Bidon className="iconFormClasificadora2" />
-                  <h6 className="tituloIconsFormClasificadora">Bidon</h6>
-                </button>
+                </div>
+
+                <div
+                  onClick={() => {
+                    actions.selectionProblema("papel");
+                    setProblemaRecurrente(
+                      "problemaPapelGray col-3 text-center buttonIconsFormClasificadora"
+                    );
+                    setIconProblema("iconPapelGray");
+                    setTituloProblema("tituloIconPapelGray");
+                  }}
+                  className={
+                    problemaRecurrente ===
+                    "problemaPapelGray col-3 text-center buttonIconsFormClasificadora"
+                      ? "problemaPapelGreen col-3 text-center buttonIconsFormClasificadora"
+                      : "problemaPapelGray col-3 text-center buttonIconsFormClasificadora"
+                  }
+                >
+                  <Papel
+                    className={
+                      iconProblema === "iconPapelGray"
+                        ? "iconPapelWhite "
+                        : "iconPapelGray "
+                    }
+                  />
+                  <h6
+                    className={
+                      tituloProblema === "tituloIconPapelGray"
+                        ? "tituloIconPapelWhite"
+                        : "tituloIconPapelGray"
+                    }
+                  >
+                    Papel
+                  </h6>
+                </div>
+
+                <div
+                  onClick={() => {
+                    actions.selectionProblema("inyector");
+                    setProblemaRecurrente(
+                      "problemaInyectorGray col-3 text-center buttonIconsFormClasificadora"
+                    );
+                    setIconProblema("iconInyectGray");
+                    setTituloProblema("tituloInyectGray");
+                  }}
+                  className={
+                    problemaRecurrente ===
+                    "problemaInyectorGray col-3 text-center buttonIconsFormClasificadora"
+                      ? "problemaInyectorGreen col-3 text-center buttonIconsFormClasificadora"
+                      : "problemaInyectorGray col-3 text-center buttonIconsFormClasificadora"
+                  }
+                >
+                  <Inyector
+                    className={
+                      iconProblema === "iconInyectGray"
+                        ? "iconInyectWhite"
+                        : "iconInyectGray"
+                    }
+                  />
+                  <h6
+                    className={
+                      tituloProblema === "tituloInyectGray"
+                        ? "tituloInyectWhite"
+                        : "tituloInyectGray"
+                    }
+                  >
+                    Inyector
+                  </h6>
+                </div>
+
+                <div
+                  onClick={() => {
+                    actions.selectionProblema("bidon");
+                    setProblemaRecurrente(
+                      "problemaBidonGray col-3 text-center buttonIconsFormClasificadora"
+                    );
+                    setIconProblema("iconBidonGray");
+                    setTituloProblema("tituloBidonGray");
+                  }}
+                  className={
+                    problemaRecurrente ===
+                    "problemaBidonGray col-3 text-center buttonIconsFormClasificadora"
+                      ? "problemaBidonGreen col-3 text-center buttonIconsFormClasificadora"
+                      : "problemaBidonGray col-3 text-center buttonIconsFormClasificadora"
+                  }
+                >
+                  <Bidon
+                    className={
+                      iconProblema === "iconBidonGray"
+                        ? "iconBidonWhite "
+                        : "iconBidonGray "
+                    }
+                  />
+                  <h6
+                    className={
+                      tituloProblema === "tituloBidonGray"
+                        ? "tituloBidonWhite"
+                        : "tituloBidonGray"
+                    }
+                  >
+                    Bidon
+                  </h6>
+                </div>
               </div>
               <div>
                 <label htmlFor="problema">Problema</label>
@@ -408,10 +520,10 @@ export const Formulario_clasificadora = () => {
                   component={() => <div className="error">{errors.gramos}</div>}
                 />
               </div>
-              <Field as="select" name="color" className="selectTurno">
-                <option value="red">Mañana</option>
-                <option value="green">Tarde</option>
-                <option value="blue">Noche</option>
+              <Field as="select" name="turno" className="selectTurno">
+                <option value="mañana">Mañana</option>
+                <option value="tarde">Tarde</option>
+                <option value="noche">Noche</option>
               </Field>
               <button
                 className="botonSiguienteFormulario"
@@ -443,7 +555,7 @@ export const Formulario_clasificadora = () => {
                     type="button"
                     onClick={back}
                   >
-                    <HiHome className="iconHomeClasificadora "/>
+                    <HiHome className="iconHomeClasificadora " />
                   </button>
                 </div>
                 <div className="col-4"></div>

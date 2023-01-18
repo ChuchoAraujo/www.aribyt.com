@@ -315,10 +315,155 @@ text-decoration: none;
 	margin-right: 8px;
 	border-radius: 15px;
 }
-.tituloIconsFormClasificadora{
+.problemaClasificadoraGray {
+	background-color: white;
+	border: 2px solid #828282;
+	width: 150px;
+	height: 110px;
+	padding: 15px;
+	margin-right: 8px;
+	border-radius: 15px;
+}
+.problemaClasificadoraGreen {
+	background-color: #4dada4;
+	transition: 1s;
+	border: 2px solid #828282;
+	width: 150px;
+	height: 110px;
+	padding: 15px;
+	margin-right: 8px;
+	border-radius: 15px;
+}
+.problemaPapelGray {
+	background-color: white;
+	border: 2px solid #828282;
+	width: 150px;
+	height: 110px;
+	padding: 15px;
+	margin-right: 8px;
+	border-radius: 15px;
+}
+.problemaPapelGreen {
+	background-color: #4dada4;
+	transition: 1s;
+	border: 2px solid #828282;
+	width: 150px;
+	height: 110px;
+	padding: 15px;
+	margin-right: 8px;
+	border-radius: 15px;
+}
+
+.problemaInyectorGray {
+	background-color: white;
+	border: 2px solid #828282;
+	width: 150px;
+	height: 110px;
+	padding: 15px;
+	margin-right: 8px;
+	border-radius: 15px;
+}
+.problemaInyectorGreen {
+	background-color: #4dada4;
+	transition: 1s;
+	border: 2px solid #828282;
+	width: 150px;
+	height: 110px;
+	padding: 15px;
+	margin-right: 8px;
+	border-radius: 15px;
+}
+.problemaBidonGray {
+	background-color: white;
+	border: 2px solid #828282;
+	width: 150px;
+	height: 110px;
+	padding: 15px;
+	margin-right: 8px;
+	border-radius: 15px;
+}
+.problemaBidonGreen {
+	background-color: #4dada4;
+	transition: 1s;
+	border: 2px solid #828282;
+	width: 150px;
+	height: 110px;
+	padding: 15px;
+	margin-right: 8px;
+	border-radius: 15px;
+}
+/*Seteo iconos colores problemas*/
+.iconManteWhite {
+	fill: white;
+	width: 50px;
+}
+.iconManteGray {
+	fill: #828282;
+	width: 50px;
+}
+.iconPapelWhite {
+	fill: white;
+	width: 50px;
+}
+.iconPapelGray {
+	fill: #828282;
+	width: 50px;
+}
+.iconInyectWhite {
+	fill: white;
+	width: 35px;
+}
+.iconInyectGray {
+	fill: #828282;
+	width: 35px;
+}
+.iconBidonWhite {
+	fill: white;
+	width: 35px;
+}
+.iconBidonGray {
+	fill: #828282;
+	width: 35px;
+}
+.tituloIconPapelGray{
 	margin: 10px;
 	color: #828282;
-	font-size: 15px;
+	font-size: 14px;
+}
+.tituloIconPapelWhite{
+	margin: 10px;
+	color: white;
+	font-size: 14px;
+}
+.tituloManteGray{
+	margin: 10px;
+	color: #828282;
+	font-size: 14px;
+}
+.tituloManteWhite{
+	margin: 10px;
+	color: white;
+	font-size: 14px;
+}
+.tituloInyectGray{
+	margin: 10px;
+	color: #828282;
+	font-size: 14px;
+}
+.tituloInyectWhite{
+	margin: 10px;
+	color: white;
+	font-size: 14px;
+}
+.tituloBidonGray{
+	margin: 10px;
+	color: #828282;
+	font-size: 14px;
+}
+.tituloBidonWhite{
+	margin: 10px;
+	color: white;
+	font-size: 14px;
 }
 .columnaIconos {
 	margin: 10px;
