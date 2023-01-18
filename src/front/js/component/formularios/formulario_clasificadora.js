@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { store, actions } from "../../store/flux";
 import { Context } from "../../store/appContext";
 import { number } from "prop-types";
+import Mantenimiento from "../icons/mantenimeinto"
+import Inyector from "../icons/inyector";
+import Papel from "../icons/papel";
+import Bidon from "../icons/bidon";
+import { HiHome } from "react-icons/hi";
 
 export const Formulario_clasificadora = () => {
   const { store, actions } = useContext(Context);
@@ -39,6 +44,7 @@ export const Formulario_clasificadora = () => {
  const [pagina1, setpagina1] = useState("");
  const [pagina2, setPagina2] = useState("");
  const [pagina3, setPagina3] = useState("");
+ const [pagina4, setPagina4] = useState("");
 
  const printCondicitional = () => {
    if (pagina1 === pagina1) {
@@ -56,6 +62,14 @@ export const Formulario_clasificadora = () => {
       console.log("nada");
     }
   };
+    const printCondicitional3 = () => {
+      if (pagina3 === pagina3) {
+        setPagina3("visibility");
+        setPagina4("hidden");
+      } else {
+        console.log("nada");
+      }
+    };
 
   // ---------------------------- FUNCION OBTENER HORA-TURNOS----------------------------------//
 
@@ -76,7 +90,7 @@ export const Formulario_clasificadora = () => {
   // ---------------------------- FUNCION REGRESAR DE PAGINA----------------------------------//
 
   const back = () => {
-    navigate(-1);
+    navigate("/");
   };
   // ---------------------------- GET / AREA PRIVADA----------------------------------//
   useEffect(() => {
@@ -89,7 +103,7 @@ export const Formulario_clasificadora = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log("Muy bien !! ... Token encontrado", result);
+        console.log(result);
       })
       .catch((error) => console.log("error", error));
   }, []);
@@ -207,7 +221,7 @@ export const Formulario_clasificadora = () => {
           setVelocidad(valores.velocidad);
           setGramos(valores.gramos);
           setTurno(valores.turno);
-          setCajas(valores.cajas)
+          setCajas(valores.cajas);
           setTimeout(() => setFormulario(false), 5000);
         }}
       >
@@ -256,16 +270,6 @@ export const Formulario_clasificadora = () => {
                   onKeyUp={(e) => setLote(e.target.value)}
                 />
               </div>
-              <div>
-                <label htmlFor="jaulas">Jaulas</label>
-                <Field
-                  type="text"
-                  id="jaulas"
-                  name="jaulas"
-                  placeholder="Numero de Jaulas"
-                  onKeyUp={(e) => setJaulas(e.target.value)}
-                />
-              </div>
               <button
                 onClick={printCondicitional}
                 className="botonSiguienteFormulario"
@@ -276,6 +280,16 @@ export const Formulario_clasificadora = () => {
 
             {/*--------------------------Formulario pagina2*-------------------*/}
             <div className={pagina2 === "hidden" ? "visibility" : "hidden"}>
+              <div>
+                <label htmlFor="jaulas">Jaulas</label>
+                <Field
+                  type="text"
+                  id="jaulas"
+                  name="jaulas"
+                  placeholder="Numero de Jaulas"
+                  onKeyUp={(e) => setJaulas(e.target.value)}
+                />
+              </div>
               <div>
                 <label htmlFor="pedido">pedido</label>
                 <Field
@@ -296,8 +310,37 @@ export const Formulario_clasificadora = () => {
                   onKeyUp={(e) => setPersonal(e.target.value)}
                 />
               </div>
+              <button
+                onClick={printCondicitional2}
+                className="botonSiguienteFormulario"
+              >
+                Siguiente
+              </button>
+            </div>
+            {/*--------------------------Formulario pagina3*-------------------*/}
+            <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
+              <div className="row p-3 d-flex justify-content-center text-center">
+                <button className="col-3 text-center buttonIconsFormClasificadora">
+                  <Mantenimiento className="iconFormClasificadora" />
+                  <h6 className="tituloIconsFormClasificadora">
+                    Mantenimiento
+                  </h6>
+                </button>
+                <button className="col-3 buttonIconsFormClasificadora">
+                  <Papel className="iconFormClasificadora" />
+                  <h6 className="tituloIconsFormClasificadora">Papel</h6>
+                </button>
+                <button className="col-3 buttonIconsFormClasificadora">
+                  <Inyector className="iconFormClasificadora2" />
+                  <h6 className="tituloIconsFormClasificadora">Inyector</h6>
+                </button>
+                <button className="col-3 buttonIconsFormClasificadora">
+                  <Bidon className="iconFormClasificadora2" />
+                  <h6 className="tituloIconsFormClasificadora">Bidon</h6>
+                </button>
+              </div>
               <div>
-                <label htmlFor="problema">problema</label>
+                <label htmlFor="problema">Problema</label>
                 <Field
                   as="textarea"
                   id="problema"
@@ -315,16 +358,16 @@ export const Formulario_clasificadora = () => {
                   placeholder="Solucion al problema o problemas"
                   onKeyUp={(e) => setAccion(e.target.value)}
                 />
+                <button
+                  onClick={printCondicitional3}
+                  className="botonSiguienteFormulario"
+                >
+                  Siguiente
+                </button>
               </div>
-              <button
-                onClick={printCondicitional2}
-                className="botonSiguienteFormulario"
-              >
-                Siguiente
-              </button>
             </div>
-            {/*--------------------------Formulario pagina3*-------------------*/}
-            <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
+            {/*--------------------------Formulario pagina4*-------------------*/}
+            <div className={pagina4 === "hidden" ? "visibility" : "hidden"}>
               <div>
                 <label htmlFor="tiempo">tiempo</label>
                 <Field
@@ -365,27 +408,46 @@ export const Formulario_clasificadora = () => {
                   component={() => <div className="error">{errors.gramos}</div>}
                 />
               </div>
-              <div>
+              <Field as="select" name="color" className="selectTurno">
+                <option value="red">Mañana</option>
+                <option value="green">Tarde</option>
+                <option value="blue">Noche</option>
+              </Field>
+              <button
+                className="botonSiguienteFormulario"
+                onClick={sendDataClasificadora}
+              >
+                Enviar
+              </button>
+              {/* <div>
                 <label htmlFor="turno">turno</label>
                 <Field
-                  type="text"
+                  type="select"
                   id="turno"
                   name="turno"
                   placeholder="turno"
                   onKeyUp={(e) => setTurno(e.target.value)}
                 />
-              </div>
-              <button type="submit" onClick={sendDataClasificadora}>
-                Enviar
-              </button>
+              </div> */}
+
               {enviarFormulario && (
                 <div class="alert alert-primary" role="alert">
                   Registro realizado!
                 </div>
               )}
-              <button className="btn-success mt-3" type="button" onClick={back}>
-                Back
-              </button>
+              <div className="row">
+                <div className="col-4"></div>
+                <div className="col-4 d-flex justify-content-center">
+                  <button
+                    className="botonAtras d-flex align-items-center"
+                    type="button"
+                    onClick={back}
+                  >
+                    <HiHome className="iconHomeClasificadora "/>
+                  </button>
+                </div>
+                <div className="col-4"></div>
+              </div>
             </div>
           </Form>
         )}
