@@ -306,8 +306,6 @@ def get_join():
     arrayMecanico=[]
     arrayRechazos=[]
     suma=[]
-
-    
     resultadoClasificadora = db.session.query(User,TablaClasificadora). \
         select_from(User).join(TablaClasificadora). \
             filter(TablaClasificadora.turno==turno1).filter(TablaClasificadora.fecha==fecha1).all()
@@ -359,43 +357,69 @@ def get_join():
             'paneles':rechazos.paneles,
             'jaula':rechazos.jaula
             })
-    for elemento in arrayClasificadora:
-        usuarioClasificadora.append(elemento["usuarioClasificadora"])
-        idclasificadora.append(elemento["idclasificadora"])
-        problemaClasificadora.append(elemento["problemaClasificadora"])
-
-    html_string="<ul>\n"
-    for item in arrayClasificadora:
-        html_string+="<li>"+str(item)+"</li>\n"
-    html_string+="</ul>"
-
-    
-    data = {
-        'Messages': [
-            {
-                "From": {
-                    "Email": "josgrehd@aribyt.com  ",
-                    "Name": "PRUEBA"
-                },
-                "To": [
-                    {
-                        "Email": "josgrehd@aribyt.com  ",
-                        "Name": "josgrehd"
-                    }
-                ],
-                "Subject": "Datos de consulta",
-                "TextPart": "estos son los datos",
-                "HTMLPart": "<h1>Datos de Clasificadora</h1>"+html_string,
-                "CustomID": "AppGettingStartedTest"
-            }
-        ]
-    }
-    result = mailjet.send.create(data=data)
-
-
+          
     return jsonify({'clasificadora': arrayClasificadora, 'mecanico': arrayMecanico ,'rechazos':arrayRechazos,'sumaCajas':valorSuma})
 
+#---------------------------------------- ENVIAR MAIL ----------------------------------------#
+@api.route('/sendMail', methods=['POST'])
+@cross_origin()
+def sendMail():
+    turno1 = request.json.get('turno')
+    fecha1 = request.json.get('fecha')
+    arrayClasificadora=[]
+    try:
+        resultadoClasificadora = db.session.query(User,TablaClasificadora). \
+        select_from(User).join(TablaClasificadora). \
+            filter(TablaClasificadora.turno==turno1).filter(TablaClasificadora.fecha==fecha1).all()
+            
+        for usuario,clasificadora in resultadoClasificadora:
+            arrayClasificadora.append({
+            'usuarioClasificadora': filtro_usuario(clasificadora.user_id),
+            'idclasificadora':clasificadora.user_id,
+            'problemaClasificadora':clasificadora.problema,
+            'horaClasificadora':clasificadora.horas,
+            'cajas':clasificadora.cajas,
+            'fecha':clasificadora.fecha,
+            'articulo':clasificadora.articulo,
+            'lote': clasificadora.lote,
+            'jaulas': clasificadora.jaulas,
+            'pedido': clasificadora.pedido,
+            'personal': clasificadora.personal,
+            'accionClasificadora': clasificadora.accion,
+            'tiempo': clasificadora.tiempo,
+            'velocidad': clasificadora.velocidad,
+            'gramos':clasificadora.gramos
+            })
 
+        html_string="<ul>\n"
+        for item in arrayClasificadora:
+            html_string+="<li>"+str(item)+"</li>\n"
+        html_string+="</ul>"
+
+        data = {
+            'Messages': [
+                {
+                    "From": {
+                        "Email": "josgrehd@aribyt.com  ",
+                        "Name": "PRUEBA"
+                    },
+                    "To": [
+                        {
+                            "Email": "josgrehd@aribyt.com  ",
+                            "Name": "josgrehd"
+                        }
+                    ],
+                    "Subject": "Datos de consulta",
+                    "TextPart": "estos son los datos",
+                    "HTMLPart": "<h1>Datos de Clasificadora</h1>"+html_string,
+                    "CustomID": "AppGettingStartedTest"
+                }
+            ]
+        }
+        result = mailjet.send.create(data=data)
+        return jsonify({'clasificadora': arrayClasificadora})
+    except:
+        return jsonify({'error':'error al ejecutar la funcion de enviar mail'})
 
 #---------------------------------------- TABLA RECHAZOS ----------------------------------------#
 
