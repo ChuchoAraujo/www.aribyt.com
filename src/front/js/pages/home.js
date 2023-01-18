@@ -5,7 +5,6 @@ import "../../styles/home.css";
 import { Vista_login } from "./page_login/vista_login";
 import { FooterHome } from "../component/footers/footerHome";
 
-
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
