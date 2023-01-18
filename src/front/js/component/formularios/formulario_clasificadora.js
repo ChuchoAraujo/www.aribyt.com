@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { store, actions } from "../../store/flux";
 import { Context } from "../../store/appContext";
 import { number } from "prop-types";
+import Mantenimiento from "../icons/mantenimeinto"
+import Inyector from "../icons/inyector";
+import Papel from "../icons/papel";
+import Bidon from "../icons/bidon";
+import { HiHome } from "react-icons/hi";
 
 export const Formulario_clasificadora = () => {
   const { store, actions } = useContext(Context);
@@ -85,7 +90,7 @@ export const Formulario_clasificadora = () => {
   // ---------------------------- FUNCION REGRESAR DE PAGINA----------------------------------//
 
   const back = () => {
-    navigate(-1);
+    navigate("/");
   };
   // ---------------------------- GET / AREA PRIVADA----------------------------------//
   useEffect(() => {
@@ -98,7 +103,7 @@ export const Formulario_clasificadora = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log("Muy bien !! ... Token encontrado", result);
+        console.log(result);
       })
       .catch((error) => console.log("error", error));
   }, []);
@@ -314,8 +319,28 @@ export const Formulario_clasificadora = () => {
             </div>
             {/*--------------------------Formulario pagina3*-------------------*/}
             <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
+              <div className="row p-3 d-flex justify-content-center text-center">
+                <button className="col-3 text-center buttonIconsFormClasificadora">
+                  <Mantenimiento className="iconFormClasificadora" />
+                  <h6 className="tituloIconsFormClasificadora">
+                    Mantenimiento
+                  </h6>
+                </button>
+                <button className="col-3 buttonIconsFormClasificadora">
+                  <Papel className="iconFormClasificadora" />
+                  <h6 className="tituloIconsFormClasificadora">Papel</h6>
+                </button>
+                <button className="col-3 buttonIconsFormClasificadora">
+                  <Inyector className="iconFormClasificadora2" />
+                  <h6 className="tituloIconsFormClasificadora">Inyector</h6>
+                </button>
+                <button className="col-3 buttonIconsFormClasificadora">
+                  <Bidon className="iconFormClasificadora2" />
+                  <h6 className="tituloIconsFormClasificadora">Bidon</h6>
+                </button>
+              </div>
               <div>
-                <label htmlFor="problema">problema</label>
+                <label htmlFor="problema">Problema</label>
                 <Field
                   as="textarea"
                   id="problema"
@@ -410,9 +435,19 @@ export const Formulario_clasificadora = () => {
                   Registro realizado!
                 </div>
               )}
-              <button className="btn-success mt-3" type="button" onClick={back}>
-                Back
-              </button>
+              <div className="row">
+                <div className="col-4"></div>
+                <div className="col-4 d-flex justify-content-center">
+                  <button
+                    className="botonAtras d-flex align-items-center"
+                    type="button"
+                    onClick={back}
+                  >
+                    <HiHome className="iconHomeClasificadora "/>
+                  </button>
+                </div>
+                <div className="col-4"></div>
+              </div>
             </div>
           </Form>
         )}

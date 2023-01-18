@@ -4,6 +4,7 @@ import { Page_logo } from "../page_logo/page_logo";
 import "../../../styles/home.css";
 import { Roles } from "../../component/roles/roles";
 import { Login } from "../../component/login/login";
+import { FooterHome } from "../../component/footers/footerHome";
 
 export const Vista_login = () => {
   const { store, actions } = useContext(Context);
@@ -23,31 +24,24 @@ export const Vista_login = () => {
   return (
     <div className="container-fluid text-center">
       <div className="row">
-        <div className="col-1"></div>
+        <div className="col-3"></div>
 
-        <div className="col-10">
-          <div className={pagina1 === "visibility" ? "hidden" : "visibility"}>
-            <Roles />
-            <button
-              className="botonRolesSiguiente"
-              onClick={printCondicitional}
-            >
-              Siguiente
-            </button>
-          </div>
-          <div className={pagina2 === "hidden" ? "visibility" : "hidden"}>
-            <Login />
-            <button
-              className="botonRolesVolver"
-              onClick={printCondicitional}
-            >
-              Volver
-            </button>
-          </div>
+        <div className="col-6 d-flex justify-content-center">
+          <Roles />
         </div>
 
-        <div className="col-1"></div>
+        <div className="col-3"></div>
       </div>
+      <div className="row">
+        <div className="col-3"></div>
+
+        <div className="col-6 d-flex justify-content-center">
+          <Login />
+        </div>
+
+        <div className="col-3"></div>
+      </div>
+     <FooterHome className="container-fluid"/>
     </div>
   );
 };

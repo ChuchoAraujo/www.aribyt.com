@@ -9,7 +9,6 @@ const SvgComponent = (props) => (
     {...props}
   >
     <defs>
-      <style>{".cls-1{fill:#1d1d1b}"}</style>
     </defs>
     <g id="Capa_1-2" data-name="Capa 1">
       <path

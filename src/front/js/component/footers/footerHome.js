@@ -5,8 +5,8 @@ import { MdContactSupport } from "react-icons/md";
 import { BsLinkedin } from "react-icons/bs";
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
 
-export const Footer = () => (
-  <footer className="footer container-fluid text-center">
+export const FooterHome = () => (
+  <footer className="text-center footer">
     <div>
       <BsLinkedin className="iconos_footer" />
       <AiFillGithub className="iconos_footer" />

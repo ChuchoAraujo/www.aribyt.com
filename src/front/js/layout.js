@@ -8,7 +8,6 @@ import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
 import { Container_clasificadora } from "./pages/clasificadora/container_clasificadora";
 import { Vista_clasificadora } from "./pages/clasificadora/vista_clasificadora";
 import { Container_mecanico } from "./pages/mecanico/container_mecanico";
@@ -21,6 +20,7 @@ import { Vista_Login_Admin } from "./pages/page_login/vista_login_admin";
 
 import { Formulario_rechazos } from "./component/formularios/formulario_rechazos";
 import { Admin } from "./pages/admin/admin";
+import { FooterHome } from "./component/footers/footerHome";
 
 
 //create your first component
@@ -35,7 +35,6 @@ const Layout = () => {
           <Navbar />
           <Routes>
             <Route element={<Home />} path="/" />
-            <Route element={<Page_logo />} path="/" />
             <Route element={<Vista_login />} path="/vista_login" />
             <Route element={<Vista_Login_Admin />} path="/loginAdmin" />
             <Route
@@ -66,7 +65,6 @@ const Layout = () => {
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
-          <Footer />
         </ScrollToTop>
       </BrowserRouter>
     </div>

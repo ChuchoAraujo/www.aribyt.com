@@ -14,9 +14,9 @@ export const Roles = () => {
 
   return (
     <div className="container-fluid text-center containerRoles">
-      <h3 className="tituloRoles">Selecciona tu área</h3>
+      <h3 className="tituloRoles">--- Login ---</h3>
       <div className="row containerRoles onLogo">
-        <div className="botonRoles col-4">
+        <div className="col-4">
           <div
             className={
               role === "roleClasificadoraGray"

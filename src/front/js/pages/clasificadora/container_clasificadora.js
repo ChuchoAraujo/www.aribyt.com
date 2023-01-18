@@ -3,7 +3,7 @@ import { Context } from "../../store/appContext";
 import { Formulario_clasificadora } from "../../component/formularios/formulario_clasificadora";
 import "../../../styles/home.css";
 import { useNavigate } from "react-router-dom";
-import { FooterCajas } from "../../component/footerCajas";
+import { FooterCajas } from "../../component/footers/footerCajas";
 
 export const Container_clasificadora = () => {
   const { store, actions } = useContext(Context);
@@ -11,18 +11,15 @@ export const Container_clasificadora = () => {
 
   // ---------------------------- AUTENTIFICACION DEL TOKEN----------------------------------------------------
 
-
-
-
   return (
     <>
       <div className="container-fluid text-center align-items-start row">
-        <div className="col-3"></div>
-        <div className="col-6">
+        <div className="col"></div>
+        <div className="col-8 marginFormClasificadora">
           <Formulario_clasificadora />
         </div>
-        <div className="col-3"></div>
-        <FooterCajas/>
+        <div className="col"></div>
+        <FooterCajas className="container-fluid" />
       </div>
     </>
   );
