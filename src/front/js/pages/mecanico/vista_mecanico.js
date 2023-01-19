@@ -3,6 +3,8 @@ import { Context } from "../../store/appContext";
 
 import { Horas_mecanico } from "../../component/horas/horas_mecanico";
 import "../../../styles/home.css";
+import { Footer } from "antd/es/layout/layout";
+import { FooterCajas } from "../../component/footers/footerCajas";
 
 
 export const Vista_mecanico = () => {
@@ -11,13 +13,16 @@ export const Vista_mecanico = () => {
 
   return (
     <>
-      <div>
-        <div className="container  text-center">
-          <div className="row align-items-start">
+      
+        <div className="container-fluid  text-center">
+          <div className="align-items-start m-5">
             <Horas_mecanico />
           </div>
+          <div className="container">
+            <FooterCajas/>
+          </div>
         </div>
-      </div>
+      
     </>
   );
 };

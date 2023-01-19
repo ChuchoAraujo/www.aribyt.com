@@ -17,49 +17,49 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar bg-body-tertiary EstiloNav">
-        <div className="container-fluid row">
-          <div className="col-1 text-center">
-            <Link to="/">
-              <ImHome className="boton_home" />
-            </Link>
-          </div>
-          <div className="col"></div>
-          <div className="col"></div>
-          <div className="col-2 text-center">
-            <div className="dropdown">
-              <button
-                className="dropdown-toggle botonUsuarios"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Usuarios
-              </button>
+      <nav className="navbar navbar-expand-sm navbar-dark EstiloNav">
+        <div className="container-fluid">
+          <ImHome className="navbar-brand boton_home" />
 
-              <ul className="dropdown-menu">
-                <li className="dropdownTexto">
-                  <Link to={"/vista_login"} className="dropdownTexto">
-                    <p className="dropdown-item dropdownTexto">
-                      <FaUserCircle className="me-2" />
-                      Iniciar sesión
-                    </p>
-                  </Link>
-                </li>
-                <li>
-                  <p className="dropdown-item dropdownTexto" onClick={logOut}>
-                    <BsFillDoorClosedFill className="me-2" />
-                    Cerrar sesión
-                  </p>
-                </li>
-                <li>
-                  <a className="dropdown-item dropdownTexto">
-                    <IoIosHelpCircle className="me-2" />
-                    Ayuda
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toogle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  ¿Quienes somos?
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">
+                  Iniciar sesión
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  Cerrar sesión
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  Admin.
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  Ayuda
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>

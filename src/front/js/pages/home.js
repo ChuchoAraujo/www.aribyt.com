@@ -10,11 +10,13 @@ export const Home = () => {
 
   return (
     <>
-      <div className="container-fluid">
-        <Page_logo />
-      </div>
-      <div>
-        <FooterHome className="container-fluid" />
+      <div >
+        
+            <Page_logo />
+         
+        
+            <FooterHome />
+       
       </div>
     </>
   );

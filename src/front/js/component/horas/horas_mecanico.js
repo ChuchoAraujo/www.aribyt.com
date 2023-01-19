@@ -13,10 +13,10 @@ export const Horas_mecanico = () => {
         <div className="mt-2">
           <Link to={"/vista_login/vista_mecanico/" + (key + 1)}>
             <button
-              className="btn btn-secondary"
+              className="botonHoras"
               style={{ width: "200px" }}
               id={key}
-              onClick={() => actions.selectionHoraMec(key+1)}
+              onClick={() => actions.selectionHoraMec(key + 1)}
             >
               {element}
             </button>

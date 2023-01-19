@@ -41,6 +41,9 @@ button{
 	background-color: #4dada4;
 	padding: 12px;
 }
+.BotonNav{
+	width: 200px;
+}
 
 .dropdownTexto {
 color: #4dada4;

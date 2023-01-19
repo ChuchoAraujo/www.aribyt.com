@@ -6,18 +6,20 @@ import { BsLinkedin } from "react-icons/bs";
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
 
 export const FooterHome = () => (
-  <footer className="text-center footer">
-    <div>
-      <BsLinkedin className="iconos_footer" />
-      <AiFillGithub className="iconos_footer" />
-      <ImMail4 className="iconos_footer" />
-      <MdContactSupport className="iconos_footer" />
-    </div>
-    <div>
-      <p className="textoFooter1">
-        <AiOutlineCopyrightCircle className="me-2" />
-        Copyright Aribyt 2023
-      </p>
+  <footer className="container-fluid text-center footer">
+    <div className="row">
+      <div>
+        <BsLinkedin className="iconos_footer" />
+        <AiFillGithub className="iconos_footer" />
+        <ImMail4 className="iconos_footer" />
+        <MdContactSupport className="iconos_footer" />
+      </div>
+      <div>
+        <p className="textoFooter1">
+          <AiOutlineCopyrightCircle className="me-2" />
+          Copyright Aribyt 2023
+        </p>
+      </div>
     </div>
   </footer>
 );

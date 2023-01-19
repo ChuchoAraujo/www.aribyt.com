@@ -17,7 +17,7 @@ export const Vista_clasificadora = () => {
           <button className="botonRechazos">------ Rechazos ------</button>
         </Link>
       </div>
-      <div className="container-fluid">
+      <div className="container">
         <FooterCajas />
       </div>
     </>
