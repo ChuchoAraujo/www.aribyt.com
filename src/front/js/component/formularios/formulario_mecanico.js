@@ -61,7 +61,7 @@ export const Formulario_mecanico = () => {
 
   return (
     <>
-      <Formik
+      <Formik 
         initialValues={{
           problema: "",
           accion: "",
@@ -108,7 +108,8 @@ export const Formulario_mecanico = () => {
                 onKeyUp={(e) => setTurno(e.target.value)}
               />
             </div>
-            <button type="submit" onClick={sendDataMecanico}>
+            <button
+            className="botonEnviarForm" onClick={sendDataMecanico}>
               Enviar
             </button>
             {enviarFormulario && (

@@ -15,11 +15,11 @@ export const Container_clasificadora = () => {
     <>
       <div className="container-fluid text-center align-items-start row">
         <div className="col"></div>
-        <div className="col-8 marginFormClasificadora">
+        <div className="col-9 marginFormClasificadora">
           <Formulario_clasificadora />
         </div>
         <div className="col"></div>
-        <FooterCajas className="container-fluid" />
+        <FooterCajas />
       </div>
     </>
   );

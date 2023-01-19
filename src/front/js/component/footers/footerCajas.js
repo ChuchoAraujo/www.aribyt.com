@@ -14,22 +14,23 @@ export const FooterCajas = () => {
 
 
   return (
-    <div className="container-fluid footerCajas">
+    <div className="container footerCajas">
       <footer className="mt-4">
         <div>
-          <div className="row">
-            <div className="col-1"></div>
-            <div className="col-1 d-flex justify-content-center d-flex align-items-center">
+          <div className="row d-flex justify-content-center d-flex align-items-center">
+            <div className="col-2 ">
               <Icon_Clasificadora width={80} />
             </div>
-            <div className="col text-start d-flex align-items-center">
-              <h4>Turno: {store.role}</h4>
+            <div className="col">
+              <h4>Role: {store.role}</h4>
             </div>
-            <div className="col text-start d-flex align-items-center">
+            <div className="col ">
               <h4>Fecha: {fechaFinal}</h4>
             </div>
-            <div className="col"></div>
-            <div className="col-3 d-flex align-items-center">
+            <div className="col">
+              <h4>Hora: {store.hora}</h4>
+            </div>
+            <div className="col-3 text-start">
               {" "}
               <h4>Suma de las cajas {store.contadorCajas}</h4>
             </div>

@@ -6,6 +6,7 @@
 	margin: 0;
 	box-sizing: border-box;
 }
+/* body { background-image: url(/images/image.svg) } */
 
 button{
 	padding: 3px;
@@ -141,7 +142,8 @@ text-decoration: none;
 	display: block;
 	font-weight: 600;
 	font-size: 14px;
-	margin-bottom: 5px;
+
+	margin-top: 10px;
 	color: #1f1f1f;
 }
 
@@ -169,6 +171,7 @@ text-decoration: none;
 	border: 2px solid #4dada4 ;
 	font-size: 18px;
 	padding: 10px;
+	margin: 10px;
 	margin-bottom: 5px;
 	color: #1f1f1f;
 }
@@ -306,11 +309,14 @@ text-decoration: none;
 	fill: #828282;
 	width: 35px;
 }
+.contendedorBotonesProblemas {
+	margin: 10px;
+}
 .buttonIconsFormClasificadora {
 	background-color: white;
 	border: 2px solid #828282;
-	width: 150px;
-	height: 110px;
+	width: 170px;
+	height: 135px;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
@@ -318,8 +324,8 @@ text-decoration: none;
 .problemaClasificadoraGray {
 	background-color: white;
 	border: 2px solid #828282;
-	width: 150px;
-	height: 110px;
+	width: 160px;
+	height: 135px;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
@@ -328,8 +334,8 @@ text-decoration: none;
 	background-color: #4dada4;
 	transition: 1s;
 	border: 2px solid #828282;
-	width: 150px;
-	height: 110px;
+	width: 160px;
+	height: 135px;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
@@ -337,8 +343,8 @@ text-decoration: none;
 .problemaPapelGray {
 	background-color: white;
 	border: 2px solid #828282;
-	width: 150px;
-	height: 110px;
+	width: 160px;
+	height: 135px;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
@@ -347,8 +353,8 @@ text-decoration: none;
 	background-color: #4dada4;
 	transition: 1s;
 	border: 2px solid #828282;
-	width: 150px;
-	height: 110px;
+	width: 160px;
+	height: 135px;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
@@ -357,8 +363,8 @@ text-decoration: none;
 .problemaInyectorGray {
 	background-color: white;
 	border: 2px solid #828282;
-	width: 150px;
-	height: 110px;
+	width: 160px;
+	height: 135px;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
@@ -367,8 +373,8 @@ text-decoration: none;
 	background-color: #4dada4;
 	transition: 1s;
 	border: 2px solid #828282;
-	width: 150px;
-	height: 110px;
+	width: 160px;
+	height: 135px;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
@@ -376,8 +382,8 @@ text-decoration: none;
 .problemaBidonGray {
 	background-color: white;
 	border: 2px solid #828282;
-	width: 150px;
-	height: 110px;
+	width: 160px;
+	height: 135px;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
@@ -386,8 +392,8 @@ text-decoration: none;
 	background-color: #4dada4;
 	transition: 1s;
 	border: 2px solid #828282;
-	width: 150px;
-	height: 110px;
+	width: 160px;
+	height: 135px;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
@@ -395,75 +401,79 @@ text-decoration: none;
 /*Seteo iconos colores problemas*/
 .iconManteWhite {
 	fill: white;
-	width: 50px;
+	width: 70px;
 }
 .iconManteGray {
 	fill: #828282;
-	width: 50px;
+	width: 70px;
 }
 .iconPapelWhite {
 	fill: white;
-	width: 50px;
+	width: 70px;
 }
 .iconPapelGray {
 	fill: #828282;
-	width: 50px;
+	width: 70px;
 }
 .iconInyectWhite {
 	fill: white;
-	width: 35px;
+	width: 48px;
+	margin-right: 25px;
 }
 .iconInyectGray {
 	fill: #828282;
-	width: 35px;
+	width: 48px;
+	margin-right: 25px;
 }
 .iconBidonWhite {
 	fill: white;
-	width: 35px;
+	width: 48px;
+	margin-right: 5px;
 }
 .iconBidonGray {
 	fill: #828282;
-	width: 35px;
+	width: 48px;
+	margin-right: 5px;
 }
 .tituloIconPapelGray{
 	margin: 10px;
 	color: #828282;
-	font-size: 14px;
+	font-size: 16px;
 }
 .tituloIconPapelWhite{
 	margin: 10px;
 	color: white;
-	font-size: 14px;
+	font-size: 16px;
 }
 .tituloManteGray{
 	margin: 10px;
 	color: #828282;
-	font-size: 14px;
+	font-size: 16px;
 }
 .tituloManteWhite{
 	margin: 10px;
 	color: white;
-	font-size: 14px;
+	font-size: 16px;
 }
 .tituloInyectGray{
 	margin: 10px;
 	color: #828282;
-	font-size: 14px;
+	font-size: 16px;
 }
 .tituloInyectWhite{
 	margin: 10px;
 	color: white;
-	font-size: 14px;
+	font-size: 16px;
 }
 .tituloBidonGray{
 	margin: 10px;
 	color: #828282;
-	font-size: 14px;
+	font-size: 16px;
 }
 .tituloBidonWhite{
 	margin: 10px;
 	color: white;
-	font-size: 14px;
+	font-size: 16px;
 }
 .columnaIconos {
 	margin: 10px;
@@ -488,6 +498,104 @@ text-decoration: none;
 
 .calendario {
 	background-color: #218379 ;
+}
+
+/*----------------------FORMULARIO MECANICO--------------------------------------*/
+.formMecanico {
+	margin-top: 50px;
+	padding: 20px;
+}
+.botonEnviarForm {
+	display: block;
+	background:#4dada4;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+	transition: .3s ease all;
+	width:760px
+}
+
+/*----------FORMULARIO ENCARGADO-----------------*/
+.botonSiguienteFormularioEncargado {
+	display: block;
+	background:#828282;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+	transition: .3s ease all;
+	width:auto
+}
+/*----------FORMULARIO ENCARGADO PAGINA 1-----------------*/
+.botonSagrado{
+	display: none;
+}
+.containerPagina1{
+	margin: 20px;
+	padding: 20px;
+}
+
+.react-date-picker-color {
+	background-color: #828282;
+}
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  display: block;
+  width: 50%;
+  color:red;
+}
+
+/*----------FORMULARIO ENCARGADO PAGINA 2-----------------*/
+/*Vista encargado pruebas mostrar ocultar columnas*/
+.visible {
+	display: block;
+}
+
+.esconder {
+	display: none;
+}
+.iconFiltro {
+	color: white;
+	font-size: 30px;
+}
+
+.iconBotonAgregar {
+	color: white;
+	font-size: 20px;
+	background-color: #e2e2e2;
+	margin: 2px;
+	padding: 2px;
+	background-color: #4dada4;
+}
+
+.iconBotonEliminar {
+	color: white;
+	font-size: 20px;
+	background-color: #e2e2e2;
+	margin: 2px;
+	padding: 2px;
+	background-color: #ecc24d;
+}
+.botonVisible {
+	visibility: visible;
+	display: block;
+}
+
+.botonEsconder {
+	visibility: hidden;
+	display: none;
 }
 
 
@@ -671,13 +779,27 @@ text-decoration: none;
 
 
 /*PAGINA ENCARGADO SELECCION ROLES*/
-
+.tituloTurno {
+	color: #828282;
+	font-weight: 700;
+	font-size: 40px;
+}
+.tituloFecha {
+	color: #828282;
+	font-weight: 700;
+	font-size: 40px;
+	margin-bottom: 20px;
+}
 .seleccionTurnoMañanaGris {
-	background-color: #e2e2e2;
+	background-color: white;
 	padding: 10px;
 	margin: 10px;
-	color: black;
+	color: #828282;
 	border-radius: 10px;
+	border: 3px solid #828282;
+	width: 120px;
+	font-size: 20px;
+	font-weight: 600;
 	transition-duration: 0.5s;
 
 }
@@ -687,15 +809,23 @@ text-decoration: none;
 	margin: 10px;
 	color: white;
 	border-radius: 10px;
+	border: 3px solid #828282;
 	transition-duration: 1s;
+	width: 120px;
+	font-size: 20px;
+	font-weight: 600;
 }
 
 .seleccionTurnoTardeGris {
-	background-color: #e2e2e2;
+	background-color: white;
 	padding: 10px;
 	margin: 10px;
-	color: black;
+	color: #828282;
 	border-radius: 10px;
+	border: 3px solid #828282;
+	width: 120px;
+	font-size: 20px;
+	font-weight: 600;
 	transition-duration: 0.5s;
 
 }
@@ -705,15 +835,23 @@ text-decoration: none;
 	margin: 10px;
 	color: white;
 	border-radius: 10px;
+	border: 3px solid #828282;
 	transition-duration: 1s;
+	width: 120px;
+	font-size: 20px;
+	font-weight: 600;
 }
 
 .seleccionTurnoNocheGris {
-	background-color: #e2e2e2;
+	background-color: white;
 	padding: 10px;
 	margin: 10px;
-	color: black;
+	color: #828282;
 	border-radius: 10px;
+	border: 3px solid #828282;
+	width: 120px;
+	font-size: 20px;
+	font-weight: 600;
 	transition-duration: 0.5s;
 
 }
@@ -723,7 +861,11 @@ text-decoration: none;
 	margin: 10px;
 	color: white;
 	border-radius: 10px;
+	border: 3px solid #828282;
 	transition-duration: 1s;
+	width: 120px;
+	font-size: 20px;
+	font-weight: 600;
 }
 
 
@@ -804,59 +946,3 @@ pruebas opacidad*/
 	color: black;
 }
 
-/*Vista encargado pruebas mostrar ocultar columnas*/
-.visible {
-	display: block;
-}
-
-.esconder {
-	display: none;
-}
-.iconFiltro {
-	color: white;
-	font-size: 30px;
-}
-
-.iconBotonAgregar {
-	color: white;
-	font-size: 20px;
-	background-color: #e2e2e2;
-	margin: 2px;
-	padding: 2px;
-	background-color: #4dada4;
-}
-
-.iconBotonEliminar {
-	color: white;
-	font-size: 20px;
-	background-color: #e2e2e2;
-	margin: 2px;
-	padding: 2px;
-	background-color: #ecc24d;
-}
-.botonVisible {
-	visibility: visible;
-	display: block;
-}
-
-.botonEsconder {
-	visibility: hidden;
-	display: none;
-}
-
-
-/*Boton sagrado*/
-.botonSagrado{
-	display: none;
-}
-
-.react-date-picker-color {
-	background-color: #4dada4;
-}
-.react-datepicker-wrapper,
-.react-datepicker__input-container,
-.react-datepicker__input-container input {
-  display: block;
-  width: 50%;
-  color:red;
-}

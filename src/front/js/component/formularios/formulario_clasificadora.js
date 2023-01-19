@@ -324,7 +324,7 @@ export const Formulario_clasificadora = () => {
             {/*--------------------------Formulario pagina3*-------------------*/}
             <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
               <h6>--- Problemas recurrentes ---</h6>
-              <div className="row p-3 d-flex justify-content-center text-center">
+              <div className="row p-3 d-flex justify-content-center text-center contendedorBotonesProblemas">
                 <button
                   onClick={() => {
                     setFieldValue("problema", "Se ha realizado mantenimiento");
