@@ -366,8 +366,9 @@ def get_join():
 def sendMail():
     turno1 = request.json.get('turno')
     fecha1 = request.json.get('fecha')
-    arrayClasificadora=[]
+ 
     try:
+        arrayClasificadora=[]
         resultadoClasificadora = db.session.query(User,TablaClasificadora). \
         select_from(User).join(TablaClasificadora). \
             filter(TablaClasificadora.turno==turno1).filter(TablaClasificadora.fecha==fecha1).all()
@@ -401,7 +402,7 @@ def sendMail():
                 {
                     "From": {
                         "Email": "josgrehd@aribyt.com  ",
-                        "Name": "PRUEBA"
+                        "Name": "Mensaje del Encargado"
                     },
                     "To": [
                         {

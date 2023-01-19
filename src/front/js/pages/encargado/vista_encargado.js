@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Context } from "../../store/appContext";
+import React, { useEffect, useState, useRef } from "react";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import DatePicker from "react-date-picker";
-import { AiOutlineEye } from "react-icons/ai";
-import { TiDeleteOutline } from "react-icons/ti";
-import { BiSkipNextCircle } from "react-icons/bi";
+import { SearchOutlined } from "@ant-design/icons";
+import { Button, Input, Space, Table} from "antd";
+import Highlighter from "react-highlight-words";
+
+
 
 import "../../../styles/calendar.css";
 import "../../../styles/home.css";
@@ -12,26 +14,14 @@ export const Vista_encargado = () => {
   const [resultJoin, setResultJoin] = useState([]);
   const [resultMecanico, setResultMecanido] = useState([]);
   const [resultRechazos, setResultRechazos] = useState([]);
-
+  const [searchText, setSearchText] = useState("");
+  const [searchedColumn, setSearchedColumn] = useState("");
+  const searchInput = useRef(null);
   const [turno, setTurno] = useState("");
   const [fecha, setFecha] = useState("");
   const [enviarFormulario, setFormulario] = useState(false);
   const [role, setRole] = useState("");
-  const [botonHoraClasificadora, setBotonHoraClasificadora] = useState("");
-  const [botonUsername, setBotonUsername] = useState("");
-  const [botonFecha, setBotonFecha] = useState("");
-  const [botonCajas, setBotonCajas] = useState("");
-  const [botonArticulo, setBotonArticulo] = useState("");
-  const [botonLote, setBotonLote] = useState("");
-  const [botonJaulas, setBotonJaulas] = useState("");
-  const [botonPedido, setBotonPedido] = useState("");
-  const [botonPersonal, setBotonPersonal] = useState("");
-  const [botonProblemaClasificadora, setBotonProblemaClasificadora] =
-    useState("");
-  const [botonAccionClasificadora, setBotonAccionClasificadora] = useState("");
-  const [botonTiempo, setBotonTiempo] = useState("");
-  const [botonVelocidad, setBotonVelocidad] = useState("");
-  const [botonGramos, setBotonGramos] = useState("");
+
 
   // ----------------- FECHA ----------------
   const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
@@ -40,29 +30,20 @@ export const Vista_encargado = () => {
   let year = fechaSeleccionada.getFullYear();
   let fechaConvertida = `${month}/${day}/${year}`;
 
-
   /*-----------------------------PAGINACION---------------------------------*/
-    const [pagina1, setpagina1] = useState("");
-    const [pagina2, setPagina2] = useState("");
-    const [pagina3, setPagina3] = useState("");
+  const [pagina1, setpagina1] = useState("");
+  const [pagina2, setPagina2] = useState("");
 
 
-    const printCondicitional = () => {
-      if (pagina1 === pagina1) {
-        setpagina1("visibility");
-        setPagina2("hidden");
-      } else {
-        console.log("nada");
-      }
-    };
-    const printCondicitional2 = () => {
-      if (pagina2 === pagina2) {
-        setPagina2("visibility");
-        setPagina3("hidden");
-      } else {
-        console.log("nada");
-      }
-    };
+  const printCondicitional = () => {
+    if (pagina1 === pagina1) {
+      setpagina1("visibility");
+      setPagina2("hidden");
+    } else {
+      console.log("nada");
+    }
+  };
+
   //------------ ENVIO DE REPORTE AL MAIL----------------- //
 
   const sendDataEncargado = () => {
@@ -83,110 +64,304 @@ export const Vista_encargado = () => {
         setResultMecanido(result.mecanico);
         setResultRechazos(result.rechazos);
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => {
+        if (result==[]){
+          alert("error al filtrar los datos, verifique la informacion")
+        }
+      });
+  };
+  const sendMail =()=>{
+    fetch(process.env.BACKEND_URL + "/api/sendMail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        fecha: fecha,
+        turno: turno,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        alert("Email enviado Correctamente")
+      })
+      .catch((error) => {
+        alert("No se ha enviado el Email")
+      });
   };
   // ------FUNCIONES MOSTRAR Y OCULTAR ----------------------
-  // USERNAME
-  const ocultarUsername = () => {
-    setBotonUsername("botonVisible");
-  };
-  const mostrarUsername = () => {
-    setBotonUsername("botonEsconder");
-  };
-  // FECHA
-  const ocultarFecha = () => {
-    setBotonFecha("botonVisible");
-  };
-  const mostrarFecha = () => {
-    setBotonFecha("botonEsconder");
-  };
-  // CAJAS
-  const ocultarCajas = () => {
-    setBotonCajas("botonVisible");
-  };
-  const mostrarCajas = () => {
-    setBotonCajas("botonEsconder");
-  };
-  // ARTICULO
-  const ocultarArticulo = () => {
-    setBotonArticulo("botonVisible");
-  };
-  const mostrarArticulo = () => {
-    setBotonArticulo("botonEsconder");
-  };
-  // LOTE
-  const ocultarLote = () => {
-    setBotonLote("botonVisible");
-  };
-  const mostrarLote = () => {
-    setBotonLote("botonEsconder");
-  };
-  // HORA CLASIFICADORA
-  const ocultarHoraClasificadora = () => {
-    setBotonHoraClasificadora("botonVisible");
-  };
-  const mostrarHoraClasificadora = () => {
-    setBotonHoraClasificadora("botonEsconder");
-  };
-  // JAULAS
-  const ocultarJaulas = () => {
-    setBotonJaulas("botonVisible");
-  };
-  const mostrarJaulas = () => {
-    setBotonJaulas("botonEsconder");
-  };
-  // PEDIDO
-  const ocultarPedido = () => {
-    setBotonPedido("botonVisible");
-  };
-  const mostrarPedido = () => {
-    setBotonPedido("botonEsconder");
-  };
-  // PERSONAL
-  const ocultarPersonal = () => {
-    setBotonPersonal("botonVisible");
-  };
-  const mostrarPersonal = () => {
-    setBotonPersonal("botonEsconder");
-  };
-  // PROBLEMA CLASIFICADORA
-  const ocultarProblemaClasificadora = () => {
-    setBotonProblemaClasificadora("botonVisible");
-  };
-  const mostrarProblemaClasificadora = () => {
-    setBotonProblemaClasificadora("botonEsconder");
-  };
-  // ACCION CLASIFICADORA
-  const ocultarAccionClasificadora = () => {
-    setBotonAccionClasificadora("botonVisible");
-  };
-  const mostrarAccionClasificadora = () => {
-    setBotonAccionClasificadora("botonEsconder");
-  };
-  // Tiempo
-  const ocultarTiempo = () => {
-    setBotonTiempo("botonVisible");
-  };
-  const mostrarTiempo = () => {
-    setBotonTiempo("botonEsconder");
-  };
-  // VELOCIDAD
-  const ocultarVelocidad = () => {
-    setBotonVelocidad("botonVisible");
-  };
-  const mostrarVelocidad = () => {
-    setBotonVelocidad("botonEsconder");
-  };
-  // GRAMOS
-  const ocultarGramos = () => {
-    setBotonGramos("botonVisible");
-  };
-  const mostrarGramos = () => {
-    setBotonGramos("botonEsconder");
+
+  const handleSearch = (selectedKeys, confirm, dataIndex) => {
+    confirm();
+    setSearchText(selectedKeys[0]);
+    setSearchedColumn(dataIndex);
   };
 
+  const handleReset = (clearFilters) => {
+    clearFilters();
+    setSearchText("");
+  };
+  const getColumnSearchProps = (dataIndex) => ({
+    filterDropdown: ({
+      setSelectedKeys,
+      selectedKeys,
+      confirm,
+      clearFilters,
+      close,
+    }) => (
+      <div
+        style={{
+          padding: 8,
+        }}
+        onKeyDown={(e) => e.stopPropagation()}
+      >
+        <Input
+          ref={searchInput}
+          placeholder={`Search ${dataIndex}`}
+          value={selectedKeys[0]}
+          onChange={(e) =>
+            setSelectedKeys(e.target.value ? [e.target.value] : [])
+          }
+          onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
+          style={{
+            marginBottom: 8,
+            display: "block",
+          }}
+        />
+        <Space>
+          <Button
+            type="primary"
+            onClick={() => handleSearch(selectedKeys, confirm, dataIndex)}
+            icon={<SearchOutlined />}
+            size="small"
+            style={{
+              width: 90,
+            }}
+          >
+            Search
+          </Button>
+          <Button
+            onClick={() => clearFilters && handleReset(clearFilters)}
+            size="small"
+            style={{
+              width: 90,
+            }}
+          >
+            Reset
+          </Button>
+          <Button
+            type="link"
+            size="small"
+            onClick={() => {
+              confirm({
+                closeDropdown: false,
+              });
+              setSearchText(selectedKeys[0]);
+              setSearchedColumn(dataIndex);
+            }}
+          >
+            Filter
+          </Button>
+          <Button
+            type="link"
+            size="small"
+            onClick={() => {
+              close();
+            }}
+          >
+            close
+          </Button>
+        </Space>
+      </div>
+    ),
+    filterIcon: (filtered) => (
+      <SearchOutlined
+        style={{
+          color: filtered ? "#1890ff" : undefined,
+        }}
+      />
+    ),
+    onFilter: (value, record) =>
+      record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+    onFilterDropdownOpenChange: (visible) => {
+      if (visible) {
+        setTimeout(() => searchInput.current?.select(), 100);
+      }
+    },
+    render: (text) =>
+      searchedColumn === dataIndex ? (
+        <Highlighter
+          highlightStyle={{
+            backgroundColor: "#ffc069",
+            padding: 0,
+          }}
+          searchWords={[searchText]}
+          autoEscape
+          textToHighlight={text ? text.toString() : ""}
+        />
+      ) : (
+        text
+      ),
+  });
+
+  const columnsClasificadora = [
+    {
+      title: "Clasificadora",
+      dataIndex: "usuarioClasificadora",
+      key: "usuarioClasificadora",
+      width: "30%",
+      ...getColumnSearchProps("usuarioClasificadora"),
+    },
+    {
+      title: "Problema",
+      dataIndex: "problemaClasificadora",
+      key: "problemaClasificadora",
+      width: "30%",
+      ...getColumnSearchProps("problemaClasificadora"),
+    },
+    {
+      title: "Hora",
+      dataIndex: "horaClasificadora",
+      key: "horaClasificadora",
+      width: "30%",
+      ...getColumnSearchProps("horaClasificadora"),
+    },
+    {
+      title: "Cajas",
+      dataIndex: "cajas",
+      key: "cajas",
+      width: "30%",
+      ...getColumnSearchProps("cajas"),
+    },
+    {
+      title: "Fecha",
+      dataIndex: "fecha",
+      key: "fecha",
+      width: "30%",
+      ...getColumnSearchProps("fecha"),
+    },
+    {
+      title: "Articulo",
+      dataIndex: "articulo",
+      key: "articulo",
+      width: "30%",
+      ...getColumnSearchProps("articulo"),
+    },
+    {
+      title: "Lote",
+      dataIndex: "lote",
+      key: "lote",
+      width: "30%",
+      ...getColumnSearchProps("lote"),
+    },
+    {
+      title: "Jaulas",
+      dataIndex: "jaulas",
+      key: "jaulas",
+      width: "30%",
+      ...getColumnSearchProps("jaulas"),
+    },
+    {
+      title: "Pedido",
+      dataIndex: "pedido",
+      key: "pedido",
+      width: "30%",
+      ...getColumnSearchProps("pedido"),
+    },
+    {
+      title: "Personal",
+      dataIndex: "personal",
+      key: "personal",
+      width: "30%",
+      ...getColumnSearchProps("personal"),
+    },
+    {
+      title: "Accion",
+      dataIndex: "accionClasificadora",
+      key: "accionClasificadora",
+      width: "30%",
+      ...getColumnSearchProps("accionClasificadora"),
+    },
+    {
+      title: "Tiempo",
+      dataIndex: "tiempo",
+      key: "tiempo",
+      width: "30%",
+      ...getColumnSearchProps("tiempo"),
+    },
+    {
+      title: "Velocidad",
+      dataIndex: "velocidad",
+      key: "velocidad",
+      width: "30%",
+      ...getColumnSearchProps("velocidad"),
+    },
+    {
+      title: "Gramos",
+      dataIndex: "gramos",
+      key: "gramos",
+      width: "30%",
+      ...getColumnSearchProps("gramos"),
+    },
+  ];
+  const columnsRechazos = [
+    {
+      title: "Fichas",
+      dataIndex: "fichas",
+      key: "fichas",
+      width: "30%",
+      ...getColumnSearchProps("fichas"),
+    },
+    {
+      title: "Paneles",
+      dataIndex: "paneles",
+      key: "paneles",
+      width: "30%",
+      ...getColumnSearchProps("paneles"),
+    },
+    {
+      title: "Jaula",
+      dataIndex: "jaula",
+      key: "jaula",
+      width: "30%",
+      ...getColumnSearchProps("jaula"),
+    },
+  ];
+  const columnsMecanico = [
+    {
+      title: "Mecanico",
+      dataIndex: "userMecanico",
+      key: "userMecanico",
+      width: "30%",
+      ...getColumnSearchProps("userMecanico"),
+    },
+    {
+      title: "Problema",
+      dataIndex: "problemaMecanico",
+      key: "problemaMecanico",
+      width: "30%",
+      ...getColumnSearchProps("problemaMecanico"),
+    },
+    {
+      title: "Accion",
+      dataIndex: "accionMecanico",
+      key: "accionMecanico",
+      width: "30%",
+      ...getColumnSearchProps("accionMecanico"),
+    },
+    {
+      title: "Hora",
+      dataIndex: "horaDelMecanico",
+      key: "horaDelMecanico",
+      width: "30%",
+      ...getColumnSearchProps("horaDelMecanico"),
+    },
+  ];
   return (
     <>
+    <div className="container-fluid text-center">
+      <div className="row">
       <Formik
         initialValues={{
           turno: "",
@@ -196,8 +371,6 @@ export const Vista_encargado = () => {
           resetForm();
           console.log("Formulario enviado");
           setFormulario(true);
-          setTurno(valores.turno);
-          setFecha(valores.fecha);
           setTimeout(() => setFormulario(false), 5000);
         }}
       >
@@ -302,547 +475,46 @@ export const Vista_encargado = () => {
           </div>
         )}
       </Formik>
-
-      {/* ----------Pagina2 Filtros avanzados------------------------ */}
       <div className={pagina2 === "hidden" ? "visibility" : "hidden"}>
-        <div className="container-fluid m-4">
-          <div className="row">
-            <h4 className="p-2 text-center"> --- Filtros avanzados ---</h4>
-            {/*-------------------Filtro lote---------------*/}
-            <div className="col-2 text-center">
-                <div>
-                  <h6>Hora Clasificadora</h6>
-                  <button
-                    onClick={mostrarHoraClasificadora}
-                    className="iconBotonAgregar"
-                  >
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button
-                    onClick={ocultarHoraClasificadora}
-                    className="iconBotonEliminar"
-                  >
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                </div>
+      <div className="mt-5">
+            <div className="table-wrapper-scroll-y my-custom-scrollbar">
+              <Table id="dtHorizontalExample" className="table table-bordered table-striped table-sm mb-0" columns={columnsClasificadora} dataSource={resultJoin} />
             </div>
-            {/*-------------------Filtro username---------------*/}
-            <div className="col-2 text-center">
-              
-                <div>
-                  <h6>UserName</h6>
-                  <button
-                    onClick={mostrarUsername}
-                    className="iconBotonAgregar"
-                  >
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button
-                    onClick={ocultarUsername}
-                    className="iconBotonEliminar"
-                  >
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                </div>
-              </div>
-            
-            {/*-------------------Filtro fecha---------------*/}
-            <div className="col-2 text-center">
-              
-                <div>
-                  <h6>Fecha</h6>
-                  <button onClick={mostrarFecha} className="iconBotonAgregar">
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button onClick={ocultarFecha} className="iconBotonEliminar">
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                </div>
-              
             </div>
-            {/*-------------------Filtro cajas---------------*/}
-            <div className="col-2 text-center">
-              
-                <div >
-                  <h6>Cajas</h6>
-                  <button onClick={mostrarCajas} className="iconBotonAgregar">
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button onClick={ocultarCajas} className="iconBotonEliminar">
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                </div>
-            
+        <div className="mt-5">
+            <div className="table-wrapper-scroll-y my-custom-scrollbar">
+              <Table id="dtHorizontalExample" className="table table-bordered table-striped table-sm mb-0" columns={columnsRechazos} dataSource={resultRechazos} />
             </div>
-            {/*-------------------Filtro articulo---------------*/}
-            <div className="col-2 text-center">
-              
-                <div >
-                  <h6>Artículo</h6>
-                  <button
-                    onClick={mostrarArticulo}
-                    className="iconBotonAgregar"
-                  >
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button
-                    onClick={ocultarArticulo}
-                    className="iconBotonEliminar"
-                  >
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                
-              </div>
-            </div>
-            {/*-------------------Filtro lote---------------*/}
-            <div className="col-2 text-center">
-             
-                <div>
-                  <h6>Lote</h6>
-                  <button onClick={mostrarLote} className="iconBotonAgregar">
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button onClick={ocultarLote} className="iconBotonEliminar">
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                
-              </div>
-            </div>
-            {/*-------------------Filtro jaulas---------------*/}
-            <div className="col-2 text-center">
-              
-                <div>
-                  <h6>Jaulas</h6>
-                  <button onClick={mostrarJaulas} className="iconBotonAgregar">
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button onClick={ocultarJaulas} className="iconBotonEliminar">
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                </div>
-              
-            </div>
-            {/*-------------------Filtro pedido---------------*/}
-            <div className="col-2 text-center">
-             
-                <div>
-                  <h6>Pedido</h6>
-                  <button onClick={mostrarPedido} className="iconBotonAgregar">
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button onClick={ocultarPedido} className="iconBotonEliminar">
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                </div>
-              
-            </div>
-            {/*-------------------Filtro personal---------------*/}
-            <div className="col-2 text-center">
-              
-                <div>
-                  <h6>Personal</h6>
-                  <button
-                    onClick={mostrarPersonal}
-                    className="iconBotonAgregar"
-                  >
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button
-                    onClick={ocultarPersonal}
-                    className="iconBotonEliminar"
-                  >
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                
-              </div>
-            </div>
-            {/*-------------------Filtro problema clasificadora---------------*/}
-            <div className="col-2 text-center">
-              
-                <div>
-                  <h6>Problema clasificadora</h6>
-                  <button
-                    onClick={mostrarProblemaClasificadora}
-                    className="iconBotonAgregar"
-                  >
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button
-                    onClick={ocultarProblemaClasificadora}
-                    className="iconBotonEliminar"
-                  >
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                </div>
-              
-            </div>
-            {/*-------------------Filtro Acción clasificadora---------------*/}
-            <div className="col-2 text-center">
-              
-                <div>
-                  <h6>Acción clasificadora</h6>
-                  <button
-                    onClick={mostrarAccionClasificadora}
-                    className="iconBotonAgregar"
-                  >
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button
-                    onClick={ocultarAccionClasificadora}
-                    className="iconBotonEliminar"
-                  >
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                </div>
-              
-            </div>
-            {/*-------------------Filtro tiempo---------------*/}
-            <div className="col-2 text-center">
-              
-                <div>
-                  <h6>Tiempo</h6>
-                  <button onClick={mostrarTiempo} className="iconBotonAgregar">
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button onClick={ocultarTiempo} className="iconBotonEliminar">
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                </div>
-              
-            </div>
-            {/*-------------------Filtro Velocidad---------------*/}
-            <div className="col-2 text-center">
-              
-                <div >
-                  <h6>Velocidad</h6>
-                  <button
-                    onClick={mostrarVelocidad}
-                    className="iconBotonAgregar"
-                  >
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button
-                    onClick={ocultarVelocidad}
-                    className="iconBotonEliminar"
-                  >
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                </div>
-              
-            </div>
-            {/*-------------------Filtro gramos---------------*/}
-            <div className="col-2 text-center">
-              
-                <div>
-                  <h6>Gramos</h6>
-                  <button onClick={mostrarGramos} className="iconBotonAgregar">
-                    <AiOutlineEye className="iconFiltro" />
-                  </button>
-                  <button onClick={ocultarGramos} className="iconBotonEliminar">
-                    <TiDeleteOutline className="iconFiltro" />
-                  </button>
-                </div>
-              </div>
-            
-          </div>
         </div>
-        {/* ------------Tablas-------------------------- */}
-        <div className="container">
-          <div className="text-center p-5">
-            <h4 className="p-2"> --- Clasificadora ---</h4>
-            <table className="table p-2">
-              <thead className="tableColor">
-                <tr>
-                  <th
-                    scope="col"
-                    className={
-                      botonHoraClasificadora === "botonVisible"
-                        ? "botonEsconder"
-                        : ""
-                    }
-                  >
-                    hora clasificadora
-                  </th>
-                  <th
-                    scope="col"
-                    className={
-                      botonUsername === "botonVisible" ? "botonEsconder" : ""
-                    }
-                  >
-                    UserName Clasificadora
-                  </th>
-                  <th
-                    scope="col"
-                    className={
-                      botonFecha === "botonVisible" ? "botonEsconder" : ""
-                    }
-                  >
-                    Fecha
-                  </th>
-                  <th
-                    scope="col"
-                    className={
-                      botonCajas === "botonVisible" ? "botonEsconder" : ""
-                    }
-                  >
-                    Cajas
-                  </th>
-                  <th
-                    scope="col"
-                    className={
-                      botonArticulo === "botonVisible" ? "botonEsconder" : ""
-                    }
-                  >
-                    Articulo
-                  </th>
-                  <th
-                    scope="col"
-                    className={
-                      botonLote === "botonVisible" ? "botonEsconder" : ""
-                    }
-                  >
-                    Lote
-                  </th>
-                  <th
-                    scope="col"
-                    className={
-                      botonJaulas === "botonVisible" ? "botonEsconder" : ""
-                    }
-                  >
-                    Jaulas
-                  </th>
-                  <th
-                    scope="col"
-                    className={
-                      botonPedido === "botonVisible" ? "botonEsconder" : ""
-                    }
-                  >
-                    Pedido
-                  </th>
-                  <th
-                    scope="col"
-                    className={
-                      botonPersonal === "botonVisible" ? "botonEsconder" : ""
-                    }
-                  >
-                    Personal
-                  </th>
-                  <th
-                    scope="col"
-                    className={
-                      botonProblemaClasificadora === "botonVisible"
-                        ? "botonEsconder"
-                        : ""
-                    }
-                  >
-                    problema Clasificadora
-                  </th>
-                  <th
-                    scope="col"
-                    className={
-                      botonAccionClasificadora === "botonVisible"
-                        ? "botonEsconder"
-                        : ""
-                    }
-                  >
-                    Accion Clasificadora
-                  </th>
-                  <th
-                    scope="col"
-                    className={
-                      botonTiempo === "botonVisible" ? "botonEsconder" : ""
-                    }
-                  >
-                    Tiempo
-                  </th>
-                  <th
-                    scope="col"
-                    className={
-                      botonVelocidad === "botonVisible" ? "botonEsconder" : ""
-                    }
-                  >
-                    Velocidad
-                  </th>
-                  <th
-                    scope="col"
-                    className={
-                      botonGramos === "botonVisible" ? "botonEsconder" : ""
-                    }
-                  >
-                    Gramos
-                  </th>
-                </tr>
-              </thead>
-              {resultJoin.map((item, index1) => (
-                <>
-                  <tbody key={index1}>
-                    <tr>
-                      <th
-                        scope="row"
-                        className={
-                          botonHoraClasificadora === "botonVisible"
-                            ? "botonEsconder"
-                            : ""
-                        }
-                      >
-                        {item.horaClasificadora}
-                      </th>
-                      <td
-                        className={
-                          botonUsername === "botonVisible"
-                            ? "botonEsconder"
-                            : ""
-                        }
-                      >
-                        {item.usuarioClasificadora}
-                      </td>
-                      <td
-                        className={
-                          botonFecha === "botonVisible" ? "botonEsconder" : ""
-                        }
-                      >
-                        {item.fecha}
-                      </td>
-                      <td
-                        className={
-                          botonCajas === "botonVisible" ? "botonEsconder" : ""
-                        }
-                      >
-                        {item.cajas}
-                      </td>
-                      <td
-                        className={
-                          botonArticulo === "botonVisible"
-                            ? "botonEsconder"
-                            : ""
-                        }
-                      >
-                        {item.articulo}
-                      </td>
-                      <td
-                        className={
-                          botonLote === "botonVisible" ? "botonEsconder" : ""
-                        }
-                      >
-                        {item.lote}
-                      </td>
-                      <td
-                        className={
-                          botonJaulas === "botonVisible" ? "botonEsconder" : ""
-                        }
-                      >
-                        {item.jaulas}
-                      </td>
-                      <td
-                        className={
-                          botonPedido === "botonVisible" ? "botonEsconder" : ""
-                        }
-                      >
-                        {item.pedido}
-                      </td>
-                      <td
-                        className={
-                          botonPersonal === "botonVisible"
-                            ? "botonEsconder"
-                            : ""
-                        }
-                      >
-                        {item.personal}
-                      </td>
-                      <td
-                        className={
-                          botonProblemaClasificadora === "botonVisible"
-                            ? "botonEsconder"
-                            : ""
-                        }
-                      >
-                        {item.problemaClasificadora}
-                      </td>
-                      <td
-                        className={
-                          botonAccionClasificadora === "botonVisible"
-                            ? "botonEsconder"
-                            : ""
-                        }
-                      >
-                        {item.accionClasificadora}
-                      </td>
-                      <td
-                        className={
-                          botonTiempo === "botonVisible" ? "botonEsconder" : ""
-                        }
-                      >
-                        {item.tiempo}
-                      </td>
-                      <td
-                        className={
-                          botonVelocidad === "botonVisible"
-                            ? "botonEsconder"
-                            : ""
-                        }
-                      >
-                        {item.velocidad}
-                      </td>
-                      <td
-                        className={
-                          botonGramos === "botonVisible" ? "botonEsconder" : ""
-                        }
-                      >
-                        {item.gramos}
-                      </td>
-                    </tr>
-                  </tbody>
-                </>
-              ))}
-            </table>
-            <h4 className="p-2"> --- Rechazos ---</h4>
-            <table className="table">
-              <thead className="table tableColor">
-                <tr>
-                  <th scope="col">Usuario</th>
-                  <th scope="col">Fichas</th>
-                  <th scope="col">Paneles</th>
-                  <th scope="col">Jaula</th>
-                </tr>
-              </thead>
-              {resultRechazos.map((item, index) => (
-                <>
-                  <tbody key={index}>
-                    <tr>
-                      <th scope="row">{item.usuarioRechazos}</th>
-                      <td>{item.fichas}</td>
-                      <td>{item.paneles}</td>
-                      <td>{item.jaula}</td>
-                    </tr>
-                  </tbody>
-                </>
-              ))}
-            </table>
-            <h4 className="p-2"> --- Mecánico ---</h4>
-            <table className="table">
-              <thead className="table tableColor">
-                <tr>
-                  <th scope="col">Hora Mecanico</th>
-                  <th scope="col">Email Mecanico</th>
-                  <th scope="col">Problema Mecanico</th>
-                  <th scope="col">Accion Mecanico</th>
-                </tr>
-              </thead>
-              {resultMecanico.map((item, index) => (
-                <>
-                  <tbody key={index}>
-                    <tr>
-                      <th scope="row">{item.horaDelMecanico}</th>
-                      <td>{item.usuarioMecanico}</td>
-                      <td>{item.problemaMecanico}</td>
-                      <td>{item.accionMecanico}</td>
-                    </tr>
-                  </tbody>
-                </>
-              ))}
-            </table>
-          </div>
+        <div className="mt-5">
+            <div className="table-wrapper-scroll-y my-custom-scrollbar col-12">
+              <Table id="dtHorizontalExample" className="table table-bordered table-striped table-sm mb-0" columns={columnsMecanico} dataSource={resultMecanico} />
+            </div>
         </div>
+            <div className="col-12 mt-5">
+              <button
+                type="button"
+                className="buttonNuevaConsulta"
+                onClick={() => {
+                  window.location.reload(true);
+                }}
+              >
+                Nueva Consulta
+              </button>
+            </div>
+            <div className="col-12 mt-5">
+              <button
+                type="button"
+                className="buttonNuevaConsulta"
+                onClick={() => {
+                  sendMail()
+                }}
+              >
+                Enviar Email
+              </button>
+            </div>
+      </div>
+      </div>
       </div>
     </>
   );
