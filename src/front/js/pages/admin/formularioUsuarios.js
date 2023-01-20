@@ -36,6 +36,7 @@ export const FormularioUsuarios = () => {
   return (
     <>
       <Formik
+      
         initialValues={{
           username: "",
           email: "",
@@ -129,7 +130,7 @@ export const FormularioUsuarios = () => {
                 component={() => <div className="error">{errors.role}</div>}
               />
             </div>
-            <button type="submit" onClick={sendDataRegister}>
+            <button className="botonRegister" onClick={sendDataRegister}>
               Enviar
             </button>
             {enviarFormulario && (

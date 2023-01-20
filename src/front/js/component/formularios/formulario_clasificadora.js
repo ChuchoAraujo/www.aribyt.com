@@ -1,14 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
-import { store, actions } from "../../store/flux";
 import { Context } from "../../store/appContext";
-import { number } from "prop-types";
 import Mantenimiento from "../icons/mantenimeinto";
 import Inyector from "../icons/inyector";
 import Papel from "../icons/papel";
 import Bidon from "../icons/bidon";
 import { HiHome } from "react-icons/hi";
+
 
 export const Formulario_clasificadora = () => {
   const { store, actions } = useContext(Context);
@@ -169,7 +168,6 @@ export const Formulario_clasificadora = () => {
   return (
     <>
       <Formik
-        className="containerFormClasificadora"
         initialValues={{
           cajas: "",
           articulo: "",
@@ -226,328 +224,341 @@ export const Formulario_clasificadora = () => {
           setTurno(valores.turno);
           setCajas(valores.cajas);
           setTimeout(() => setFormulario(false), 5000);
-          console.log(valores)
+          console.log(valores);
         }}
       >
         {({ errors, setFieldValue }) => (
           <Form className="formulario">
-            {/*--------------------------Formulario pagina1*-------------------*/}
-            <div className={pagina1 === "visibility" ? "hidden" : "visibility"}>
-              <div>
-                <label htmlFor="cajas">Cajas</label>
-                <Field
-                  className="inputsFormulario"
-                  type="number"
-                  id="cajas"
-                  name="cajas"
-                  placeholder="Número de cajas"
-                  onKeyUp={(e) => setCajas(e.target.value)}
-                />
-                <ErrorMessage
-                  name="cajas"
-                  component={() => <div className="error">{errors.cajas}</div>}
-                />
-              </div>
-              <div>
-                <label htmlFor="articulo">Artículo</label>
-                <Field
-                  type="text"
-                  id="articulo"
-                  name="articulo"
-                  placeholder="Codigo de Articulo"
-                  onKeyUp={(e) => setArticulo(e.target.value)}
-                />
-                <ErrorMessage
-                  name="articulo"
-                  component={() => (
-                    <div className="error">{errors.articulo}</div>
-                  )}
-                />
-              </div>
-              <div>
-                <label htmlFor="lote">Lote</label>
-                <Field
-                  type="text"
-                  id="lote"
-                  name="lote"
-                  placeholder="Numero Lote"
-                  onKeyUp={(e) => setLote(e.target.value)}
-                />
-              </div>
-              <button
-                onClick={printCondicitional}
-                className="botonSiguienteFormulario"
-              >
-                Siguiente
-              </button>
-            </div>
-
-            {/*--------------------------Formulario pagina2*-------------------*/}
-            <div className={pagina2 === "hidden" ? "visibility" : "hidden"}>
-              <div>
-                <label htmlFor="jaulas">Jaulas</label>
-                <Field
-                  type="text"
-                  id="jaulas"
-                  name="jaulas"
-                  placeholder="Numero de Jaulas"
-                  onKeyUp={(e) => setJaulas(e.target.value)}
-                />
-              </div>
-              <div>
-                <label htmlFor="pedido">pedido</label>
-                <Field
-                  type="text"
-                  id="pedido"
-                  name="pedido"
-                  placeholder="Numero de pedido"
-                  onKeyUp={(e) => setPedido(e.target.value)}
-                />
-              </div>
-              <div>
-                <label htmlFor="personal">personal</label>
-                <Field
-                  as="textarea"
-                  id="personal"
-                  name="personal"
-                  placeholder="Personal en la maquina"
-                  onKeyUp={(e) => setPersonal(e.target.value)}
-                />
-              </div>
-              <button
-                onClick={printCondicitional2}
-                className="botonSiguienteFormulario"
-              >
-                Siguiente
-              </button>
-            </div>
-            {/*--------------------------Formulario pagina3*-------------------*/}
-            <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
-              <h6>--- Problemas recurrentes ---</h6>
-              <div className="row p-3 d-flex justify-content-center text-center contendedorBotonesProblemas">
-                <button
-                  onClick={() => {
-                    setFieldValue("problema", "Se ha realizado mantenimiento");
-                    setProblemaRecurrente(
-                      "problemaClasificadoraGray col-3 text-center buttonIconsFormClasificadora"
-                    );
-                    setIconProblema("iconManteGray");
-                    setTituloProblema("tituloManteGray");
-                    console.log(value);
-                  }}
-                  className={
-                    problemaRecurrente ===
-                    "problemaClasificadoraGray col-3 text-center buttonIconsFormClasificadora"
-                      ? "problemaClasificadoraGreen col-3 text-center buttonIconsFormClasificadora"
-                      : "problemaClasificadoraGray col-3 text-center buttonIconsFormClasificadora"
-                  }
-                >
-                  <Mantenimiento
-                    className={
-                      iconProblema === "iconManteGray"
-                        ? "iconManteWhite "
-                        : "iconManteGray "
-                    }
-                  />
-                  <h6
-                    className={
-                      tituloProblema === "tituloManteGray"
-                        ? "tituloManteWhite"
-                        : "tituloManteGray"
-                    }
-                  >
-                    Mantenimiento
-                  </h6>
-                </button>
-
+           
+              
+                {/*--------------------------Formulario pagina1*-------------------*/}
                 <div
-                  onClick={() => {
-                    setFieldValue("problema", "Falta papel")
-                    setProblemaRecurrente(
-                      "problemaPapelGray col-3 text-center buttonIconsFormClasificadora"
-                    );
-                    setIconProblema("iconPapelGray");
-                    setTituloProblema("tituloIconPapelGray");
-                  }}
-                  className={
-                    problemaRecurrente ===
-                    "problemaPapelGray col-3 text-center buttonIconsFormClasificadora"
-                      ? "problemaPapelGreen col-3 text-center buttonIconsFormClasificadora"
-                      : "problemaPapelGray col-3 text-center buttonIconsFormClasificadora"
-                  }
+                  className={pagina1 === "visibility" ? "hidden" : "visibility"}
                 >
-                  <Papel
-                    className={
-                      iconProblema === "iconPapelGray"
-                        ? "iconPapelWhite "
-                        : "iconPapelGray "
-                    }
-                  />
-                  <h6
-                    className={
-                      tituloProblema === "tituloIconPapelGray"
-                        ? "tituloIconPapelWhite"
-                        : "tituloIconPapelGray"
-                    }
+                  <div>
+                    <label htmlFor="cajas">Cajas</label>
+                    <Field
+                      className="inputsFormulario"
+                      type="number"
+                      id="cajas"
+                      name="cajas"
+                      placeholder="Número de cajas"
+                      onKeyUp={(e) => setCajas(e.target.value)}
+                    />
+                    <ErrorMessage
+                      name="cajas"
+                      component={() => (
+                        <div className="error">{errors.cajas}</div>
+                      )}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="articulo">Artículo</label>
+                    <Field
+                      type="text"
+                      id="articulo"
+                      name="articulo"
+                      placeholder="Codigo de Articulo"
+                      onKeyUp={(e) => setArticulo(e.target.value)}
+                    />
+                    <ErrorMessage
+                      name="articulo"
+                      component={() => (
+                        <div className="error">{errors.articulo}</div>
+                      )}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="lote">Lote</label>
+                    <Field
+                      type="text"
+                      id="lote"
+                      name="lote"
+                      placeholder="Numero Lote"
+                      onKeyUp={(e) => setLote(e.target.value)}
+                    />
+                  </div>
+                  <button
+                    onClick={printCondicitional}
+                    className="botonSiguienteFormulario"
                   >
-                    Papel
-                  </h6>
+                    Siguiente
+                  </button>
                 </div>
 
-                <div
-                  onClick={() => {
-                    setFieldValue("problema", "Problemas con el inyector")
-                    setProblemaRecurrente(
-                      "problemaInyectorGray col-3 text-center buttonIconsFormClasificadora"
-                    );
-                    setIconProblema("iconInyectGray");
-                    setTituloProblema("tituloInyectGray");
-                  }}
-                  className={
-                    problemaRecurrente ===
-                    "problemaInyectorGray col-3 text-center buttonIconsFormClasificadora"
-                      ? "problemaInyectorGreen col-3 text-center buttonIconsFormClasificadora"
-                      : "problemaInyectorGray col-3 text-center buttonIconsFormClasificadora"
-                  }
-                >
-                  <Inyector
-                    className={
-                      iconProblema === "iconInyectGray"
-                        ? "iconInyectWhite"
-                        : "iconInyectGray"
-                    }
-                  />
-                  <h6
-                    className={
-                      tituloProblema === "tituloInyectGray"
-                        ? "tituloInyectWhite"
-                        : "tituloInyectGray"
-                    }
+                {/*--------------------------Formulario pagina2*-------------------*/}
+                <div className={pagina2 === "hidden" ? "visibility" : "hidden"}>
+                  <div>
+                    <label htmlFor="jaulas">Jaulas</label>
+                    <Field
+                      type="text"
+                      id="jaulas"
+                      name="jaulas"
+                      placeholder="Numero de Jaulas"
+                      onKeyUp={(e) => setJaulas(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="pedido">pedido</label>
+                    <Field
+                      type="text"
+                      id="pedido"
+                      name="pedido"
+                      placeholder="Numero de pedido"
+                      onKeyUp={(e) => setPedido(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="personal">personal</label>
+                    <Field
+                      as="textarea"
+                      id="personal"
+                      name="personal"
+                      placeholder="Personal en la maquina"
+                      onKeyUp={(e) => setPersonal(e.target.value)}
+                    />
+                  </div>
+                  <button
+                    onClick={printCondicitional2}
+                    className="botonSiguienteFormulario"
                   >
-                    Inyector
-                  </h6>
+                    Siguiente
+                  </button>
                 </div>
+                {/*--------------------------Formulario pagina3*-------------------*/}
+                <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
+                  <h6>--- Problemas recurrentes ---</h6>
+                  <div className="">
+                    <button
+                      onClick={() => {
+                        setFieldValue(
+                          "problema",
+                          "Se ha realizado mantenimiento"
+                        );
+                        setProblemaRecurrente(
+                          "problemaClasificadoraGray text-center buttonIconsFormClasificadora"
+                        );
+                        setIconProblema("iconManteGray");
+                        setTituloProblema("tituloManteGray");
+                        console.log(value);
+                      }}
+                      className={
+                        problemaRecurrente ===
+                        "problemaClasificadoraGray text-center buttonIconsFormClasificadora"
+                          ? "problemaClasificadoraGreen text-center buttonIconsFormClasificadora"
+                          : "problemaClasificadoraGray text-center buttonIconsFormClasificadora"
+                      }
+                    >
+                      <Mantenimiento
+                        className={
+                          iconProblema === "iconManteGray"
+                            ? "iconManteWhite "
+                            : "iconManteGray "
+                        }
+                      />
+                      <h6
+                        className={
+                          tituloProblema === "tituloManteGray"
+                            ? "tituloManteWhite"
+                            : "tituloManteGray"
+                        }
+                      >
+                        Mantenimiento
+                      </h6>
+                    </button>
 
-                <div
-                  onClick={() => {
-                    setFieldValue("problema", "Se ha averiado el bidón");
-                    setProblemaRecurrente(
-                      "problemaBidonGray col-3 text-center buttonIconsFormClasificadora"
-                    );
-                    setIconProblema("iconBidonGray");
-                    setTituloProblema("tituloBidonGray");
-                  }}
-                  className={
-                    problemaRecurrente ===
-                    "problemaBidonGray col-3 text-center buttonIconsFormClasificadora"
-                      ? "problemaBidonGreen col-3 text-center buttonIconsFormClasificadora"
-                      : "problemaBidonGray col-3 text-center buttonIconsFormClasificadora"
-                  }
-                >
-                  <Bidon
-                    className={
-                      iconProblema === "iconBidonGray"
-                        ? "iconBidonWhite "
-                        : "iconBidonGray "
-                    }
-                  />
-                  <h6
-                    className={
-                      tituloProblema === "tituloBidonGray"
-                        ? "tituloBidonWhite"
-                        : "tituloBidonGray"
-                    }
-                  >
-                    Bidon
-                  </h6>
+                    <div
+                      onClick={() => {
+                        setFieldValue("problema", "Falta papel");
+                        setProblemaRecurrente(
+                          "problemaPapelGray text-center buttonIconsFormClasificadora"
+                        );
+                        setIconProblema("iconPapelGray");
+                        setTituloProblema("tituloIconPapelGray");
+                      }}
+                      className={
+                        problemaRecurrente ===
+                        "problemaPapelGray text-center buttonIconsFormClasificadora"
+                          ? "problemaPapelGreen text-center buttonIconsFormClasificadora"
+                          : "problemaPapelGray text-center buttonIconsFormClasificadora"
+                      }
+                    >
+                      <Papel
+                        className={
+                          iconProblema === "iconPapelGray"
+                            ? "iconPapelWhite "
+                            : "iconPapelGray "
+                        }
+                      />
+                      <h6
+                        className={
+                          tituloProblema === "tituloIconPapelGray"
+                            ? "tituloIconPapelWhite"
+                            : "tituloIconPapelGray"
+                        }
+                      >
+                        Papel
+                      </h6>
+                    </div>
+
+                    <div
+                      onClick={() => {
+                        setFieldValue("problema", "Problemas con el inyector");
+                        setProblemaRecurrente(
+                          "problemaInyectorGray text-center buttonIconsFormClasificadora"
+                        );
+                        setIconProblema("iconInyectGray");
+                        setTituloProblema("tituloInyectGray");
+                      }}
+                      className={
+                        problemaRecurrente ===
+                        "problemaInyectorGray text-center buttonIconsFormClasificadora"
+                          ? "problemaInyectorGreen text-center buttonIconsFormClasificadora"
+                          : "problemaInyectorGray text-center buttonIconsFormClasificadora"
+                      }
+                    >
+                      <Inyector
+                        className={
+                          iconProblema === "iconInyectGray"
+                            ? "iconInyectWhite"
+                            : "iconInyectGray"
+                        }
+                      />
+                      <h6
+                        className={
+                          tituloProblema === "tituloInyectGray"
+                            ? "tituloInyectWhite"
+                            : "tituloInyectGray"
+                        }
+                      >
+                        Inyector
+                      </h6>
+                    </div>
+
+                    <div
+                      onClick={() => {
+                        setFieldValue("problema", "Se ha averiado el bidón");
+                        setProblemaRecurrente(
+                          "problemaBidonGray text-center buttonIconsFormClasificadora"
+                        );
+                        setIconProblema("iconBidonGray");
+                        setTituloProblema("tituloBidonGray");
+                      }}
+                      className={
+                        problemaRecurrente ===
+                        "problemaBidonGray text-center buttonIconsFormClasificadora"
+                          ? "problemaBidonGreen text-center buttonIconsFormClasificadora"
+                          : "problemaBidonGray text-center buttonIconsFormClasificadora"
+                      }
+                    >
+                      <Bidon
+                        className={
+                          iconProblema === "iconBidonGray"
+                            ? "iconBidonWhite "
+                            : "iconBidonGray "
+                        }
+                      />
+                      <h6
+                        className={
+                          tituloProblema === "tituloBidonGray"
+                            ? "tituloBidonWhite"
+                            : "tituloBidonGray"
+                        }
+                      >
+                        Bidon
+                      </h6>
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="problema">Problema</label>
+                    <Field
+                      as="textarea"
+                      id="problema"
+                      name="problema"
+                      placeholder="¿Qué ha pasado?"
+                      onKeyUp={(e) => {
+                        setProblema(e.target.value);
+                      }}
+                    ></Field>
+                  </div>
+                  <div>
+                    <label htmlFor="accion">accion</label>
+                    <Field
+                      as="textarea"
+                      id="accion"
+                      name="accion"
+                      placeholder="Solucion al problema o problemas"
+                      onKeyUp={(e) => setAccion(e.target.value)}
+                    />
+                    <button
+                      onClick={printCondicitional3}
+                      className="botonSiguienteFormulario"
+                    >
+                      Siguiente
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div>
-                <label htmlFor="problema">Problema</label>
-                <Field
-                  as="textarea"
-                  id="problema"
-                  name="problema"
-                  placeholder="¿Qué ha pasado?"
-                  onKeyUp={(e) => {
-                    setProblema(e.target.value);
-                  }}
-                >
-                </Field>
-              </div>
-              <div>
-                <label htmlFor="accion">accion</label>
-                <Field
-                  as="textarea"
-                  id="accion"
-                  name="accion"
-                  placeholder="Solucion al problema o problemas"
-                  onKeyUp={(e) => setAccion(e.target.value)}
-                />
-                <button
-                  onClick={printCondicitional3}
-                  className="botonSiguienteFormulario"
-                >
-                  Siguiente
-                </button>
-              </div>
-            </div>
-            {/*--------------------------Formulario pagina4*-------------------*/}
-            <div className={pagina4 === "hidden" ? "visibility" : "hidden"}>
-              <div>
-                <label htmlFor="tiempo">tiempo</label>
-                <Field
-                  type="number"
-                  id="tiempo"
-                  name="tiempo"
-                  placeholder="Tiempo parada"
-                  onKeyUp={(e) => setTiempo(e.target.value)}
-                />
-              </div>
-              <div>
-                <label htmlFor="velocidad">velocidad</label>
-                <Field
-                  type="number"
-                  id="velocidad"
-                  name="velocidad"
-                  placeholder="Velocidad de la maquina"
-                  onKeyUp={(e) => setVelocidad(e.target.value)}
-                />
-                <ErrorMessage
-                  name="velocidad"
-                  component={() => (
-                    <div className="error">{errors.velocidad}</div>
-                  )}
-                />
-              </div>
-              <div>
-                <label htmlFor="gramos">gramos</label>
-                <Field
-                  type="number"
-                  id="gramos"
-                  name="gramos"
-                  placeholder="Gramos de la cola"
-                  onKeyUp={(e) => setGramos(e.target.value)}
-                />
-                <ErrorMessage
-                  name="gramos"
-                  component={() => <div className="error">{errors.gramos}</div>}
-                />
-              </div>
-              <Field
-              onClick={(e)=> setTurno(e.target.value)}
-               as="select" name="turno" className="selectTurno">
-                <option value="mañana">Mañana</option>
-                <option value="tarde">Tarde</option>
-                <option value="noche">Noche</option>
-              </Field>
-              <button
-                className="botonSiguienteFormulario"
-                onClick={sendDataClasificadora}
-              >
-                Enviar
-              </button>
-              {/* <div>
+                {/*--------------------------Formulario pagina4*-------------------*/}
+                <div className={pagina4 === "hidden" ? "visibility" : "hidden"}>
+                  <div>
+                    <label htmlFor="tiempo">tiempo</label>
+                    <Field
+                      type="number"
+                      id="tiempo"
+                      name="tiempo"
+                      placeholder="Tiempo parada"
+                      onKeyUp={(e) => setTiempo(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="velocidad">velocidad</label>
+                    <Field
+                      type="number"
+                      id="velocidad"
+                      name="velocidad"
+                      placeholder="Velocidad de la maquina"
+                      onKeyUp={(e) => setVelocidad(e.target.value)}
+                    />
+                    <ErrorMessage
+                      name="velocidad"
+                      component={() => (
+                        <div className="error">{errors.velocidad}</div>
+                      )}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="gramos">gramos</label>
+                    <Field
+                      type="number"
+                      id="gramos"
+                      name="gramos"
+                      placeholder="Gramos de la cola"
+                      onKeyUp={(e) => setGramos(e.target.value)}
+                    />
+                    <ErrorMessage
+                      name="gramos"
+                      component={() => (
+                        <div className="error">{errors.gramos}</div>
+                      )}
+                    />
+                  </div>
+                  <Field
+                    onClick={(e) => setTurno(e.target.value)}
+                    as="select"
+                    name="turno"
+                    className="selectTurno"
+                  >
+                    <option value="mañana">Mañana</option>
+                    <option value="tarde">Tarde</option>
+                    <option value="noche">Noche</option>
+                  </Field>
+                  <button
+                    className="botonSiguienteFormulario"
+                    onClick={sendDataClasificadora}
+                  >
+                    Enviar
+                  </button>
+                  {/* <div>
                 <label htmlFor="turno">turno</label>
                 <Field
                   type="select"
@@ -558,25 +569,26 @@ export const Formulario_clasificadora = () => {
                 />
               </div> */}
 
-              {enviarFormulario && (
-                <div class="alert alert-primary" role="alert">
-                  Registro realizado!
+                  {enviarFormulario && (
+                    <div class="alert alert-primary" role="alert">
+                      Registro realizado!
+                    </div>
+                  )}
+                  <div className="">
+                    <div className=""></div>
+                    <div className=" d-flex justify-content-center">
+                      <button
+                        className="botonAtras d-flex align-items-center"
+                        type="button"
+                        onClick={back}
+                      >
+                        <HiHome className="iconHomeClasificadora " />
+                      </button>
+                    </div>
+                    <div className=""></div>
+                  </div>
                 </div>
-              )}
-              <div className="row">
-                <div className="col-4"></div>
-                <div className="col-4 d-flex justify-content-center">
-                  <button
-                    className="botonAtras d-flex align-items-center"
-                    type="button"
-                    onClick={back}
-                  >
-                    <HiHome className="iconHomeClasificadora " />
-                  </button>
-                </div>
-                <div className="col-4"></div>
-              </div>
-            </div>
+            
           </Form>
         )}
       </Formik>

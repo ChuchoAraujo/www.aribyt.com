@@ -6,6 +6,21 @@
 	margin: 0;
 	box-sizing: border-box;
 }
+
+/* body {
+	margin:0;
+	display: grid;
+	min-height: 100vh;
+	grid-template-rows:auto 1fr auto ;
+} */
+
+.bodyLogo {
+	margin: auto;
+}
+#main-container {
+    position: relative;
+    min-height: 100%;
+}
 /* body { background-image: url(/images/image.svg) } */
 
 button{
@@ -22,25 +37,10 @@ button{
 }
 
 
-/*ICONOS SVG*/
-.iconoAribyt {
-	fill: #4dada4;
-	margin: 20px;
-	padding: 200px;
-}
-.pageLogo {
-	background-color: white;
-	width: auto;
-	margin: 30px;
-	padding: 80px;
-}
-
-
 
 /*------------------------------------------NAVEGADOR--------------------------------------------------------*/
 .EstiloNav {
 	background-color: #4dada4;
-	padding: 12px;
 }
 .BotonNav{
 	width: 200px;
@@ -102,10 +102,9 @@ text-decoration: none;
 }
 .footer {
 	background-color: #4dada4;
-	padding: 10px;
 	color: #4dada4;
 	align-items: center;
-	height: auto;
+	padding: 1em 0;
 }
 .textoFooter1 {
 	margin-top: 15px;
@@ -127,7 +126,6 @@ text-decoration: none;
 /*-----------------------------------FORMULARIO-----------------------------------------*/
 
 .formulario {
-	min-width: 600px;
 	margin: 10px;
 	margin-bottom: 50px;
 	background: #fff;
@@ -518,9 +516,6 @@ text-decoration: none;
 	margin: 2px;
 }
 
-.calendario {
-	background-color: #218379 ;
-}
 
 /*----------------------FORMULARIO MECANICO--------------------------------------*/
 .formMecanico {
@@ -644,7 +639,6 @@ text-decoration: none;
 .containerRoles {
 	margin: 10px;
 	padding: 10px;
-	justify-content: center;
 }
 .tituloRoles {
 	font-size: 40px;
@@ -1054,5 +1048,27 @@ pruebas opacidad*/
 		width: 50px;
 		border: none;
 		margin: 5px;
+		padding: 5px;
+	  }
+	  .botonRegister{
+		display: block;
+	background:#4dada4;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+	transition: .3s ease all;
+	width:570px
+	  }
+
+	  .iconSimbol{
+		fill: #4dada4;
+	  }
+	  .containerLogos{
 		padding: 5px;
 	  }

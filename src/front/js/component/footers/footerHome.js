@@ -8,13 +8,13 @@ import { AiOutlineCopyrightCircle } from "react-icons/ai";
 export const FooterHome = () => (
   <footer className="container-fluid text-center footer">
     <div className="row">
-      <div>
+      <div className="col-6">
         <BsLinkedin className="iconos_footer" />
         <AiFillGithub className="iconos_footer" />
         <ImMail4 className="iconos_footer" />
         <MdContactSupport className="iconos_footer" />
       </div>
-      <div>
+      <div className="col-6">
         <p className="textoFooter1">
           <AiOutlineCopyrightCircle className="me-2" />
           Copyright Aribyt 2023

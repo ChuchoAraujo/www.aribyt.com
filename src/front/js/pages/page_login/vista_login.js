@@ -22,26 +22,22 @@ export const Vista_login = () => {
   };
 
   return (
-    <div className="container-fluid text-center">
-      <div className="row">
-        <div className="col-3"></div>
-
-        <div className="col-6 d-flex justify-content-center">
-          <Roles />
+    <>
+      <div className="container justify-content-center text-center">
+        <div className="row">
+          <div className="col-12">
+            <Roles />
+          </div>
         </div>
-
-        <div className="col-3"></div>
-      </div>
-      <div className="row">
-        <div className="col-3"></div>
-
-        <div className="col-6 d-flex justify-content-center">
-          <Login />
+        <div className="row">
+          <div className="col-3"></div>
+          <div className="col-6 ">
+            <Login />
+          </div>
+          <div className="col-3"></div>
         </div>
-
-        <div className="col-3"></div>
       </div>
-     <FooterHome className="container-fluid"/>
-    </div>
+      <FooterHome />
+    </>
   );
 };

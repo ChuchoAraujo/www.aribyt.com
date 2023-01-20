@@ -8,10 +8,8 @@ export const Page_logo = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="pageLogo text-center">
-      <div>
+    <div className="text-center">
         <Logo />
-      </div>
     </div>
   );
 };

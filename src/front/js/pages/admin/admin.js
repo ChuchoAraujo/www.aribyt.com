@@ -55,6 +55,7 @@ export const  Admin = () => {
       <div className="container-fluid containerAdmin">
         <div className="row">
           <div className="col-2"></div>
+
           <div className="col-8">
             <div className="text-center p-3">
               <h1 className="tituloAdmin">--- Administrador de usuarios ---</h1>
@@ -67,9 +68,15 @@ export const  Admin = () => {
                 Agregar usuario
               </button>
             </div>
-            <div>{boton ? <FormularioUsuarios /> : null}</div>
           </div>
+
           <div className="col-2"></div>
+        </div>
+
+        <div className="row">
+          <div className="col-3"></div>
+          <div className="col-6">{boton ? <FormularioUsuarios /> : null}</div>
+          <div className="col-3"></div>
         </div>
 
         <div className="container row">

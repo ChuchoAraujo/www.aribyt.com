@@ -13,10 +13,17 @@ export const Roles = () => {
   const [titulo, setTitulo] = useState("");
 
   return (
-    <div className="container-fluid text-center containerRoles">
-      <h3 className="tituloRoles">--- Login ---</h3>
-      <div className="row containerRoles onLogo">
-        <div className="col-4">
+    <div className="container containerRoles justify-content-center">
+      <div className="row">
+        <div className="col-12">
+          <h3 className="tituloRoles">--- Login ---</h3>
+        </div>
+      </div>
+      <div className="row ">
+        <div
+          className="col-md-4
+         d-flex justify-content-center"
+        >
           <div
             className={
               role === "roleClasificadoraGray"
@@ -26,7 +33,7 @@ export const Roles = () => {
             onClick={() => {
               setRole("roleClasificadoraGray");
               actions.selectionRoles("clasificadora");
-              setIcon("iconClasificadoraGray")
+              setIcon("iconClasificadoraGray");
               setTitulo("tituloClasificadoraGray");
             }}
           >
@@ -50,7 +57,7 @@ export const Roles = () => {
           </div>
         </div>
 
-        <div className="botonRoles col-4" onClick={() => {}}>
+        <div className="botonRoles col-md-4 d-flex justify-content-center">
           <div
             className={
               role === "roleMecanicoGray"
@@ -84,7 +91,7 @@ export const Roles = () => {
           </div>
         </div>
 
-        <div className="botonRoles col-4" onClick={() => {}}>
+        <div className="botonRoles col-md-4 d-flex justify-content-center">
           <div
             className={
               role === "roleEncargadoGray"

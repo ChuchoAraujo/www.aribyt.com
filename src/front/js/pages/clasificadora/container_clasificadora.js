@@ -4,6 +4,7 @@ import { Formulario_clasificadora } from "../../component/formularios/formulario
 import "../../../styles/home.css";
 import { useNavigate } from "react-router-dom";
 import { FooterCajas } from "../../component/footers/footerCajas";
+import { Col, Row } from "antd";
 
 export const Container_clasificadora = () => {
   const { store, actions } = useContext(Context);
@@ -13,13 +14,12 @@ export const Container_clasificadora = () => {
 
   return (
     <>
-      <div className="container-fluid text-center align-items-start row">
-        <div className="col"></div>
-        <div className="col-9 marginFormClasificadora">
-          <Formulario_clasificadora />
-        </div>
-        <div className="col"></div>
-        <FooterCajas />
+      <div className="container-fluid">
+        <Row justify="center">
+          <Col md={8} sm={24}>
+            <Formulario_clasificadora />
+          </Col>
+        </Row>
       </div>
     </>
   );

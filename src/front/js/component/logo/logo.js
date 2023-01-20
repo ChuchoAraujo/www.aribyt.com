@@ -8,7 +8,7 @@ export const Logo = () => {
 
   return (
     <div className="container-fluid">
-      <Icon_aribyt className="iconoAribyt img-fluid" />
+      <Icon_aribyt/>
     </div>
   );
 };
