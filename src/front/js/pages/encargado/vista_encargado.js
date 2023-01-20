@@ -369,7 +369,6 @@ export const Vista_encargado = () => {
         }}
         onSubmit={(valores, { resetForm }) => {
           resetForm();
-          console.log("Formulario enviado");
           setFormulario(true);
           setTimeout(() => setFormulario(false), 5000);
         }}

@@ -52,22 +52,30 @@ export const  Admin = () => {
 
   return (
     localStorage.getItem("token") && (
-      <div className="container-fluid">
-        <div className="text-center p-3">
-          <h1>Administrador de usuarios</h1>
+      <div className="container-fluid containerAdmin">
+        <div className="row">
+          <div className="col-2"></div>
+          <div className="col-8">
+            <div className="text-center p-3">
+              <h1 className="tituloAdmin">--- Administrador de usuarios ---</h1>
+            </div>
+            <div className="text-center p-2">
+              <button className="botonUsers" onClick={verTodos}>
+                Ver todo
+              </button>
+              <button className="botonUsers2" onClick={agregarUsuario}>
+                Agregar usuario
+              </button>
+            </div>
+            <div>{boton ? <FormularioUsuarios /> : null}</div>
+          </div>
+          <div className="col-2"></div>
         </div>
-        <div className="text-center p-2">
-          <button className="m-2" onClick={verTodos}>
-            Ver todo
-          </button>
-          <button className="m-2" onClick={agregarUsuario}>
-            Agregar usuario
-          </button>
-        </div>
-        <div>{boton ? <FormularioUsuarios /> : null}</div>
 
-        <div>
-          <Callusers />
+        <div className="container row">
+          <div className="col-12">
+            <Callusers />
+          </div>
         </div>
       </div>
     )

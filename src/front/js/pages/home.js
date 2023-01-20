@@ -13,9 +13,7 @@ export const Home = () => {
       <div >
         
             <Page_logo />
-         
-        
-            <FooterHome />
+            <FooterHome className="container-fluid"/>
        
       </div>
     </>

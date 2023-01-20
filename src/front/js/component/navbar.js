@@ -34,24 +34,24 @@ export const Navbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item enlaceNav">
+                <Link to={"/vista_login"}>
+                  <a class="nav-link active " aria-current="page">
+                    Iniciar sesión
+                  </a>
+                </Link>
+              </li>
+
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  ¿Quienes somos?
-                </a>
+                <Link to={"/loginAdmin"}>
+                  <a class="nav-link" href="#">
+                    Admin.
+                  </a>
+                </Link>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                  Iniciar sesión
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#" onClick={logOut}>
                   Cerrar sesión
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Admin.
                 </a>
               </li>
               <li class="nav-item">

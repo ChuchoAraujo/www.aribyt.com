@@ -25,7 +25,8 @@ button{
 /*ICONOS SVG*/
 .iconoAribyt {
 	fill: #4dada4;
-	width: 450px;
+	margin: 20px;
+	padding: 200px;
 }
 .pageLogo {
 	background-color: white;
@@ -43,6 +44,9 @@ button{
 }
 .BotonNav{
 	width: 200px;
+}
+a{
+	text-decoration: none
 }
 
 .dropdownTexto {
@@ -992,4 +996,63 @@ pruebas opacidad*/
 	  table.dataTable thead .sorting_desc_disabled:after,
 	  table.dataTable thead .sorting_desc_disabled:before {
 	   bottom: .5em;
+	  }
+
+
+	  /*---------------------ADMINISTRADOR---------------------------------------*/
+	 .containerAdmin{
+		margin: 40px;
+		padding: 30px;
+	 }
+	  
+	  .botonUsers{
+		background-color: #4dada4;
+		margin: 10px;
+		padding: 10px;
+		border: 2px solid #828282;
+		font-size: 20px;
+		font-weight: 600;
+		color: white;
+		width: 120px;
+	  }
+	    .botonUsers2{
+		background-color: #4dada4;
+		margin: 10px;
+		padding: 10px;
+		border: 2px solid #828282;
+		font-size: 20px;
+		font-weight: 600;
+		color: white;
+		width: 200px;
+	  }
+
+	  .tituloAdmin {
+		color: #828282;
+		font-size: 50px;
+		font-weight: 600;
+	  }
+
+	  .cardUser{
+		background-color: #e2e2e2;
+		color: #828282;
+		margin: 5px;
+		padding: 40px;
+		font-size: 14px;
+		font-weight: 400;
+		width: 220px;
+	  }
+
+	  .botonDelete {
+		background-color: #e66e70;
+		width: 50px;
+		border: none;
+		margin: 5px;
+		padding: 5px;
+	  }
+	    .botonEdit {
+		background-color: #efcc59;
+		width: 50px;
+		border: none;
+		margin: 5px;
+		padding: 5px;
 	  }

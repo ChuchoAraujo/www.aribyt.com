@@ -4,6 +4,10 @@ import { AiFillEdit } from "react-icons/ai";
 import { Context } from "../../store/appContext";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
+import { RiUser3Fill } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
+import { AiFillSkin } from "react-icons/ai";
+;
 
 export const Callusers = () => {
   const navigate = useNavigate();
@@ -207,38 +211,54 @@ export const Callusers = () => {
             : "visibility container-fluid"
         }
       >
-        <div className="row">
-          {store.user.map((item, index) => (
-            <>
-              <div className="col card text-center p-2" key={index}>
-                <p className="mt-3 fw-bold">Username: {item.username}</p>
-                <hr />
-                <p>Id usuario: {item.id}</p>
-                <p>Email: {item.email}</p>
-                <p>Role: {item.role}</p>
-                <div className="text-center">
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => {
-                      eliminar(item.id, index);
-                    }}
-                  >
-                    <AiFillDelete />
-                  </button>
-                  <button
-                    className="btn btn-warning"
-                    onClick={() => {
-                      agregarUsuario();
-                      printCondicitional();
-                      setObjeto(item);;
-                    }}
-                  >
-                    <AiFillEdit />
-                  </button>
+        <div className="container-fluid">
+          <div className="row d-flex justify-content-center">
+            {store.user.map((item, index) => (
+              <>
+                <div
+                  className="cardUser col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 card text-center p-2"
+                  key={index}
+                >
+                  <div className="card-body">
+                    <p className="mt-3 fw-bold d-flex align-items-center d-flex justify-content-center">
+                      Username: {item.username}
+                    </p>
+                    <hr />
+                    <p>
+                      <RiUser3Fill /> Id usuario: {item.id}
+                    </p>
+                    <p>
+                      <MdEmail /> Email: {item.email}
+                    </p>
+                    <p>
+                      <AiFillSkin /> Role: {item.role}
+                    </p>
+                  </div>
+
+                  <div className="text-center">
+                    <button
+                      className="botonDelete"
+                      onClick={() => {
+                        eliminar(item.id, index);
+                      }}
+                    >
+                      <AiFillDelete />
+                    </button>
+                    <button
+                      className="botonEdit"
+                      onClick={() => {
+                        agregarUsuario();
+                        printCondicitional();
+                        setObjeto(item);
+                      }}
+                    >
+                      <AiFillEdit />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </>
-          ))}
+              </>
+            ))}
+          </div>
         </div>
       </div>
     </>
