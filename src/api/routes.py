@@ -418,7 +418,7 @@ def sendMail():
             ]
         }
         result = mailjet.send.create(data=data)
-        return jsonify({'clasificadora': arrayClasificadora})
+        return jsonify({'mensaje': "enviado"})
     except:
         return jsonify({'error':'error al ejecutar la funcion de enviar mail'})
 

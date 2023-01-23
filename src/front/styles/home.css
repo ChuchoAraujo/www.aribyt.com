@@ -167,7 +167,26 @@ text-decoration: none;
 	transition: .3s ease all;
 	margin-top: 20px;
 }
-
+.botonRegresarFormulario {
+	display: block;
+	background: #4dada4;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+	color: rgb(255, 0, 0);
+	font-size: 16px;
+	transition: .3s ease all;
+	margin-top: 20px;
+}
+.botonClasificadoraEnviar{
+	margin: 1rem 0;
+	padding: 0.5rem 0;
+	background-color: #4dada4;
+}
 .formulario input,
 .formulario textarea {
 	font-family: 'Open Sans', sans-serif;
@@ -194,21 +213,7 @@ text-decoration: none;
 	font-size: 12px;
 }
 
-.formulario button[type="submit"] {
-	display: block;
-	background: #4dada4;
-	font-weight: 600;
-	font-family: 'Open Sans', sans-serif;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-	padding: 10px;
-	border-radius: 5px;
-	color: #fff;
-	font-size: 16px;
-	transition: .3s ease all;
-	width:1000px
-}
+
 
 .buttonNuevaConsulta{
 	background: #4dada4;
@@ -225,10 +230,6 @@ text-decoration: none;
 	width:auto
 }
 
-.formulario button[type="submit"]:hover {
-	background: #218379;
-	width:1000px
-}
 
 .formulario .exito {
 	text-align: center;

@@ -3,23 +3,20 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import { store } from "../../store/flux";
 import { Context } from "../../store/appContext";
+import { DatePicker } from 'antd';
 
 export const Formulario_mecanico = () => {
   const { store } = useContext(Context);
   const navigate = useNavigate();
+  const[fecha,setFecha]=useState("");
   //REGISTRO INPUTS
-   const [problema, setProblema] = useState("");
-   const [accion, setAccion] = useState("");
-   const [turno, setTurno] = useState("");
   //ALERT ENVIO FORMULARIO
   const [enviarFormulario, setFormulario] = useState(false);
   //OBTENER FECHA Y HORA
-  let today = new Date();
-  let day = today.getDate();
-  let month = today.getMonth() + 1;
-  let year = today.getFullYear();
-  var todayHora = new Date();
-  var nowHora = todayHora.toLocaleTimeString("en-US");
+  const valorFecha = (date, dateString) => {
+    setFecha(dateString);
+  };
+  const formatoFecha = 'DD/MM/YYYY';
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/private", {
@@ -36,7 +33,7 @@ export const Formulario_mecanico = () => {
       .catch((error) => console.log("error", error));
   }, []);
 
-  const sendDataMecanico = () => {
+  const sendDataMecanico = (valores) => {
     fetch(process.env.BACKEND_URL + "/api/mecanico", {
       method: "POST",
       headers: {
@@ -45,16 +42,16 @@ export const Formulario_mecanico = () => {
       },
       body: JSON.stringify({
         "user_id": store.userId,
-        "problema": problema,
-        "accion": accion,
-        "fecha": `${month}/${day}/${year}`,
+        "problema": valores.problema,
+        "accion": valores.accion,
+        "fecha": fecha,
         "horas": store.horamec,
-        "turno":turno
+        "turno":valores.turno
       }),
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
+        navigate("vista_login/vista_mecanico")
       })
       .catch((error) => console.log("error", error));
   };
@@ -70,10 +67,8 @@ export const Formulario_mecanico = () => {
         onSubmit={(valores, { resetForm }) => {
           resetForm();
           setFormulario(true);
-          setProblema(valores.problema);
-          setAccion(valores.accion);
-          setTurno(valores.turno);
           setTimeout(() => setFormulario(false), 5000);
+          sendDataMecanico(valores)
         }}
       >
         {() => (
@@ -85,7 +80,7 @@ export const Formulario_mecanico = () => {
                 id="problema"
                 name="problema"
                 placeholder="Problemas ocurridos"
-                onKeyUp={(e) => setProblema(e.target.value)}
+
               />
             </div>
             <div>
@@ -95,23 +90,36 @@ export const Formulario_mecanico = () => {
                 id="accion"
                 name="accion"
                 placeholder="Solucion al problema o problemas"
-                onKeyUp={(e) => setAccion(e.target.value)}
+
               />
             </div>
             <div>
-              <label htmlFor="turno">turno</label>
-              <Field
-                type="text"
-                id="turno"
-                name="turno"
-                placeholder="turno"
-                onKeyUp={(e) => setTurno(e.target.value)}
-              />
-            </div>
+                  <label htmlFor="turno">Turno</label>
+                  <Field
+                    as="select"
+                    id="turno"
+                    name="turno"
+                    className="selectTurno"
+                  >
+                    <option>Seleccione</option>
+                    <option value="mañana">Mañana</option>
+                    <option value="tarde">Tarde</option>
+                    <option value="noche">Noche</option>
+                  </Field>
+                  </div>
+              <div>
+                  <label htmlFor="fecha">Fecha</label>
+                      <DatePicker onChange={valorFecha} format={formatoFecha}/>
+              </div>
+              <div>
             <button
-            className="botonEnviarForm" onClick={sendDataMecanico}>
+            className="botonSiguienteFormulario" type="submit">
               Enviar
             </button>
+            </div>
+            <div>
+            <button onClick={()=>navigate(-1)} className="botonRegresarFormulario">Regresar</button>
+            </div>
             {enviarFormulario && (
               <p className="exito">Formulario enviado con exito!</p>
             )}

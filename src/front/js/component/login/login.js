@@ -111,7 +111,7 @@ export const Login = () => {
               />
             </div>
 
-            <button type="submit" onClick={access}>
+            <button className="botonSiguienteFormulario" type="submit" onClick={access}>
               Enviar
             </button>
             {enviarFormulario && (

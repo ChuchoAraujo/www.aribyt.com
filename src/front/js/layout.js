@@ -13,7 +13,7 @@ import { Vista_clasificadora } from "./pages/clasificadora/vista_clasificadora";
 import { Container_mecanico } from "./pages/mecanico/container_mecanico";
 import { Vista_mecanico } from "./pages/mecanico/vista_mecanico";
 import { Vista_encargado } from "./pages/encargado/vista_encargado";
-import { Vista_encargado_1 } from "./pages/encargado/vista_encargado1";
+
 import { Page_logo } from "./pages/page_logo/page_logo";
 import { Vista_login } from "./pages/page_login/vista_login";
 import { Vista_Login_Admin } from "./pages/page_login/vista_login_admin";
@@ -61,7 +61,7 @@ const Layout = () => {
 
             <Route element={<Formulario_rechazos />} path="/rechazos" />
             <Route element={<Admin />} path="loginAdmin/admin" />
-            <Route element={<Vista_encargado_1/>} path="encargado"/>
+
             <Route element={<Demo />} path="/demo" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<h1>Not found!</h1>} />
