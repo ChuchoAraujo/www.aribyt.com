@@ -5,7 +5,7 @@ import DatePicker from "react-date-picker";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Space, Table} from "antd";
 import Highlighter from "react-highlight-words";
-
+import { FooterEncargado } from "../../component/footers/footerEncargado"; 
 
 
 import "../../../styles/calendar.css";
@@ -360,6 +360,7 @@ export const Vista_encargado = () => {
   ];
   return (
     <>
+    
     <div className="container-fluid text-center">
       <div className="row">
       <Formik
@@ -412,7 +413,7 @@ export const Vista_encargado = () => {
                         : "seleccionTurnoTardeGris"
                     }
                   >
-                    tarde
+                    Tarde
                   </button>
 
                   <button
@@ -430,7 +431,7 @@ export const Vista_encargado = () => {
                         : "seleccionTurnoMañanaGris"
                     }
                   >
-                    noche
+                    Noche
                   </button>
                 </div>
                 {/*----------------------FECHA MUI-------------------*/}
@@ -465,7 +466,7 @@ export const Vista_encargado = () => {
                       width={200}
                       role="alert"
                     >
-                      Filtros aplicados con éxito!
+                      ¡Filtros aplicados con éxito!
                     </div>
                   )}
                 </div>
@@ -515,6 +516,8 @@ export const Vista_encargado = () => {
       </div>
       </div>
       </div>
+
+    <FooterEncargado/>
     </>
   );
 };

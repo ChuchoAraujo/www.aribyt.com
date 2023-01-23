@@ -17,7 +17,7 @@ export const FooterHome = () => (
       <div className="col-6">
         <p className="textoFooter1">
           <AiOutlineCopyrightCircle className="me-2" />
-          Copyright Aribyt 2023
+         2023 Aribyt
         </p>
       </div>
     </div>

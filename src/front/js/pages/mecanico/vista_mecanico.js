@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext} from "react";
 import { Context } from "../../store/appContext";
 
 import { Horas_mecanico } from "../../component/horas/horas_mecanico";
 import "../../../styles/home.css";
-import { Footer } from "antd/es/layout/layout";
-import { FooterCajas } from "../../component/footers/footerCajas";
+
+import { FooterMecanico } from "../../component/footers/footerMecanico";
+import { FooterEncargado } from "../../component/footers/footerEncargado";
 
 
 export const Vista_mecanico = () => {
@@ -19,7 +20,7 @@ export const Vista_mecanico = () => {
             <Horas_mecanico />
           </div>
           <div className="container">
-            <FooterCajas/>
+         <FooterEncargado/>
           </div>
         </div>
       

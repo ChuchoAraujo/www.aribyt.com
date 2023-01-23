@@ -41,7 +41,9 @@ button{
 /*------------------------------------------NAVEGADOR--------------------------------------------------------*/
 .EstiloNav {
 	background-color: #4dada4;
+	font-family: "Titillum Web", Titillium Web, sans-serif;
 }
+
 .BotonNav{
 	width: 200px;
 }
@@ -52,11 +54,13 @@ a{
 .dropdownTexto {
 color: #4dada4;
 text-decoration: none;
+font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .dropdownTexto:hover {
 	background-color: #e2e2e2;
 	color: #4dada4;
 	cursor: pointer;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .botonUsuarios {
@@ -68,6 +72,7 @@ text-decoration: none;
 	color: #4dada4;
 	font-weight: 700;
 	border-radius: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .botonLogin {
@@ -78,12 +83,14 @@ text-decoration: none;
 	background-color: white;
 	color: #4dada4;
 	font-weight: 700;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .boton_home {
 	font-size: 35px;
 	margin-right: 5px;
 	color: white;
+	
 }
 
 /*------------------------------------FOOTER---------------------------------------*/
@@ -93,27 +100,32 @@ text-decoration: none;
 	margin-right: 5px;
 	color: white;
 	cursor: pointer;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .iconos_footer:hover {
 	font-size: 30px;
 	margin-right: 5px;
 	color: #4dada4;
 	cursor: pointer;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .footer {
 	background-color: #4dada4;
 	color: #4dada4;
 	align-items: center;
 	padding: 1em 0;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .textoFooter1 {
 	margin-top: 15px;
 	font-weight: 600;
 	color: white;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .textoFooter2 {
 	font-weight: 600;
 	color: white;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .footerCajas{
@@ -122,6 +134,7 @@ text-decoration: none;
 	padding: 10px;
 	color: white;
 	fill: white;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 /*-----------------------------------FORMULARIO-----------------------------------------*/
 
@@ -132,6 +145,7 @@ text-decoration: none;
 	border-radius: 15px;
 	padding: 20px;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .marginFormulario {
 	margin: 50px;
@@ -150,13 +164,14 @@ text-decoration: none;
 
 	margin-top: 10px;
 	color: #1f1f1f;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .botonSiguienteFormulario {
 	display: block;
 	background: #4dada4;
 	font-weight: 600;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	border: none;
 	
 	width: 100%;
@@ -170,7 +185,7 @@ text-decoration: none;
 
 .formulario input,
 .formulario textarea {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	width: 100%;
 	border-radius: 5px;
 	border: 2px solid #4dada4 ;
@@ -186,19 +201,21 @@ text-decoration: none;
 .formulario input:focus {
 	outline: none;
 	border: 2px solid #0085FF;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .formulario .error {
 	color: #e92b2d;
 	font-weight: 600;
 	font-size: 12px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .formulario button[type="submit"] {
 	display: block;
 	background: #4dada4;
 	font-weight: 600;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	border: none;
 	cursor: pointer;
 	width: 100%;
@@ -208,12 +225,13 @@ text-decoration: none;
 	font-size: 16px;
 	transition: .3s ease all;
 	width:1000px
+	
 }
 
 .buttonNuevaConsulta{
 	background: #4dada4;
 	font-weight: 600;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	border: none;
 	cursor: pointer;
 	width: 100%;
@@ -228,6 +246,7 @@ text-decoration: none;
 .formulario button[type="submit"]:hover {
 	background: #218379;
 	width:1000px
+	
 }
 
 .formulario .exito {
@@ -236,6 +255,7 @@ text-decoration: none;
 	padding-top: 20px;
 	color: #02a802;
 	width:200px
+	
 }
 
 .formulario input[type="radio"] {
@@ -244,7 +264,7 @@ text-decoration: none;
 
 .formularioEncargado input,
 .formularioEncargado textarea {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	width: auto;
 	height: auto;
 	font-size: 18px;
@@ -258,19 +278,21 @@ text-decoration: none;
 .formularioEncargado input:focus {
 	outline: none;
 	border: 2px solid #0085FF;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .formularioEncargado .error {
 	color: #e92b2d;
 	font-weight: 600;
 	font-size: 12px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .formularioEncargado button[type="submit"] {
 	display: block;
 	background: #4dada4;
 	font-weight: 600;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	border: none;
 	cursor: pointer;
 	width: 100%;
@@ -285,6 +307,7 @@ text-decoration: none;
 .formularioEncargado button[type="submit"]:hover {
 	background: #218379;
 	width:200px
+	
 }
 
 .formularioEncargado .exito {
@@ -297,12 +320,13 @@ text-decoration: none;
 
 .formularioEncargado input[type="radio"] {
 	width: auto;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .botonEnviarFormulario {
 	display: block;
 	background: #4dada4;
 	font-weight: 600;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	border: none;
 	cursor: pointer;
 	width: 100%;
@@ -312,6 +336,7 @@ text-decoration: none;
 	font-size: 16px;
 	transition: .3s ease all;
 	width:600px
+
 }
 
 
@@ -349,6 +374,7 @@ text-decoration: none;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .problemaClasificadoraGreen {
 	background-color: #4dada4;
@@ -359,6 +385,7 @@ text-decoration: none;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .problemaPapelGray {
 	background-color: white;
@@ -368,6 +395,7 @@ text-decoration: none;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .problemaPapelGreen {
 	background-color: #4dada4;
@@ -378,6 +406,7 @@ text-decoration: none;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .problemaInyectorGray {
@@ -388,6 +417,7 @@ text-decoration: none;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .problemaInyectorGreen {
 	background-color: #4dada4;
@@ -398,6 +428,7 @@ text-decoration: none;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .problemaBidonGray {
 	background-color: white;
@@ -407,6 +438,7 @@ text-decoration: none;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .problemaBidonGreen {
 	background-color: #4dada4;
@@ -417,6 +449,7 @@ text-decoration: none;
 	padding: 15px;
 	margin-right: 8px;
 	border-radius: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 /*Seteo iconos colores problemas*/
 .iconManteWhite {
@@ -509,11 +542,13 @@ text-decoration: none;
 	font-weight: 600;
 	width: 50px;
 	height: 50px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .iconHomeClasificadora {
 	width: 70px;
 	font-size: 40px;
 	margin: 2px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 
@@ -521,12 +556,13 @@ text-decoration: none;
 .formMecanico {
 	margin-top: 50px;
 	padding: 20px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .botonEnviarForm {
 	display: block;
 	background:#4dada4;
 	font-weight: 600;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	border: none;
 	cursor: pointer;
 	width: 100%;
@@ -543,7 +579,7 @@ text-decoration: none;
 	display: block;
 	background:#828282;
 	font-weight: 600;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	border: none;
 	cursor: pointer;
 	width: 100%;
@@ -561,6 +597,7 @@ text-decoration: none;
 .containerPagina1{
 	margin: 20px;
 	padding: 20px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .react-date-picker-color {
@@ -572,6 +609,7 @@ text-decoration: none;
   display: block;
   width: 50%;
   color:red;
+  font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 /*----------FORMULARIO ENCARGADO PAGINA 2-----------------*/
@@ -595,6 +633,7 @@ text-decoration: none;
 	margin: 2px;
 	padding: 2px;
 	background-color: #4dada4;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .iconBotonEliminar {
@@ -604,6 +643,7 @@ text-decoration: none;
 	margin: 2px;
 	padding: 2px;
 	background-color: #ecc24d;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .botonVisible {
 	visibility: visible;
@@ -633,6 +673,7 @@ text-decoration: none;
 	color: white;
 	margin: 10px;
 	padding-inline-start: 10px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 /*---------------------------------------Roles--------------------------------------*/
 
@@ -646,6 +687,7 @@ text-decoration: none;
 	margin: 20px;
 	padding: 20px;
 	color: #828282;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .iconClasificadoraGray {
@@ -653,36 +695,42 @@ text-decoration: none;
 	align-items: center ;
 	margin-top: 25px;
 	fill:#828282;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .iconClasificadoraGreen {
 	width: 50px;
 	align-items: center ;
 	margin-top: 25px;
 	fill: white
+	
 }
 .iconMecanicoGray {
 	width: 50px;
 	align-items: center ;
 	margin-top: 25px;
 	fill:#828282;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .iconMecanicoGreen {
 	width: 50px;
 	align-items: center ;
 	margin-top: 25px;
 	fill: white
+	
 }
 .iconEncargadoGray {
 	width: 50px;
 	align-items: center ;
 	margin-top: 25px;
 	fill:#828282;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .iconEncargadoGreen {
 	width: 50px;
 	align-items: center ;
 	margin-top: 25px;
 	fill: white
+
 }
 /*Titulos roles*/
 .tituloClasificadoraGray {
@@ -690,12 +738,14 @@ text-decoration: none;
 	font-size: 20px;
 	font-weight: 700;
 	padding: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .tituloClasificadoraGreen {
 	color: white;
 	font-size: 20px;
 	font-weight: 700;
 	padding: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .tituloMecanicoGray {
 	color: #828282;
@@ -708,18 +758,21 @@ text-decoration: none;
 	font-size: 20px;
 	font-weight: 700;
 	padding: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .tituloEncargadoGray {
 	color: #828282;
 	font-size: 20px;
 	font-weight: 700;
 	padding: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .tituloEncargadoGreen {
 	color: white;
 	font-size: 20px;
 	font-weight: 700;
 	padding: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 /*------------------------Use state cambio de color----------------------*/
 
@@ -731,6 +784,7 @@ text-decoration: none;
 	cursor: pointer;
 	width: 150px;
 	height: 150px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .roleMecanicoGray{
 	border-radius: 30px;
@@ -738,6 +792,7 @@ text-decoration: none;
 	cursor: pointer;
 	width: 150px;
 	height: 150px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .roleClasificadoraGreen {
 	background-color: #4dada4;
@@ -747,6 +802,7 @@ text-decoration: none;
 	cursor: pointer;
 	width: 150px;
 	height: 150px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .roleClasificadoraGray{
 	border-radius: 30px;
@@ -754,6 +810,7 @@ text-decoration: none;
 	cursor: pointer;
 	width: 150px;
 	height: 150px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .roleEncargadoGreen {
 	background-color: #4dada4;
@@ -763,6 +820,7 @@ text-decoration: none;
 	cursor: pointer;
 	width: 150px;
 	height: 150px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .roleEncargadoGray{
 	border-radius: 30px;
@@ -770,6 +828,7 @@ text-decoration: none;
 	cursor: pointer;
 	width: 150px;
 	height: 150px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 
@@ -786,11 +845,13 @@ text-decoration: none;
 	border-style: none;
 	border-radius: 10px;
 	width: auto;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .iconsAreas {
 	fill: white;
 	width: 20px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 
@@ -799,12 +860,14 @@ text-decoration: none;
 	color: #828282;
 	font-weight: 700;
 	font-size: 40px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .tituloFecha {
 	color: #828282;
 	font-weight: 700;
 	font-size: 40px;
 	margin-bottom: 20px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .seleccionTurnoMañanaGris {
 	background-color: white;
@@ -817,6 +880,7 @@ text-decoration: none;
 	font-size: 20px;
 	font-weight: 600;
 	transition-duration: 0.5s;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 
 }
 .seleccionTurnoMañanaVerde{
@@ -830,6 +894,7 @@ text-decoration: none;
 	width: 120px;
 	font-size: 20px;
 	font-weight: 600;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .seleccionTurnoTardeGris {
@@ -843,6 +908,7 @@ text-decoration: none;
 	font-size: 20px;
 	font-weight: 600;
 	transition-duration: 0.5s;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 
 }
 .seleccionTurnoTardeVerde{
@@ -856,6 +922,7 @@ text-decoration: none;
 	width: 120px;
 	font-size: 20px;
 	font-weight: 600;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .seleccionTurnoNocheGris {
@@ -869,6 +936,7 @@ text-decoration: none;
 	font-size: 20px;
 	font-weight: 600;
 	transition-duration: 0.5s;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 
 }
 .seleccionTurnoNocheVerde{
@@ -882,6 +950,7 @@ text-decoration: none;
 	width: 120px;
 	font-size: 20px;
 	font-weight: 600;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 
@@ -932,6 +1001,7 @@ pruebas opacidad*/
 	background-color: #e2e2e2;
 	margin: 5px;
 	border-radius: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .botonHoras:hover{
@@ -941,6 +1011,7 @@ pruebas opacidad*/
 	background-color: #4dada4;
 	margin: 5px;
 	border-radius: 15px;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
 .botonRechazos{
@@ -952,31 +1023,38 @@ pruebas opacidad*/
 	border-radius: 15px;
 	color: white;
 }
+	
 .botonRechazos:hover{
-	padding: 15px;
+    padding: 15px;
 	width: 200px;
 	border-style: none;
 	background-color: #e2e2e2;
 	margin: 5px;
 	border-radius: 15px;
 	color: black;
+	font-family: "Titillum Web", Titillium Web, sans-serif
+
 }
 
 .my-custom-scrollbar {
 	position: relative;
 	height: auto;
 	overflow: auto;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 	}
 .table-wrapper-scroll-y {
 	display: block;
+	font-family: "Titillum Web", Titillium Web, sans-serif
 	}
 
 .dtHorizontalExampleWrapper {
 		max-width: auto;
 		margin: 0 auto;
+		font-family: "Titillum Web", Titillium Web, sans-serif
 	  }
 #dtHorizontalExample th, td {
 		white-space: nowrap;
+		font-family: "Titillum Web", Titillium Web, sans-serif
 	  }
 	  
 	  table.dataTable thead .sorting:after,
@@ -997,6 +1075,7 @@ pruebas opacidad*/
 	 .containerAdmin{
 		margin: 40px;
 		padding: 30px;
+		font-family: "Titillum Web", Titillium Web, sans-serif
 	 }
 	  
 	  .botonUsers{
@@ -1008,6 +1087,7 @@ pruebas opacidad*/
 		font-weight: 600;
 		color: white;
 		width: 120px;
+		font-family: "Titillum Web", Titillium Web, sans-serif
 	  }
 	    .botonUsers2{
 		background-color: #4dada4;
@@ -1018,12 +1098,14 @@ pruebas opacidad*/
 		font-weight: 600;
 		color: white;
 		width: 200px;
+		font-family: "Titillum Web", Titillium Web, sans-serif
 	  }
 
 	  .tituloAdmin {
 		color: #828282;
 		font-size: 50px;
 		font-weight: 600;
+		font-family: "Titillum Web", Titillium Web, sans-serif
 	  }
 
 	  .cardUser{
@@ -1034,6 +1116,7 @@ pruebas opacidad*/
 		font-size: 14px;
 		font-weight: 400;
 		width: 220px;
+		font-family: "Titillum Web", Titillium Web, sans-serif
 	  }
 
 	  .botonDelete {
@@ -1042,6 +1125,7 @@ pruebas opacidad*/
 		border: none;
 		margin: 5px;
 		padding: 5px;
+		font-family: "Titillum Web", Titillium Web, sans-serif
 	  }
 	    .botonEdit {
 		background-color: #efcc59;
@@ -1049,12 +1133,13 @@ pruebas opacidad*/
 		border: none;
 		margin: 5px;
 		padding: 5px;
+		font-family: "Titillum Web", Titillium Web, sans-serif
 	  }
 	  .botonRegister{
 		display: block;
 	background:#4dada4;
 	font-weight: 600;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	border: none;
 	cursor: pointer;
 	width: 100%;

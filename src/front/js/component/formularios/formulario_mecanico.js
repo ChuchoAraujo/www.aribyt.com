@@ -79,7 +79,7 @@ export const Formulario_mecanico = () => {
         {() => (
           <Form className="formulario">
             <div>
-              <label htmlFor="problema">problema</label>
+              <label htmlFor="Problema">Problema</label>
               <Field
                 as="textarea"
                 id="problema"
@@ -89,22 +89,22 @@ export const Formulario_mecanico = () => {
               />
             </div>
             <div>
-              <label htmlFor="accion">accion</label>
+              <label htmlFor="Acción">Acción</label>
               <Field
                 as="textarea"
                 id="accion"
                 name="accion"
-                placeholder="Solucion al problema o problemas"
+                placeholder="Solución al problema o problemas"
                 onKeyUp={(e) => setAccion(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor="turno">turno</label>
+              <label htmlFor="turno">Turno</label>
               <Field
                 type="text"
                 id="turno"
                 name="turno"
-                placeholder="turno"
+                placeholder="Turno"
                 onKeyUp={(e) => setTurno(e.target.value)}
               />
             </div>
@@ -113,7 +113,7 @@ export const Formulario_mecanico = () => {
               Enviar
             </button>
             {enviarFormulario && (
-              <p className="exito">Formulario enviado con exito!</p>
+              <p className="exito">¡Formulario enviado con éxito!</p>
             )}
           </Form>
         )}

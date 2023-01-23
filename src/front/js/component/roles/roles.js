@@ -16,7 +16,7 @@ export const Roles = () => {
     <div className="container containerRoles justify-content-center">
       <div className="row">
         <div className="col-12">
-          <h3 className="tituloRoles">--- Login ---</h3>
+          <h3 className="tituloRoles"></h3>
         </div>
       </div>
       <div className="row ">
@@ -86,7 +86,7 @@ export const Roles = () => {
                   : "tituloMecanicoGray"
               }
             >
-              Mecanico
+              Mecánico
             </h1>
           </div>
         </div>

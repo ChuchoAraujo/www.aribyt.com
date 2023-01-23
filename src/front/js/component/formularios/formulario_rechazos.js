@@ -111,7 +111,7 @@ export const Formulario_rechazos = () => {
                 type="text"
                 id="paneles"
                 name="paneles"
-                placeholder="paneles"
+                placeholder="Paneles"
                 onKeyUp={(e) => setPaneles(e.target.value)}
               />
             </div>
@@ -121,7 +121,7 @@ export const Formulario_rechazos = () => {
                 type="text"
                 id="jaula"
                 name="jaula"
-                placeholder="jaula"
+                placeholder="Jaula"
                 onKeyUp={(e) => setJaula(e.target.value)}
               />
             </div>
@@ -129,7 +129,7 @@ export const Formulario_rechazos = () => {
               Enviar
             </button>
             {enviarFormulario && (
-              <p className="exito">Formulario enviado con exito!</p>
+              <p className="exito">¡Formulario enviado con éxito!</p>
             )}
           </Form>
         )}

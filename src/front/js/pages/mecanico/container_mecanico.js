@@ -3,7 +3,8 @@ import { Context } from "../../store/appContext";
 import { Formulario_mecanico } from "../../component/formularios/formulario_mecanico";
 import "../../../styles/home.css";
 import { FooterMecanico } from "../../component/footers/footerMecanico";
-
+import { FooterEncargado } from "../../component/footers/footerEncargado";
+import { Col, Row } from "antd";
 
 export const Container_mecanico = () => {
   const { store, actions } = useContext(Context);
@@ -11,20 +12,21 @@ export const Container_mecanico = () => {
 
   return (
     <>
-      <div>
-        <div className="container  text-center">
-          <div className="row align-items-start">
+     <div className="container-fluid">
+        <Row justify="center">
+          <Col md={8} sm={24}>
+            <Formulario_mecanico />
+          </Col>
+        </Row>
+      </div>
+      
             <div className="col"></div>
-            <div className="col-9 formMecanico">
-              <Formulario_mecanico />
-            </div>
-            <div className="col"></div>
-          </div>
+         
           <div className="container-fluid">
             <FooterMecanico />
           </div>
-        </div>
-      </div>
+        
+    
     </>
   );
 };

@@ -131,7 +131,7 @@ export const Vista_encargado_1 = () => {
               close();
             }}
           >
-            close
+            Cerrar
           </Button>
         </Space>
       </div>

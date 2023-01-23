@@ -1,7 +1,7 @@
 import React, { Component, useState, useContext, useEffect } from "react";
 import { store, actions } from "../../store/flux";
 import { Context } from "../../store/appContext";
-import Icon_Clasificadora from "../icons/icon_clasificadora";
+import Icon_Mecanico from "../icons/icon_mecanico";
 
 export const FooterMecanico = () => {
   const { store, actions } = useContext(Context);
@@ -11,16 +11,16 @@ export const FooterMecanico = () => {
   let year = today.getFullYear();
   let fechaFinal = `${day}/${month}/${year}`;
 
-  return (
-    <div className="container footerCajas">
+ return (
+   <div className="container-fluid text-center footer ">
       <footer className="mt-4">
         <div>
-          <div className="row d-flex justify-content-center d-flex align-items-center">
+          <div className="align-items-center">
             <div className="col-2 ">
-              <Icon_Clasificadora width={80} />
+            <Icon_Mecanico width={80} />hola
             </div>
             <div className="col">
-              <h4>Role: {store.role}</h4>
+              <h4>Rol: {store.role}</h4>
             </div>
             <div className="col ">
               <h4>Fecha: {fechaFinal}</h4>
