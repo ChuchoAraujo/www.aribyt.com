@@ -18,6 +18,7 @@ export const Formulario_clasificadora = () => {
   const [tituloProblema, setTituloProblema] = useState("");
   const[fecha,setFecha]=useState("");
 
+
  
   const valorFecha = (date, dateString) => {
     setFecha(dateString);
@@ -146,7 +147,7 @@ export const Formulario_clasificadora = () => {
       .then((result) => {
         console.log("enviado correctamente",result)
         navigate(-1)
-        suma(valores.cajas);
+        suma(valores);
       })
       .catch((error) => console.log("error al enviar datos", error));
   };
@@ -195,7 +196,6 @@ export const Formulario_clasificadora = () => {
           return errores;
         }}
         onSubmit={(valores, { resetForm }) => {
-          console.log("valor de turno es",valores.turno)
           resetForm();
           sendDataClasificadora(valores)
           setTimeout(() => setFormulario(false), 5000);
