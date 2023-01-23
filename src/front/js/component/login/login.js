@@ -51,20 +51,20 @@ export const Login = () => {
 
           // Validacion cajas
           if (!valores.email) {
-            errores.email = "Por favor ingresa un email";
+            errores.email = "Por favor ingresa un email*";
           } else if (
             !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
               valores.email
             )
           ) {
             errores.email =
-              "El email solo puede contener letras, numeros, puntos, guiones y guión bajo";
+              "El email solo puede contener letras, números, puntos, guiones y guión bajo*";
           }
 
           if (!valores.password) {
-            errores.password = "Por favor ingresa el password";
+            errores.password = "Por favor ingresa una contraseña*";
             errores.password =
-              "El email solo puede contener letras, numeros, puntos, guiones y guión bajo";
+              "El email solo puede contener letras, números, puntos, guiones y guión bajo* ";
           }
 
           return errores;
@@ -97,7 +97,7 @@ export const Login = () => {
             </div>
 
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Contraseña</label>
               <Field
                 type="password"
                 id="password"
@@ -115,7 +115,7 @@ export const Login = () => {
               Enviar
             </button>
             {enviarFormulario && (
-              <p className="exito">Formulario enviado con exito!</p>
+              <p className="exito">¡Formulario enviado con éxito!</p>
             )}
           </Form>
         )}

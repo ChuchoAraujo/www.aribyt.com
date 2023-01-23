@@ -32,6 +32,7 @@ useEffect(() => {
   return (
     <>
       <nav className="navbar navbar-expand-md navbar-dark EstiloNav">
+    
         <div className="container-fluid">
           <ImHome className="navbar-brand boton_home" />
 

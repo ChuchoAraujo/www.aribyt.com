@@ -51,7 +51,7 @@ export const Formulario_mecanico = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        navigate("vista_login/vista_mecanico")
+        navigate(-1)
       })
       .catch((error) => console.log("error", error));
   };
@@ -74,7 +74,7 @@ export const Formulario_mecanico = () => {
         {() => (
           <Form className="formulario">
             <div>
-              <label htmlFor="problema">problema</label>
+              <label htmlFor="Problema">Problema</label>
               <Field
                 as="textarea"
                 id="problema"
@@ -84,12 +84,12 @@ export const Formulario_mecanico = () => {
               />
             </div>
             <div>
-              <label htmlFor="accion">accion</label>
+              <label htmlFor="Acción">Acción</label>
               <Field
                 as="textarea"
                 id="accion"
                 name="accion"
-                placeholder="Solucion al problema o problemas"
+                placeholder="Solución al problema o problemas"
 
               />
             </div>
@@ -118,10 +118,10 @@ export const Formulario_mecanico = () => {
             </button>
             </div>
             <div>
-            <button onClick={()=>navigate(-1)} className="botonRegresarFormulario">Regresar</button>
+            <button type="button" onClick={()=>navigate(-1)} className="botonRegresarFormulario">Regresar</button>
             </div>
             {enviarFormulario && (
-              <p className="exito">Formulario enviado con exito!</p>
+              <p className="exito">¡Formulario enviado con éxito!</p>
             )}
           </Form>
         )}

@@ -48,16 +48,16 @@ export const FormularioUsuarios = () => {
 
           // Validacion articulo
           if (!valores.username) {
-            errores.username = "Por favor ingresa username";
+            errores.username = "Por favor ingresa usuario*";
           }
           if (!valores.email) {
-            errores.email = "Por favor ingresa un email";
+            errores.email = "Por favor ingresa un email*";
           }
           if (!valores.password) {
-            errores.password = "Por favor ingresa un password";
+            errores.password = "Por favor ingresa una contraseña*";
           }
           if (!valores.role) {
-            errores.role = "Por favor ingresa un role";
+            errores.role = "Por favor ingresa un rol";
           }
           return errores;
         }}
@@ -75,7 +75,7 @@ export const FormularioUsuarios = () => {
         {({ errors }) => (
           <Form className="formulario">
             <div>
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username">Usuario</label>
               <Field
                 type="text"
                 id="username"
@@ -103,7 +103,7 @@ export const FormularioUsuarios = () => {
               />
             </div>
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Contraseña</label>
               <Field
                 type="password"
                 id="password"
@@ -117,7 +117,7 @@ export const FormularioUsuarios = () => {
               />
             </div>
             <div>
-              <label htmlFor="role">Role</label>
+              <label htmlFor="role">Rol</label>
               <Field
                 type="text"
                 id="role"
@@ -134,7 +134,7 @@ export const FormularioUsuarios = () => {
               Enviar
             </button>
             {enviarFormulario && (
-              <p className="exito">Formulario enviado con exito!</p>
+              <p className="exito">¡Formulario enviado con éxito!</p>
             )}
           </Form>
         )}

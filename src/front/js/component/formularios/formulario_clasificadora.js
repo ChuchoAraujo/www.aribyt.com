@@ -145,8 +145,8 @@ export const Formulario_clasificadora = () => {
       .then((response) => response.json())
       .then((result) => {
         console.log("enviado correctamente",result)
-        navigate("/vista_login/vista_clasificadora")
-        suma(valores);
+        navigate(-1)
+        suma(valores.cajas);
       })
       .catch((error) => console.log("error al enviar datos", error));
   };
@@ -173,24 +173,24 @@ export const Formulario_clasificadora = () => {
 
           // Validacion cajas
           if (!valores.cajas) {
-            errores.cajas = "Por favor ingresa las cajas por hora";
+            errores.cajas = "Por favor ingresa las cajas por hora*";
           } else if (!/^[0-9]+$/.test(valores.cajas)) {
-            errores.cajas = "Solo puede contener Numeros enteros";
+            errores.cajas = "Solo puede contener números enteros*";
           }
           // Validacion articulo
           if (!valores.articulo) {
-            errores.articulo = "Por favor ingresa un articulo";
+            errores.articulo = "Por favor ingresa un artículo*";
           }
           if (!valores.velocidad) {
-            errores.velocidad = "Por favor ingresa la velocidad";
-          } else if (!/^[0-9]+$/&&!/^\d*\.\d+$/.test(valores.velocidad)) {
-            errores.velocidad = "Solo puede contener Numeros";
+            errores.velocidad = "Por favor ingresa la velocidad*";
+          } else if (!/^\d*\.\d+$/.test(valores.velocidad)) {
+            errores.velocidad = "Solo puede contener números*";
           }
           //validacion gramos
           if (!valores.gramos) {
-            errores.gramos = "Por favor ingresa los gramos de la cola";
+            errores.gramos = "Por favor ingresa los gramos de la cola*";
           } else if (!/^\d*\.\d+$/.test(valores.gramos)) {
-            errores.gramos = "Solo puede contener Numeros";
+            errores.gramos = "Solo puede contener números*";
           }
           return errores;
         }}
@@ -233,7 +233,8 @@ export const Formulario_clasificadora = () => {
                       type="text"
                       id="articulo"
                       name="articulo"
-                      placeholder="Codigo de Articulo"
+                      placeholder="Código de artículo"
+                      onKeyUp={(e) => setArticulo(e.target.value)}
                     />
                     <ErrorMessage
                       name="articulo"
@@ -248,7 +249,7 @@ export const Formulario_clasificadora = () => {
                       type="text"
                       id="lote"
                       name="lote"
-                      placeholder="Numero Lote"
+                      placeholder="Número de lote"
                     />
                   </div>
                   <div>
@@ -271,25 +272,25 @@ export const Formulario_clasificadora = () => {
                       type="text"
                       id="jaulas"
                       name="jaulas"
-                      placeholder="Numero de Jaulas"
+                      placeholder="Número de jaulas"
                     />
                   </div>
                   <div>
-                    <label htmlFor="pedido">pedido</label>
+                    <label htmlFor="pedido">Pedido</label>
                     <Field
                       type="text"
                       id="pedido"
                       name="pedido"
-                      placeholder="Numero de pedido"
+                      placeholder="Número de pedido"
                     />
                   </div>
                   <div>
-                    <label htmlFor="personal">personal</label>
+                    <label htmlFor="personal">Personal</label>
                     <Field
                       as="textarea"
                       id="personal"
                       name="personal"
-                      placeholder="Personal en la maquina"
+                      placeholder="Personal en la máquina"
                     />
                   </div>
                   <div>
@@ -449,7 +450,7 @@ export const Formulario_clasificadora = () => {
                             : "tituloBidonGray"
                         }
                       >
-                        Bidon
+                        Bidón
                       </h6>
                     </div>
                   </div>
@@ -463,12 +464,12 @@ export const Formulario_clasificadora = () => {
                     ></Field>
                   </div>
                   <div>
-                    <label htmlFor="accion">accion</label>
+                    <label htmlFor="accion">Acción</label>
                     <Field
                       as="textarea"
                       id="accion"
                       name="accion"
-                      placeholder="Solucion al problema o problemas"
+                      placeholder="Solución al problema o problemas"
                     />
                     <div>
                       <button
@@ -491,21 +492,21 @@ export const Formulario_clasificadora = () => {
                 {/*--------------------------Formulario pagina4*-------------------*/}
                 <div className={pagina4 === "hidden" ? "visibility" : "hidden"}>
                   <div>
-                    <label htmlFor="tiempo">tiempo</label>
+                    <label htmlFor="tiempo">Tiempo</label>
                     <Field
                       type="number"
                       id="tiempo"
                       name="tiempo"
-                      placeholder="Tiempo parada"
+                      placeholder="Tiempo de parada"
                     />
                   </div>
                   <div>
-                    <label htmlFor="velocidad">velocidad</label>
+                    <label htmlFor="velocidad">Velocidad</label>
                     <Field
                       type="number"
                       id="velocidad"
                       name="velocidad"
-                      placeholder="Velocidad de la maquina"
+                      placeholder="Velocidad de la máquina"
                     />
                     <ErrorMessage
                       name="velocidad"
@@ -515,7 +516,7 @@ export const Formulario_clasificadora = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="gramos">gramos</label>
+                    <label htmlFor="gramos">Gramos</label>
                     <Field
                       type="number"
                       id="gramos"
@@ -565,7 +566,7 @@ export const Formulario_clasificadora = () => {
                   </div>
                   {enviarFormulario && (
                     <div class="alert alert-primary" role="alert">
-                      Registro realizado!
+                      ¡Registro realizado!
                     </div>
                   )}
                 </div>

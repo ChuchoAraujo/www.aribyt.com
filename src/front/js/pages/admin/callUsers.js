@@ -132,7 +132,7 @@ export const Callusers = () => {
               <Form className="formulario">
                 
                 <div>
-                  <label htmlFor="username">Username</label>
+                  <label htmlFor="username">Usuario</label>
                   <Field
                     type="text"
                     id="username"
@@ -164,7 +164,7 @@ export const Callusers = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password">Contraseña</label>
                   <Field
                     type="password"
                     id="password"
@@ -180,7 +180,7 @@ export const Callusers = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="role">Role</label>
+                  <label htmlFor="role">Rol</label>
                   <Field
                     type="text"
                     id="role"

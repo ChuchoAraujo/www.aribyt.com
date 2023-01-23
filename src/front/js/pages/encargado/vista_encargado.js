@@ -3,6 +3,8 @@ import { Formik, Form} from "formik";
 import { Button, Input, Space, Table,DatePicker} from "antd";
 import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
+import { FooterEncargado } from "../../component/footers/footerEncargado";
+
 
 export const Vista_encargado = () => {
   const [resultJoin, setResultJoin] = useState([]);
@@ -357,6 +359,7 @@ export const Vista_encargado = () => {
   ];
   return (
     <>
+    
     <div className="container-fluid text-center">
       <div className="row">
       <Formik
@@ -409,7 +412,7 @@ export const Vista_encargado = () => {
                         : "seleccionTurnoTardeGris"
                     }
                   >
-                    tarde
+                    Tarde
                   </button>
 
                   <button
@@ -427,7 +430,7 @@ export const Vista_encargado = () => {
                         : "seleccionTurnoMañanaGris"
                     }
                   >
-                    noche
+                    Noche
                   </button>
                 </div>
                 {/*----------------------FECHA MUI-------------------*/}
@@ -455,7 +458,7 @@ export const Vista_encargado = () => {
                       width={200}
                       role="alert"
                     >
-                      Filtros aplicados con éxito!
+                      ¡Filtros aplicados con éxito!
                     </div>
                   )}
                 </div>
@@ -505,6 +508,7 @@ export const Vista_encargado = () => {
       </div>
       </div>
       </div>
+<FooterEncargado/>
     </>
   );
 };

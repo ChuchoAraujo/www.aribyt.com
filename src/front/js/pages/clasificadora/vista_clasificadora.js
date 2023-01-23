@@ -3,7 +3,8 @@ import { Context } from "../../store/appContext";
 import { Horas } from "../../component/horas/horas";
 import "../../../styles/home.css";
 import { Link, useNavigate } from "react-router-dom";
-import { FooterCajas } from "../../component/footers/footerCajas";
+import{ FooterClasificadora } from "../../component/footers/footerClasificadora";
+import { Row,Col } from "antd";
 
 export const Vista_clasificadora = () => {
   const { store, actions } = useContext(Context);
@@ -17,9 +18,15 @@ export const Vista_clasificadora = () => {
           <button className="botonRechazos">------ Rechazos ------</button>
         </Link>
       </div>
-      <div className="container">
-        <FooterCajas />
-      </div>
+      <div className="container-fluid">
+<Row justify="center">
+  <Col  md={8} sm={24}>
+  <FooterClasificadora />
+  </Col>
+</Row>
+</div>
+
+
     </>
   );
 };
