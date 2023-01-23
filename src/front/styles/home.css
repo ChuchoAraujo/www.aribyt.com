@@ -230,22 +230,6 @@ font-family: "Titillum Web", Titillium Web, sans-serif
 	font-family: "Titillum Web", Titillium Web, sans-serif
 }
 
-.formulario button[type="submit"] {
-	display: block;
-	background: #4dada4;
-	font-weight: 600;
-	font-family: 'Titillium Web', sans-serif;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-	padding: 10px;
-	border-radius: 5px;
-	color: #fff;
-	font-size: 16px;
-	transition: .3s ease all;
-	width:1000px
-	
-}
 
 .buttonNuevaConsulta{
 	background: #4dada4;
@@ -262,10 +246,13 @@ font-family: "Titillum Web", Titillium Web, sans-serif
 	width:auto
 }
 
+.buttonNuevaConsulta[type="button"]:hover{
+	background: #218379;
+}
+
+
 .formulario button[type="submit"]:hover {
 	background: #218379;
-	width:1000px
-	
 }
 
 .formulario .exito {

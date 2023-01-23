@@ -2,10 +2,7 @@ import React, { useContext} from "react";
 import { Context } from "../../store/appContext";
 
 import { Horas_mecanico } from "../../component/horas/horas_mecanico";
-import "../../../styles/home.css";
-
 import { FooterMecanico } from "../../component/footers/footerMecanico";
-import { FooterEncargado } from "../../component/footers/footerEncargado";
 
 
 export const Vista_mecanico = () => {
@@ -20,7 +17,7 @@ export const Vista_mecanico = () => {
             <Horas_mecanico />
           </div>
           <div className="container">
-         <FooterEncargado/>
+         <FooterMecanico/>
           </div>
         </div>
       

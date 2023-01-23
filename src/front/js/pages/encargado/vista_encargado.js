@@ -2,11 +2,9 @@ import React, { useState, useRef } from "react";
 import { Formik, Form} from "formik";
 import { Button, Input, Space, Table,DatePicker} from "antd";
 import Highlighter from "react-highlight-words";
-import { FooterEncargado } from "../../component/footers/footerEncargado"; 
+import { SearchOutlined } from "@ant-design/icons";
 
 
-import "../../../styles/calendar.css";
-import "../../../styles/home.css";
 export const Vista_encargado = () => {
   const [resultJoin, setResultJoin] = useState([]);
   const [resultMecanico, setResultMecanido] = useState([]);
@@ -510,7 +508,6 @@ export const Vista_encargado = () => {
       </div>
       </div>
 
-    <FooterEncargado/>
     </>
   );
 };

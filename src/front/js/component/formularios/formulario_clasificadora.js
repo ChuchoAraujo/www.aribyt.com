@@ -145,8 +145,8 @@ export const Formulario_clasificadora = () => {
       .then((response) => response.json())
       .then((result) => {
         console.log("enviado correctamente",result)
-        navigate("/vista_login/vista_clasificadora")
-        suma(valores);
+        navigate(-1)
+        suma(valores.cajas);
       })
       .catch((error) => console.log("error al enviar datos", error));
   };
@@ -233,12 +233,8 @@ export const Formulario_clasificadora = () => {
                       type="text"
                       id="articulo"
                       name="articulo"
-<<<<<<< HEAD
                       placeholder="Código de artículo"
                       onKeyUp={(e) => setArticulo(e.target.value)}
-=======
-                      placeholder="Codigo de Articulo"
->>>>>>> refs/remotes/origin/main
                     />
                     <ErrorMessage
                       name="articulo"
@@ -253,12 +249,7 @@ export const Formulario_clasificadora = () => {
                       type="text"
                       id="lote"
                       name="lote"
-<<<<<<< HEAD
                       placeholder="Número de lote"
-                      onKeyUp={(e) => setLote(e.target.value)}
-=======
-                      placeholder="Numero Lote"
->>>>>>> refs/remotes/origin/main
                     />
                   </div>
                   <div>
@@ -281,12 +272,7 @@ export const Formulario_clasificadora = () => {
                       type="text"
                       id="jaulas"
                       name="jaulas"
-<<<<<<< HEAD
                       placeholder="Número de jaulas"
-                      onKeyUp={(e) => setJaulas(e.target.value)}
-=======
-                      placeholder="Numero de Jaulas"
->>>>>>> refs/remotes/origin/main
                     />
                   </div>
                   <div>
@@ -295,12 +281,7 @@ export const Formulario_clasificadora = () => {
                       type="text"
                       id="pedido"
                       name="pedido"
-<<<<<<< HEAD
                       placeholder="Número de pedido"
-                      onKeyUp={(e) => setPedido(e.target.value)}
-=======
-                      placeholder="Numero de pedido"
->>>>>>> refs/remotes/origin/main
                     />
                   </div>
                   <div>
@@ -309,12 +290,7 @@ export const Formulario_clasificadora = () => {
                       as="textarea"
                       id="personal"
                       name="personal"
-<<<<<<< HEAD
                       placeholder="Personal en la máquina"
-                      onKeyUp={(e) => setPersonal(e.target.value)}
-=======
-                      placeholder="Personal en la maquina"
->>>>>>> refs/remotes/origin/main
                     />
                   </div>
                   <div>
@@ -493,12 +469,7 @@ export const Formulario_clasificadora = () => {
                       as="textarea"
                       id="accion"
                       name="accion"
-<<<<<<< HEAD
                       placeholder="Solución al problema o problemas"
-                      onKeyUp={(e) => setAccion(e.target.value)}
-=======
-                      placeholder="Solucion al problema o problemas"
->>>>>>> refs/remotes/origin/main
                     />
                     <div>
                       <button
@@ -526,12 +497,7 @@ export const Formulario_clasificadora = () => {
                       type="number"
                       id="tiempo"
                       name="tiempo"
-<<<<<<< HEAD
                       placeholder="Tiempo de parada"
-                      onKeyUp={(e) => setTiempo(e.target.value)}
-=======
-                      placeholder="Tiempo parada"
->>>>>>> refs/remotes/origin/main
                     />
                   </div>
                   <div>
@@ -540,12 +506,7 @@ export const Formulario_clasificadora = () => {
                       type="number"
                       id="velocidad"
                       name="velocidad"
-<<<<<<< HEAD
                       placeholder="Velocidad de la máquina"
-                      onKeyUp={(e) => setVelocidad(e.target.value)}
-=======
-                      placeholder="Velocidad de la maquina"
->>>>>>> refs/remotes/origin/main
                     />
                     <ErrorMessage
                       name="velocidad"
