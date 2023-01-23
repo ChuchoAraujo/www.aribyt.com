@@ -1069,7 +1069,16 @@ pruebas opacidad*/
 
 	  .iconSimbol{
 		fill: #4dada4;
+		
+		
 	  }
 	  .containerLogos{
 		padding: 5px;
+	  }
+
+	  .visible {
+		display: block;
+	  }
+	  .esconder {
+		display: none;
 	  }

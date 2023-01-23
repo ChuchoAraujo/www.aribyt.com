@@ -8,7 +8,7 @@ export const Home = () => {
   return (
     <>
       <div className="container-fluid">
-        <div className="row containerLogos">
+        <div className="row containerLogos d-flex justify-content-center">
           <div className="iconSimbol col-md-6 d-flex justify-content-center">
             <Icon_simbolo />
           </div>
