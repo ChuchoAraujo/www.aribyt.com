@@ -1166,11 +1166,13 @@ pruebas opacidad*/
 
 	  .iconSimbol{
 		fill: #4dada4;
-		
-		
+		min-width: 300px;
+		max-width: 600px;
 	  }
 	  .containerLogos{
-		padding: 5px;
+		padding: 150px;
+		margin-bottom: 50px;
+		/* margin-bottom: 100px; */
 	  }
 
 	  .visible {
