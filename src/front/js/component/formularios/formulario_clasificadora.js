@@ -196,381 +196,370 @@ export const Formulario_clasificadora = () => {
           return errores;
         }}
         onSubmit={(valores, { resetForm }) => {
+          console.log("valor de turno es", valores.turno);
           resetForm();
-          sendDataClasificadora(valores)
+          sendDataClasificadora(valores);
           setTimeout(() => setFormulario(false), 5000);
-          
         }}
       >
         {({ errors, setFieldValue }) => (
           <Form className="formulario">
-           
-              
-                {/*--------------------------Formulario pagina1*-------------------*/}
-                <div
-                  className={pagina1 === "visibility" ? "hidden" : "visibility"}
-                >
-                  <div>
-                    <label htmlFor="cajas">Cajas</label>
-                    <Field
-                      className="inputsFormulario"
-                      type="number"
-                      id="cajas"
-                      name="cajas"
-                      placeholder="Número de cajas"
-
-                    />
-                    <ErrorMessage
-                      name="cajas"
-                      component={() => (
-                        <div className="error">{errors.cajas}</div>
-                      )}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="articulo">Artículo</label>
-                    <Field
-                      type="text"
-                      id="articulo"
-                      name="articulo"
-                      placeholder="Código de artículo"
-                      onKeyUp={(e) => setArticulo(e.target.value)}
-                    />
-                    <ErrorMessage
-                      name="articulo"
-                      component={() => (
-                        <div className="error">{errors.articulo}</div>
-                      )}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lote">Lote</label>
-                    <Field
-                      type="text"
-                      id="lote"
-                      name="lote"
-                      placeholder="Número de lote"
-                    />
-                  </div>
-                  <div>
-                    <button
-                      onClick={printCondicitional}
-                      className="botonSiguienteFormulario">
-                      Siguiente
-                    </button>
-                  </div>
-                  <div>
-                <button onClick={()=>navigate(-1)} className="botonRegresarFormulario">Regresar</button>
-                </div>
-                </div>
-
-                {/*--------------------------Formulario pagina2*-------------------*/}
-                <div className={pagina2 === "hidden" ? "visibility" : "hidden"}>
-                  <div>
-                    <label htmlFor="jaulas">Jaulas</label>
-                    <Field
-                      type="text"
-                      id="jaulas"
-                      name="jaulas"
-                      placeholder="Número de jaulas"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="pedido">Pedido</label>
-                    <Field
-                      type="text"
-                      id="pedido"
-                      name="pedido"
-                      placeholder="Número de pedido"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="personal">Personal</label>
-                    <Field
-                      as="textarea"
-                      id="personal"
-                      name="personal"
-                      placeholder="Personal en la máquina"
-                    />
-                  </div>
-                  <div>
-                    <button
-                      onClick={printCondicitional2}
-                      className="botonSiguienteFormulario"
-                    >
-                      Siguiente
-                  </button>
-                  </div>
-                  <div>
-                    <button
-                      onClick={regresarPagina1}
-                      className="botonSiguienteFormulario"
-                    >
-                      Regresar
-                  </button>
-                  </div>
-                  
-                </div>
-                {/*--------------------------Formulario pagina3*-------------------*/}
-                <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
-                  <h6>--- Problemas recurrentes ---</h6>
-                  <div className="">
-                    <button
-                      onClick={() => {
-                        setFieldValue(
-                          "problema",
-                          "Se ha realizado mantenimiento"
-                        );
-                        setProblemaRecurrente(
-                          "problemaClasificadoraGray text-center buttonIconsFormClasificadora"
-                        );
-                        setIconProblema("iconManteGray");
-                        setTituloProblema("tituloManteGray");
-                      }}
-                      className={
-                        problemaRecurrente ===
-                        "problemaClasificadoraGray text-center buttonIconsFormClasificadora"
-                          ? "problemaClasificadoraGreen text-center buttonIconsFormClasificadora"
-                          : "problemaClasificadoraGray text-center buttonIconsFormClasificadora"
-                      }
-                    >
-                      <Mantenimiento
-                        className={
-                          iconProblema === "iconManteGray"
-                            ? "iconManteWhite "
-                            : "iconManteGray "
-                        }
-                      />
-                      <h6
-                        className={
-                          tituloProblema === "tituloManteGray"
-                            ? "tituloManteWhite"
-                            : "tituloManteGray"
-                        }
-                      >
-                        Mantenimiento
-                      </h6>
-                    </button>
-
-                    <div
-                      onClick={() => {
-                        setFieldValue("problema", "Falta papel");
-                        setProblemaRecurrente(
-                          "problemaPapelGray text-center buttonIconsFormClasificadora"
-                        );
-                        setIconProblema("iconPapelGray");
-                        setTituloProblema("tituloIconPapelGray");
-                      }}
-                      className={
-                        problemaRecurrente ===
-                        "problemaPapelGray text-center buttonIconsFormClasificadora"
-                          ? "problemaPapelGreen text-center buttonIconsFormClasificadora"
-                          : "problemaPapelGray text-center buttonIconsFormClasificadora"
-                      }
-                    >
-                      <Papel
-                        className={
-                          iconProblema === "iconPapelGray"
-                            ? "iconPapelWhite "
-                            : "iconPapelGray "
-                        }
-                      />
-                      <h6
-                        className={
-                          tituloProblema === "tituloIconPapelGray"
-                            ? "tituloIconPapelWhite"
-                            : "tituloIconPapelGray"
-                        }
-                      >
-                        Papel
-                      </h6>
-                    </div>
-
-                    <div
-                      onClick={() => {
-                        setFieldValue("problema", "Problemas con el inyector");
-                        setProblemaRecurrente(
-                          "problemaInyectorGray text-center buttonIconsFormClasificadora"
-                        );
-                        setIconProblema("iconInyectGray");
-                        setTituloProblema("tituloInyectGray");
-                      }}
-                      className={
-                        problemaRecurrente ===
-                        "problemaInyectorGray text-center buttonIconsFormClasificadora"
-                          ? "problemaInyectorGreen text-center buttonIconsFormClasificadora"
-                          : "problemaInyectorGray text-center buttonIconsFormClasificadora"
-                      }
-                    >
-                      <Inyector
-                        className={
-                          iconProblema === "iconInyectGray"
-                            ? "iconInyectWhite"
-                            : "iconInyectGray"
-                        }
-                      />
-                      <h6
-                        className={
-                          tituloProblema === "tituloInyectGray"
-                            ? "tituloInyectWhite"
-                            : "tituloInyectGray"
-                        }
-                      >
-                        Inyector
-                      </h6>
-                    </div>
-
-                    <div
-                      onClick={() => {
-                        setFieldValue("problema", "Se ha averiado el bidón");
-                        setProblemaRecurrente(
-                          "problemaBidonGray text-center buttonIconsFormClasificadora"
-                        );
-                        setIconProblema("iconBidonGray");
-                        setTituloProblema("tituloBidonGray");
-                      }}
-                      className={
-                        problemaRecurrente ===
-                        "problemaBidonGray text-center buttonIconsFormClasificadora"
-                          ? "problemaBidonGreen text-center buttonIconsFormClasificadora"
-                          : "problemaBidonGray text-center buttonIconsFormClasificadora"
-                      }
-                    >
-                      <Bidon
-                        className={
-                          iconProblema === "iconBidonGray"
-                            ? "iconBidonWhite "
-                            : "iconBidonGray "
-                        }
-                      />
-                      <h6
-                        className={
-                          tituloProblema === "tituloBidonGray"
-                            ? "tituloBidonWhite"
-                            : "tituloBidonGray"
-                        }
-                      >
-                        Bidón
-                      </h6>
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor="problema">Problema</label>
-                    <Field
-                      as="textarea"
-                      id="problema"
-                      name="problema"
-                      placeholder="¿Qué ha pasado?"
-                    ></Field>
-                  </div>
-                  <div>
-                    <label htmlFor="accion">Acción</label>
-                    <Field
-                      as="textarea"
-                      id="accion"
-                      name="accion"
-                      placeholder="Solución al problema o problemas"
-                    />
-                    <div>
-                      <button
-                        onClick={printCondicitional3}
-                        className="botonSiguienteFormulario"
-                      >
-                        Siguiente
-                      </button>
-                    </div>
-                    <div>
-                    <button
-                        onClick={regresarPagina2}
-                        className="botonSiguienteFormulario"
-                      >
-                        Regresar
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                {/*--------------------------Formulario pagina4*-------------------*/}
-                <div className={pagina4 === "hidden" ? "visibility" : "hidden"}>
-                  <div>
-                    <label htmlFor="tiempo">Tiempo</label>
-                    <Field
-                      type="number"
-                      id="tiempo"
-                      name="tiempo"
-                      placeholder="Tiempo de parada"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="velocidad">Velocidad</label>
-                    <Field
-                      type="number"
-                      id="velocidad"
-                      name="velocidad"
-                      placeholder="Velocidad de la máquina"
-                    />
-                    <ErrorMessage
-                      name="velocidad"
-                      component={() => (
-                        <div className="error">{errors.velocidad}</div>
-                      )}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="gramos">Gramos</label>
-                    <Field
-                      type="number"
-                      id="gramos"
-                      name="gramos"
-                      placeholder="Gramos de la cola"
-                    />
-                    <ErrorMessage
-                      name="gramos"
-                      component={() => (
-                        <div className="error">{errors.gramos}</div>
-                      )}
-                    />
-                  </div>
-                  <div>
-                  <label htmlFor="turno">Turno</label>
-                  <Field
-                    as="select"
-                    id="turno"
-                    name="turno"
-                    className="selectTurno"
-                  >
-                    <option>Seleccione</option>
-                    <option value="mañana">Mañana</option>
-                    <option value="tarde">Tarde</option>
-                    <option value="noche">Noche</option>
-                  </Field>
-                  </div>
-                  <div>
-                  <label htmlFor="fecha">Fecha</label>
-                        <DatePicker onChange={valorFecha} format={formatoFecha}/>
-                  </div>
-                  <div>
-                  <button
+            {/*--------------------------Formulario pagina1*-------------------*/}
+            <div className={pagina1 === "visibility" ? "hidden" : "visibility"}>
+              <div>
+                <label htmlFor="cajas">Cajas</label>
+                <Field
+                  className="inputsFormulario"
+                  type="number"
+                  id="cajas"
+                  name="cajas"
+                  placeholder="Número de cajas"
+                />
+                <ErrorMessage
+                  name="cajas"
+                  component={() => <div className="error">{errors.cajas}</div>}
+                />
+              </div>
+              <div>
+                <label htmlFor="articulo">Artículo</label>
+                <Field
+                  type="text"
+                  id="articulo"
+                  name="articulo"
+                  placeholder="Código de artículo"
+                  onKeyUp={(e) => setArticulo(e.target.value)}
+                />
+                <ErrorMessage
+                  name="articulo"
+                  component={() => (
+                    <div className="error">{errors.articulo}</div>
+                  )}
+                />
+              </div>
+              <div>
+                <label htmlFor="lote">Lote</label>
+                <Field
+                  type="text"
+                  id="lote"
+                  name="lote"
+                  placeholder="Número de lote"
+                />
+              </div>
+              <div>
+                <button
+                  onClick={printCondicitional}
                   className="botonSiguienteFormulario"
-                    type="submit"
+                >
+                  Siguiente
+                </button>
+              </div>
+              <div>
+                <button
+                  onClick={() => navigate(-1)}
+                  className="botonRegresarFormulario"
+                >
+                  Regresar
+                </button>
+              </div>
+            </div>
+
+            {/*--------------------------Formulario pagina2*-------------------*/}
+            <div className={pagina2 === "hidden" ? "visibility" : "hidden"}>
+              <div>
+                <label htmlFor="jaulas">Jaulas</label>
+                <Field
+                  type="text"
+                  id="jaulas"
+                  name="jaulas"
+                  placeholder="Número de jaulas"
+                />
+              </div>
+              <div>
+                <label htmlFor="pedido">Pedido</label>
+                <Field
+                  type="text"
+                  id="pedido"
+                  name="pedido"
+                  placeholder="Número de pedido"
+                />
+              </div>
+              <div>
+                <label htmlFor="personal">Personal</label>
+                <Field
+                  as="textarea"
+                  id="personal"
+                  name="personal"
+                  placeholder="Personal en la máquina"
+                />
+              </div>
+              <div>
+                <button
+                  onClick={printCondicitional2}
+                  className="botonSiguienteFormulario"
+                >
+                  Siguiente
+                </button>
+              </div>
+              <div>
+                <button
+                  onClick={regresarPagina1}
+                  className="botonSiguienteFormulario"
+                >
+                  Regresar
+                </button>
+              </div>
+            </div>
+            {/*--------------------------Formulario pagina3*-------------------*/}
+            <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
+              <h6>--- Problemas recurrentes ---</h6>
+              <div className="d-flex justify-content-center">
+                <button
+                  onClick={() => {
+                    setFieldValue("problema", "Se ha realizado mantenimiento");
+                    setProblemaRecurrente(
+                      "problemaClasificadoraGray text-center buttonIconsFormClasificadora"
+                    );
+                    setIconProblema("iconManteGray");
+                    setTituloProblema("tituloManteGray");
+                  }}
+                  className={
+                    problemaRecurrente ===
+                    "problemaClasificadoraGray text-center buttonIconsFormClasificadora"
+                      ? "problemaClasificadoraGreen text-center buttonIconsFormClasificadora"
+                      : "problemaClasificadoraGray text-center buttonIconsFormClasificadora"
+                  }
+                >
+                  <Mantenimiento
+                    className={
+                      iconProblema === "iconManteGray"
+                        ? "iconManteWhite "
+                        : "iconManteGray "
+                    }
+                  />
+                  <h6
+                    className={
+                      tituloProblema === "tituloManteGray"
+                        ? "tituloManteWhite"
+                        : "tituloManteGray"
+                    }
                   >
-                    Enviar
-                  </button>
-                  </div>
-                  <div>
+                    Mantenimiento
+                  </h6>
+                </button>
+
+                <div
+                  onClick={() => {
+                    setFieldValue("problema", "Falta papel");
+                    setProblemaRecurrente(
+                      "problemaPapelGray text-center buttonIconsFormClasificadora"
+                    );
+                    setIconProblema("iconPapelGray");
+                    setTituloProblema("tituloIconPapelGray");
+                  }}
+                  className={
+                    problemaRecurrente ===
+                    "problemaPapelGray text-center buttonIconsFormClasificadora"
+                      ? "problemaPapelGreen text-center buttonIconsFormClasificadora"
+                      : "problemaPapelGray text-center buttonIconsFormClasificadora"
+                  }
+                >
+                  <Papel
+                    className={
+                      iconProblema === "iconPapelGray"
+                        ? "iconPapelWhite "
+                        : "iconPapelGray "
+                    }
+                  />
+                  <h6
+                    className={
+                      tituloProblema === "tituloIconPapelGray"
+                        ? "tituloIconPapelWhite"
+                        : "tituloIconPapelGray"
+                    }
+                  >
+                    Papel
+                  </h6>
+                </div>
+
+                <div
+                  onClick={() => {
+                    setFieldValue("problema", "Problemas con el inyector");
+                    setProblemaRecurrente(
+                      "problemaInyectorGray text-center buttonIconsFormClasificadora"
+                    );
+                    setIconProblema("iconInyectGray");
+                    setTituloProblema("tituloInyectGray");
+                  }}
+                  className={
+                    problemaRecurrente ===
+                    "problemaInyectorGray text-center buttonIconsFormClasificadora"
+                      ? "problemaInyectorGreen text-center buttonIconsFormClasificadora"
+                      : "problemaInyectorGray text-center buttonIconsFormClasificadora"
+                  }
+                >
+                  <Inyector
+                    className={
+                      iconProblema === "iconInyectGray"
+                        ? "iconInyectWhite"
+                        : "iconInyectGray"
+                    }
+                  />
+                  <h6
+                    className={
+                      tituloProblema === "tituloInyectGray"
+                        ? "tituloInyectWhite"
+                        : "tituloInyectGray"
+                    }
+                  >
+                    Inyector
+                  </h6>
+                </div>
+
+                <div
+                  onClick={() => {
+                    setFieldValue("problema", "Se ha averiado el bidón");
+                    setProblemaRecurrente(
+                      "problemaBidonGray text-center buttonIconsFormClasificadora"
+                    );
+                    setIconProblema("iconBidonGray");
+                    setTituloProblema("tituloBidonGray");
+                  }}
+                  className={
+                    problemaRecurrente ===
+                    "problemaBidonGray text-center buttonIconsFormClasificadora"
+                      ? "problemaBidonGreen text-center buttonIconsFormClasificadora"
+                      : "problemaBidonGray text-center buttonIconsFormClasificadora"
+                  }
+                >
+                  <Bidon
+                    className={
+                      iconProblema === "iconBidonGray"
+                        ? "iconBidonWhite "
+                        : "iconBidonGray "
+                    }
+                  />
+                  <h6
+                    className={
+                      tituloProblema === "tituloBidonGray"
+                        ? "tituloBidonWhite"
+                        : "tituloBidonGray"
+                    }
+                  >
+                    Bidón
+                  </h6>
+                </div>
+              </div>
+              <div>
+                <label htmlFor="problema">Problema</label>
+                <Field
+                  as="textarea"
+                  id="problema"
+                  name="problema"
+                  placeholder="¿Qué ha pasado?"
+                ></Field>
+              </div>
+              <div>
+                <label htmlFor="accion">Acción</label>
+                <Field
+                  as="textarea"
+                  id="accion"
+                  name="accion"
+                  placeholder="Solución al problema o problemas"
+                />
+                <div>
                   <button
+                    onClick={printCondicitional3}
                     className="botonSiguienteFormulario"
-                    onClick={regresarPagina3}
+                  >
+                    Siguiente
+                  </button>
+                </div>
+                <div>
+                  <button
+                    onClick={regresarPagina2}
+                    className="botonSiguienteFormulario"
                   >
                     Regresar
                   </button>
-                  </div>
-                  {enviarFormulario && (
-                    <div class="alert alert-primary" role="alert">
-                      ¡Registro realizado!
-                    </div>
-                  )}
                 </div>
-            
+              </div>
+            </div>
+            {/*--------------------------Formulario pagina4*-------------------*/}
+            <div className={pagina4 === "hidden" ? "visibility" : "hidden"}>
+              <div>
+                <label htmlFor="tiempo">Tiempo</label>
+                <Field
+                  type="number"
+                  id="tiempo"
+                  name="tiempo"
+                  placeholder="Tiempo de parada"
+                />
+              </div>
+              <div>
+                <label htmlFor="velocidad">Velocidad</label>
+                <Field
+                  type="number"
+                  id="velocidad"
+                  name="velocidad"
+                  placeholder="Velocidad de la máquina"
+                />
+                <ErrorMessage
+                  name="velocidad"
+                  component={() => (
+                    <div className="error">{errors.velocidad}</div>
+                  )}
+                />
+              </div>
+              <div>
+                <label htmlFor="gramos">Gramos</label>
+                <Field
+                  type="number"
+                  id="gramos"
+                  name="gramos"
+                  placeholder="Gramos de la cola"
+                />
+                <ErrorMessage
+                  name="gramos"
+                  component={() => <div className="error">{errors.gramos}</div>}
+                />
+              </div>
+              <div>
+                <label htmlFor="turno">Turno</label>
+                <Field
+                  as="select"
+                  id="turno"
+                  name="turno"
+                  className="selectTurno"
+                >
+                  <option>Seleccione</option>
+                  <option value="mañana">Mañana</option>
+                  <option value="tarde">Tarde</option>
+                  <option value="noche">Noche</option>
+                </Field>
+              </div>
+              <div>
+                <label htmlFor="fecha">Fecha</label>
+                <DatePicker onChange={valorFecha} format={formatoFecha} />
+              </div>
+              <div>
+                <button className="botonSiguienteFormulario" type="submit">
+                  Enviar
+                </button>
+              </div>
+              <div>
+                <button
+                  className="botonSiguienteFormulario"
+                  onClick={regresarPagina3}
+                >
+                  Regresar
+                </button>
+              </div>
+              {enviarFormulario && (
+                <div class="alert alert-primary" role="alert">
+                  ¡Registro realizado!
+                </div>
+              )}
+            </div>
           </Form>
         )}
       </Formik>
