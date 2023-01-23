@@ -27,9 +27,6 @@ export const FooterCajas = () => {
             <div className="col ">
               <h4>Fecha: {fechaFinal}</h4>
             </div>
-            <div className="col">
-              <h4>Hora: {store.hora}</h4>
-            </div>
             <div className="col-3 text-start">
               {" "}
               <h4>Suma de las cajas {store.contadorCajas}</h4>

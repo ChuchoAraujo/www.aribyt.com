@@ -111,10 +111,9 @@ font-family: "Titillum Web", Titillium Web, sans-serif
 }
 .footer {
 	background-color: #4dada4;
-	color: #4dada4;
-	align-items: center;
+	color: white;
 	padding: 1em 0;
-	font-family: "Titillum Web", Titillium Web, sans-serif
+	font-family: "Titillum Web", Titillium Web, sans-serif;
 }
 .textoFooter1 {
 	margin-top: 15px;
@@ -126,6 +125,14 @@ font-family: "Titillum Web", Titillium Web, sans-serif
 	font-weight: 600;
 	color: white;
 	font-family: "Titillum Web", Titillium Web, sans-serif
+}
+.iconoFormMec {
+	width:60px;
+	fill:white;
+	margin:10px
+}
+.alinear{
+	display: inline-block;
 }
 
 .footerCajas{

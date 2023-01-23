@@ -3,6 +3,7 @@ import { Formik, Form} from "formik";
 import { Button, Input, Space, Table,DatePicker} from "antd";
 import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
+import { FooterEncargado } from "../../component/footers/footerEncargado";
 
 
 export const Vista_encargado = () => {
@@ -507,7 +508,7 @@ export const Vista_encargado = () => {
       </div>
       </div>
       </div>
-
+<FooterEncargado/>
     </>
   );
 };
