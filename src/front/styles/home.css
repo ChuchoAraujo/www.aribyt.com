@@ -182,7 +182,26 @@ font-family: "Titillum Web", Titillium Web, sans-serif
 	transition: .3s ease all;
 	margin-top: 20px;
 }
-
+.botonRegresarFormulario {
+	display: block;
+	background: #4dada4;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	
+	width: 100%;
+	padding: 10px;
+	border-radius: 5px;
+	color: rgb(255, 0, 0);
+	font-size: 16px;
+	transition: .3s ease all;
+	margin-top: 20px;
+}
+.botonClasificadoraEnviar{
+	margin: 1rem 0;
+	padding: 0.5rem 0;
+	background-color: #4dada4;
+}
 .formulario input,
 .formulario textarea {
 	font-family: 'Titillium Web', sans-serif;

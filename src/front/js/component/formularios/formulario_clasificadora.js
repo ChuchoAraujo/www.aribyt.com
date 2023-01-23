@@ -6,44 +6,23 @@ import Mantenimiento from "../icons/mantenimeinto";
 import Inyector from "../icons/inyector";
 import Papel from "../icons/papel";
 import Bidon from "../icons/bidon";
-import { HiHome } from "react-icons/hi";
+import { DatePicker } from 'antd';
 
 
 export const Formulario_clasificadora = () => {
   const { store, actions } = useContext(Context);
   const [enviarFormulario, setFormulario] = useState(false);
   const navigate = useNavigate();
-  const [cajas, setCajas] = useState("");
-  const [articulo, setArticulo] = useState("");
-  const [lote, setLote] = useState("");
-  const [jaulas, setJaulas] = useState("");
-  const [pedido, setPedido] = useState("");
-  const [personal, setPersonal] = useState("");
-  const [problema, setProblema] = useState("");
-  const [accion, setAccion] = useState("");
-  const [tiempo, setTiempo] = useState("");
-  const [velocidad, setVelocidad] = useState("");
-  const [gramos, setGramos] = useState("");
-  const [turno, setTurno] = useState("");
   const [problemaRecurrente, setProblemaRecurrente] = useState("");
   const [iconProblema, setIconProblema] = useState("")
   const [tituloProblema, setTituloProblema] = useState("");
-  const [inputProblema, setInputProblema] = useState("");
-  
+  const[fecha,setFecha]=useState("");
 
-  const valueProblema = store.problema
-
-  //OBTENER FECHA Y HORA
-  let today = new Date();
-  let day = today.getDate();
-  let month = today.getMonth() + 1;
-  let year = today.getFullYear();
-  var todayHora = new Date();
-  var nowHora = parseFloat(todayHora.toLocaleTimeString("en-US"));
-  const horaActual = new Intl.DateTimeFormat(undefined, {
-    timeStyle: "short",
-  }).format(new Date());
-  const horaConvertida = parseFloat(horaActual);
+ 
+  const valorFecha = (date, dateString) => {
+    setFecha(dateString);
+  };
+  const formatoFecha = 'DD/MM/YYYY';
 
   // ----------------------- PAGINACION FORMULARIO --------------------------------------//
   const [pagina1, setpagina1] = useState("");
@@ -55,6 +34,30 @@ export const Formulario_clasificadora = () => {
     if (pagina1 === pagina1) {
       setpagina1("visibility");
       setPagina2("hidden");
+    } else {
+      console.log("nada");
+    }
+  };
+  const regresarPagina1 = () => {
+    if (pagina2 === pagina2) {
+      setpagina1("hidden");
+      setPagina2("visibility");
+    } else {
+      console.log("nada");
+    }
+  };
+  const regresarPagina2 = () => {
+    if (pagina3 === pagina3) {
+      setPagina2("hidden");
+      setPagina3("visibility");
+    } else {
+      console.log("nada");
+    }
+  };
+  const regresarPagina3 = () => {
+    if (pagina4 === pagina4) {
+      setPagina3("hidden");
+      setPagina4("visibility");
     } else {
       console.log("nada");
     }
@@ -76,26 +79,6 @@ export const Formulario_clasificadora = () => {
     }
   };
 
-  const obtenerValue = () => {
-    setProblema("prueba")
-  }
-  // ---------------------------- FUNCION OBTENER HORA-TURNOS----------------------------------//
-
-  // function getPrueba() {
-  //   if (horaConvertida >= 6 && horaConvertida <= 14) {
-  //     console.log("Eres turno de mañana, tu hora es: " + horaConvertida);
-  //   } else if (horaConvertida >= 14 && horaConvertida <= 22) {
-  //     console.log("Eres turno de tarde, tu hora es: " + horaConvertida);
-  //   } else if (horaConvertida >= 22 && horaConvertida <= 6) {
-  //     console.log("Eres turno de noche, tu hora es: " + horaConvertida);
-  //   } else {
-  //     console.log("No tienes turno");
-  //   }
-  // }
-
-  // getPrueba(horaConvertida);
-
-  // ---------------------------- FUNCION REGRESAR DE PAGINA----------------------------------//
 
   const back = () => {
     navigate("/");
@@ -110,11 +93,12 @@ export const Formulario_clasificadora = () => {
       },
     })
       .then((response) => response.json())
-      .then((result) => {})
+      .then((result) => {
+      })
       .catch((error) => console.log("error", error));
   }, []);
   // ---------------------------- GET / SUMACAJAS----------------------------------//
-  const suma = () => {
+  const suma = (valores) => {
     fetch(process.env.BACKEND_URL + "/api/join", {
       method: "POST",
       headers: {
@@ -122,8 +106,8 @@ export const Formulario_clasificadora = () => {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify({
-        fecha: `${month}/${day}/${year}`,
-        turno: turno,
+        fecha: fecha,
+        turno: valores.turno,
       }),
     })
       .then((response) => response.json())
@@ -133,7 +117,7 @@ export const Formulario_clasificadora = () => {
       .catch((error) => console.log("error", error));
   };
   // ---------------------------- POST / CLASIFICADORA----------------------------------//
-  const sendDataClasificadora = () => {
+  const sendDataClasificadora = (valores) => {
     fetch(process.env.BACKEND_URL + "/api/clasificadora", {
       method: "POST",
       headers: {
@@ -142,27 +126,29 @@ export const Formulario_clasificadora = () => {
       },
       body: JSON.stringify({
         user_id: store.userId,
-        cajas: cajas,
-        articulo: articulo,
-        lote: lote,
-        jaulas: jaulas,
-        pedido: pedido,
-        personal: personal,
-        problema: problema,
-        accion: accion,
-        tiempo: tiempo,
-        velocidad: velocidad,
-        gramos: gramos,
-        fecha: `${month}/${day}/${year}`,
+        cajas: valores.cajas,
+        articulo: valores.articulo,
+        lote: valores.lote,
+        jaulas: valores.jaulas,
+        pedido: valores.pedido,
+        personal: valores.personal,
+        problema: valores.problema,
+        accion: valores.accion,
+        tiempo: valores.tiempo,
+        velocidad: valores.velocidad,
+        gramos: valores.gramos,
+        fecha: fecha,
         horas: store.hora,
-        turno: turno,
+        turno: valores.turno,
       }),
     })
       .then((response) => response.json())
       .then((result) => {
-        suma();
+        console.log("enviado correctamente",result)
+        navigate("/vista_login/vista_clasificadora")
+        suma(valores);
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.log("error al enviar datos", error));
   };
 
   return (
@@ -209,22 +195,11 @@ export const Formulario_clasificadora = () => {
           return errores;
         }}
         onSubmit={(valores, { resetForm }) => {
+          console.log("valor de turno es",valores.turno)
           resetForm();
-          setFormulario(true);
-          setArticulo(valores.articulo);
-          setLote(valores.lote);
-          setJaulas(valores.jaulas);
-          setPedido(valores.pedido);
-          setPersonal(valores.personal);
-          setProblema(valores.problema);
-          setAccion(valores.accion);
-          setTiempo(valores.tiempo);
-          setVelocidad(valores.velocidad);
-          setGramos(valores.gramos);
-          setTurno(valores.turno);
-          setCajas(valores.cajas);
+          sendDataClasificadora(valores)
           setTimeout(() => setFormulario(false), 5000);
-          console.log(valores);
+          
         }}
       >
         {({ errors, setFieldValue }) => (
@@ -243,7 +218,7 @@ export const Formulario_clasificadora = () => {
                       id="cajas"
                       name="cajas"
                       placeholder="Número de cajas"
-                      onKeyUp={(e) => setCajas(e.target.value)}
+
                     />
                     <ErrorMessage
                       name="cajas"
@@ -258,8 +233,12 @@ export const Formulario_clasificadora = () => {
                       type="text"
                       id="articulo"
                       name="articulo"
+<<<<<<< HEAD
                       placeholder="Código de artículo"
                       onKeyUp={(e) => setArticulo(e.target.value)}
+=======
+                      placeholder="Codigo de Articulo"
+>>>>>>> refs/remotes/origin/main
                     />
                     <ErrorMessage
                       name="articulo"
@@ -274,16 +253,24 @@ export const Formulario_clasificadora = () => {
                       type="text"
                       id="lote"
                       name="lote"
+<<<<<<< HEAD
                       placeholder="Número de lote"
                       onKeyUp={(e) => setLote(e.target.value)}
+=======
+                      placeholder="Numero Lote"
+>>>>>>> refs/remotes/origin/main
                     />
                   </div>
-                  <button
-                    onClick={printCondicitional}
-                    className="botonSiguienteFormulario"
-                  >
-                    Siguiente
-                  </button>
+                  <div>
+                    <button
+                      onClick={printCondicitional}
+                      className="botonSiguienteFormulario">
+                      Siguiente
+                    </button>
+                  </div>
+                  <div>
+                <button onClick={()=>navigate(-1)} className="botonRegresarFormulario">Regresar</button>
+                </div>
                 </div>
 
                 {/*--------------------------Formulario pagina2*-------------------*/}
@@ -294,8 +281,12 @@ export const Formulario_clasificadora = () => {
                       type="text"
                       id="jaulas"
                       name="jaulas"
+<<<<<<< HEAD
                       placeholder="Número de jaulas"
                       onKeyUp={(e) => setJaulas(e.target.value)}
+=======
+                      placeholder="Numero de Jaulas"
+>>>>>>> refs/remotes/origin/main
                     />
                   </div>
                   <div>
@@ -304,8 +295,12 @@ export const Formulario_clasificadora = () => {
                       type="text"
                       id="pedido"
                       name="pedido"
+<<<<<<< HEAD
                       placeholder="Número de pedido"
                       onKeyUp={(e) => setPedido(e.target.value)}
+=======
+                      placeholder="Numero de pedido"
+>>>>>>> refs/remotes/origin/main
                     />
                   </div>
                   <div>
@@ -314,16 +309,31 @@ export const Formulario_clasificadora = () => {
                       as="textarea"
                       id="personal"
                       name="personal"
+<<<<<<< HEAD
                       placeholder="Personal en la máquina"
                       onKeyUp={(e) => setPersonal(e.target.value)}
+=======
+                      placeholder="Personal en la maquina"
+>>>>>>> refs/remotes/origin/main
                     />
                   </div>
-                  <button
-                    onClick={printCondicitional2}
-                    className="botonSiguienteFormulario"
-                  >
-                    Siguiente
+                  <div>
+                    <button
+                      onClick={printCondicitional2}
+                      className="botonSiguienteFormulario"
+                    >
+                      Siguiente
                   </button>
+                  </div>
+                  <div>
+                    <button
+                      onClick={regresarPagina1}
+                      className="botonSiguienteFormulario"
+                    >
+                      Regresar
+                  </button>
+                  </div>
+                  
                 </div>
                 {/*--------------------------Formulario pagina3*-------------------*/}
                 <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
@@ -340,7 +350,6 @@ export const Formulario_clasificadora = () => {
                         );
                         setIconProblema("iconManteGray");
                         setTituloProblema("tituloManteGray");
-                        console.log(value);
                       }}
                       className={
                         problemaRecurrente ===
@@ -476,9 +485,6 @@ export const Formulario_clasificadora = () => {
                       id="problema"
                       name="problema"
                       placeholder="¿Qué ha pasado?"
-                      onKeyUp={(e) => {
-                        setProblema(e.target.value);
-                      }}
                     ></Field>
                   </div>
                   <div>
@@ -487,15 +493,29 @@ export const Formulario_clasificadora = () => {
                       as="textarea"
                       id="accion"
                       name="accion"
+<<<<<<< HEAD
                       placeholder="Solución al problema o problemas"
                       onKeyUp={(e) => setAccion(e.target.value)}
+=======
+                      placeholder="Solucion al problema o problemas"
+>>>>>>> refs/remotes/origin/main
                     />
+                    <div>
+                      <button
+                        onClick={printCondicitional3}
+                        className="botonSiguienteFormulario"
+                      >
+                        Siguiente
+                      </button>
+                    </div>
+                    <div>
                     <button
-                      onClick={printCondicitional3}
-                      className="botonSiguienteFormulario"
-                    >
-                      Siguiente
-                    </button>
+                        onClick={regresarPagina2}
+                        className="botonSiguienteFormulario"
+                      >
+                        Regresar
+                      </button>
+                    </div>
                   </div>
                 </div>
                 {/*--------------------------Formulario pagina4*-------------------*/}
@@ -506,8 +526,12 @@ export const Formulario_clasificadora = () => {
                       type="number"
                       id="tiempo"
                       name="tiempo"
+<<<<<<< HEAD
                       placeholder="Tiempo de parada"
                       onKeyUp={(e) => setTiempo(e.target.value)}
+=======
+                      placeholder="Tiempo parada"
+>>>>>>> refs/remotes/origin/main
                     />
                   </div>
                   <div>
@@ -516,8 +540,12 @@ export const Formulario_clasificadora = () => {
                       type="number"
                       id="velocidad"
                       name="velocidad"
+<<<<<<< HEAD
                       placeholder="Velocidad de la máquina"
                       onKeyUp={(e) => setVelocidad(e.target.value)}
+=======
+                      placeholder="Velocidad de la maquina"
+>>>>>>> refs/remotes/origin/main
                     />
                     <ErrorMessage
                       name="velocidad"
@@ -533,7 +561,6 @@ export const Formulario_clasificadora = () => {
                       id="gramos"
                       name="gramos"
                       placeholder="Gramos de la cola"
-                      onKeyUp={(e) => setGramos(e.target.value)}
                     />
                     <ErrorMessage
                       name="gramos"
@@ -542,51 +569,45 @@ export const Formulario_clasificadora = () => {
                       )}
                     />
                   </div>
+                  <div>
+                  <label htmlFor="turno">Turno</label>
                   <Field
-                    onClick={(e) => setTurno(e.target.value)}
                     as="select"
+                    id="turno"
                     name="turno"
                     className="selectTurno"
                   >
+                    <option>Seleccione</option>
                     <option value="mañana">Mañana</option>
                     <option value="tarde">Tarde</option>
                     <option value="noche">Noche</option>
                   </Field>
+                  </div>
+                  <div>
+                  <label htmlFor="fecha">Fecha</label>
+                        <DatePicker onChange={valorFecha} format={formatoFecha}/>
+                  </div>
+                  <div>
                   <button
-                    className="botonSiguienteFormulario"
-                    onClick={sendDataClasificadora}
+                  className="botonSiguienteFormulario"
+                    type="submit"
                   >
                     Enviar
                   </button>
-                  {/* <div>
-                <label htmlFor="turno">turno</label>
-                <Field
-                  type="select"
-                  id="turno"
-                  name="turno"
-                  placeholder="turno"
-                  onKeyUp={(e) => setTurno(e.target.value)}
-                />
-              </div> */}
-
+                  </div>
+                  <div>
+                  <button
+                    className="botonSiguienteFormulario"
+                    onClick={regresarPagina3}
+                  >
+                    Regresar
+                  </button>
+                  </div>
                   {enviarFormulario && (
                     <div class="alert alert-primary" role="alert">
                       ¡Registro realizado!
                     </div>
                   )}
-                  <div className="">
-                    <div className=""></div>
-                    <div className=" d-flex justify-content-center">
-                      <button
-                        className="botonAtras d-flex align-items-center"
-                        type="button"
-                        onClick={back}
-                      >
-                        <HiHome className="iconHomeClasificadora " />
-                      </button>
-                    </div>
-                    <div className=""></div>
-                  </div>
                 </div>
             
           </Form>

@@ -1,9 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
-
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import DatePicker from "react-date-picker";
-import { SearchOutlined } from "@ant-design/icons";
-import { Button, Input, Space, Table} from "antd";
+import React, { useState, useRef } from "react";
+import { Formik, Form} from "formik";
+import { Button, Input, Space, Table,DatePicker} from "antd";
 import Highlighter from "react-highlight-words";
 import { FooterEncargado } from "../../component/footers/footerEncargado"; 
 
@@ -24,11 +21,11 @@ export const Vista_encargado = () => {
 
 
   // ----------------- FECHA ----------------
-  const [fechaSeleccionada, setFechaSeleccionada] = useState(new Date());
-  let day = fechaSeleccionada.getDate();
-  let month = fechaSeleccionada.getMonth() + 1;
-  let year = fechaSeleccionada.getFullYear();
-  let fechaConvertida = `${month}/${day}/${year}`;
+ 
+  const valorFecha = (date, dateString) => {
+    setFecha(dateString);
+  };
+  const formatoFecha = 'DD/MM/YYYY';
 
   /*-----------------------------PAGINACION---------------------------------*/
   const [pagina1, setpagina1] = useState("");
@@ -84,10 +81,13 @@ export const Vista_encargado = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        alert("Email enviado Correctamente")
+        if(result.mensaje="enviado"){
+          console.log("entro en el if")
+          alert("Email enviado Correctamente")
+        }
       })
       .catch((error) => {
-        alert("No se ha enviado el Email")
+        alert("No se ha enviado el Email",error)
       });
   };
   // ------FUNCIONES MOSTRAR Y OCULTAR ----------------------
@@ -438,17 +438,10 @@ export const Vista_encargado = () => {
                 <div className="text-center m-3">
                   <h4 className="tituloFecha">--- Fecha ---</h4>
                   <DatePicker
-                    id="calendar"
-                    onChange={setFechaSeleccionada}
-                    value={fechaSeleccionada}
-                    calendarClassName="react-calendar"
-                    // tyle={{ backgroundColor: fff }}
+                    onChange={valorFecha} format={formatoFecha}
                   />
                 </div>
                 {/*----------------------FeNVIO DATOS-------------------*/}
-                <div className="text-center botonSagrado">
-                  <button onClick={setFecha(fechaConvertida)}>Click</button>
-                </div>
                 <div className="d-flex justify-content-center mt-2">
                   <button
                     type="submit"
