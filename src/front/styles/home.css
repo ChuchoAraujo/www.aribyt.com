@@ -180,6 +180,7 @@ font-family: "Titillum Web", Titillium Web, sans-serif
 	font-weight: 600;
 	font-family: 'Titillium Web', sans-serif;
 	border: none;
+	color: white;
 	
 	width: 100%;
 	padding: 10px;
@@ -1171,6 +1172,7 @@ pruebas opacidad*/
 	  }
 	  .containerLogos{
 		padding: 150px;
+		margin: 20px;
 		margin-bottom: 50px;
 		/* margin-bottom: 100px; */
 	  }

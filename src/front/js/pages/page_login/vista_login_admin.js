@@ -13,7 +13,7 @@ export const Vista_Login_Admin = () => {
       <div className="row containerRoles">
         <div className="col-3"></div>
         <div className="paginaLogo col-6">
-          icono encargado
+          
         </div>
         <div className="col-3"></div>
       </div>
