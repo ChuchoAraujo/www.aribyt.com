@@ -1098,22 +1098,14 @@ pruebas opacidad*/
 		padding: 10px;
 		border: 2px solid #828282;
 		font-size: 20px;
-		font-weight: 600;
 		color: white;
-		width: 120px;
+		width: 100%;
 		font-family: "Titillum Web", Titillium Web, sans-serif
 	  }
-	    .botonUsers2{
-		background-color: #4dada4;
-		margin: 10px;
-		padding: 10px;
-		border: 2px solid #828282;
-		font-size: 20px;
-		font-weight: 600;
-		color: white;
-		width: 200px;
-		font-family: "Titillum Web", Titillium Web, sans-serif
+	  .botonUsers:hover{
+		color: #23524d;
 	  }
+
 
 	  .tituloAdmin {
 		color: #828282;
@@ -1123,13 +1115,11 @@ pruebas opacidad*/
 	  }
 
 	  .cardUser{
-		background-color: #e2e2e2;
-		color: #828282;
+		background-color: #4dada4;
+		color: white;
 		margin: 5px;
-		padding: 40px;
-		font-size: 14px;
-		font-weight: 400;
-		width: 220px;
+		font-size: 20px;
+		width: 100%;
 		font-family: "Titillum Web", Titillium Web, sans-serif
 	  }
 

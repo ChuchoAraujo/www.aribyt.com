@@ -1,27 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
-import { store, actions } from "../../store/flux";
-import { Context } from "../../store/appContext";
 
 
 export const LoginAdmin = () => {
-  const { store, actions } = useContext(Context);
   const navigate = useNavigate();
   const [enviarFormulario, setFormulario] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  let urlRole = "admin" + store.role;
+  let urlRole = "admin";
 
-  const access = () => {
+  const access = (valores) => {
     fetch(process.env.BACKEND_URL + "/api/accesoAdmin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        "email": email,
-        "password": password,
+        "email": valores.email,
+        "password": valores.password,
         "role": "administrador",
       }),
     })
@@ -30,7 +25,6 @@ export const LoginAdmin = () => {
         if (result.token) {
           localStorage.setItem("token", result.token);
           navigate(urlRole);
-          store.userId=result.user
         }
         console.log(result)
 
@@ -73,24 +67,12 @@ export const LoginAdmin = () => {
         }}
         onSubmit={(valores, { resetForm }) => {
           resetForm();
-          console.log("Formulario enviado");
-          console.log("Formulario enviado", valores.email, valores.password);
-          setEmail(valores.email);
-          setPassword(valores.password);
           setFormulario(true);
           setTimeout(() => setFormulario(false), 5000);
+          access(valores)
         }}
       >
         {({ errors }) => (
-
-          // ----DUDA IMPORT LOGINADMIN?---- //
-
-       // <div className="container-fluid">
-       // <Row justify="center">
-       // <Col md={8} sm={24}>
-        //  <LoginAdmin />
-        //</Col> //
-
           <Form className="formulario container row">
             <h1 className="mb-5">Login</h1>
             <div>
@@ -100,7 +82,6 @@ export const LoginAdmin = () => {
                 id="email"
                 name="email"
                 placeholder="Email"
-                onKeyUp={(e) => setEmail(e.target.value)}
               />
               <ErrorMessage
                 name="email"
@@ -115,7 +96,6 @@ export const LoginAdmin = () => {
                 id="password"
                 name="password"
                 placeholder="Password"
-                onKeyUp={(e) => setPassword(e.target.value)}
               />
               <ErrorMessage
                 name="password"
@@ -123,7 +103,7 @@ export const LoginAdmin = () => {
               />
             </div>
 
-            <button type="submit" onClick={access}>
+            <button type="submit" className="botonSiguienteFormulario">
               Enviar
             </button>
             {enviarFormulario && (

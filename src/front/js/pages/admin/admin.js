@@ -5,6 +5,7 @@ import { Context } from "../../store/appContext";
 import { store, actions } from "../../store/flux";
 import ReactDOM from "react-dom";
 import {useNavigate } from "react-router-dom";
+import { Col, Row } from "antd";
 
 
 export const  Admin = () => {
@@ -28,63 +29,43 @@ export const  Admin = () => {
             })
             .catch((error) => console.log("error", error));
         }, []);
-    const { store , actions} = useContext(Context);
+    const { actions} = useContext(Context);
     const[boton,setBoton]=useState(false);
-     const [pagina1, setpagina1] = useState("");
-     const [pagina2, setPagina2] = useState("");
+    const[boton1,setBoton1]=useState(false);
 
-      const printCondicitional = () => {
-        if (pagina1 === pagina1) {
-          setpagina1("visibility");
-          setPagina2("hidden");
-        } else {
-          console.log("nada");
-        }
-      };
+
+
   // ---------------------------- GET / USERS----------------------------------//
   const verTodos = () => {
+    setBoton1(true)
+    setBoton(false)
     actions.fetchUser()
   };
 
   const agregarUsuario = () => {
        setBoton(true)
+       setBoton1(false)
   }
 
   return (
     localStorage.getItem("token") && (
-      <div className="container-fluid containerAdmin">
-        <div className="row">
-          <div className="col-2"></div>
-
-          <div className="col-8">
-            <div className="text-center p-3">
-              <h1 className="tituloAdmin">--- Administrador de usuarios ---</h1>
-            </div>
-            <div className="text-center p-2">
+           <>
+           <Row justify="center">
+            <Col md={8} sm={24}>
+              <div>
               <button className="botonUsers" onClick={verTodos}>
                 Ver todo
               </button>
-              <button className="botonUsers2" onClick={agregarUsuario}>
+              <button className="botonUsers" onClick={agregarUsuario}>
                 Agregar usuario
               </button>
-            </div>
-          </div>
+              </div>
+              <div>{boton ? <FormularioUsuarios /> : null}</div>
+              <div>{boton1 ? <Callusers /> : null } </div>
+            </Col>
+           </Row>
 
-          <div className="col-2"></div>
-        </div>
-
-        <div className="row">
-          <div className="col-3"></div>
-          <div className="col-6">{boton ? <FormularioUsuarios /> : null}</div>
-          <div className="col-3"></div>
-        </div>
-
-        <div className="container row">
-          <div className="col-12">
-            <Callusers />
-          </div>
-        </div>
-      </div>
+            </>
     )
   );
 };

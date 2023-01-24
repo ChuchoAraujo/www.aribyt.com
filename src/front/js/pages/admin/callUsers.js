@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { RiUser3Fill } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
 import { AiFillSkin } from "react-icons/ai";
-;
+import { Col, Row } from "antd";
+
 
 export const Callusers = () => {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ export const Callusers = () => {
       .then((response) => response.json())
       .then((result) => {
         if (result) {
+          //recargar pagina
           window.location.reload(true);
         }
       })
@@ -49,7 +51,7 @@ export const Callusers = () => {
 
   const printCondicitional = () => {
     if (pagina1 === pagina1) {
-      setpagina1("visibility container-fluid");
+      setpagina1("visibility");
       setPagina2("hidden");
     } else {
       console.log("nada");
@@ -60,12 +62,16 @@ export const Callusers = () => {
     setBoton(true);
   };
 
+// BORRAR EN PANTALLA USUARIO
+    const mensajeConfirmacion = (index) => {
+      store.user.filter((users) => users !== index);
+    };
   // Funcion alerta
   function eliminar(item, index) {
-    var statusConfirm = confirm("¿Realmente desea eliminar esto?");
+    let statusConfirm = confirm("¿Realmente desea eliminar esto?");
     if (statusConfirm == true) {
       sendDataDelete(item);
-      mensajeConfirmacion(index);
+      mensajeConfirmacion(index)
       alert("se ha elminado el registro seleccionado");
     } else {
       alert("No se ha eliminado");
@@ -86,6 +92,7 @@ export const Callusers = () => {
     })
       .then((response) => response.json())
       .then((result) => {
+        console.log("este es el resultado",result)
         actions.fetchUser();
       })
       .catch((error) => console.log("error", error));
@@ -193,7 +200,7 @@ export const Callusers = () => {
                     component={() => <div className="error">{errors.role}</div>}
                   />
                 </div>
-                <button type="submit">Enviar</button>
+                <button type="submit" className="botonSiguienteFormulario">Enviar</button>
               </Form>
             )}
           </Formik>
@@ -203,24 +210,18 @@ export const Callusers = () => {
   };
   return (
     <>
+
       <div>{boton ? formularioEditar() : null}</div>
       <div
-        className={
-          pagina1 === "visibility container-fluid"
-            ? "hidden"
-            : "visibility container-fluid"
-        }
-      >
-        <div className="container-fluid">
-          <div className="row d-flex justify-content-center">
+        className={pagina1 === "visibility" ? "hidden": "visibility"}>
             {store.user.map((item, index) => (
               <>
                 <div
-                  className="cardUser col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-3 card text-center p-2"
+                  className="cardUser card p-2 text-center"
                   key={index}
                 >
                   <div className="card-body">
-                    <p className="mt-3 fw-bold d-flex align-items-center d-flex justify-content-center">
+                    <p className="">
                       Username: {item.username}
                     </p>
                     <hr />
@@ -258,9 +259,10 @@ export const Callusers = () => {
                 </div>
               </>
             ))}
-          </div>
-        </div>
+
+
       </div>
+
     </>
   );
 };

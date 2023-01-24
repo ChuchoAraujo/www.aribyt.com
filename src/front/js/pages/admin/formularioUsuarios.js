@@ -2,16 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { store } from "../../store/flux";
 import { Context } from "../../store/appContext";
+import { useWindowSize } from "usehooks-ts";
 
 export const FormularioUsuarios = () => {
     const { store } = useContext(Context);
-       const [username, setUsername] = useState("");
-       const [email, setEmail] = useState("");
-       const [password, setPassword] = useState("");
-       const [role, setRole] = useState("");
        const [enviarFormulario, setFormulario] = useState(false);
 // ---------------------------- POST / CLASIFICADORA----------------------------------//
-  const sendDataRegister = () => {
+  const sendDataRegister = (valores) => {
     fetch(process.env.BACKEND_URL + "/api/register", {
       method: "POST",
       headers: {
@@ -19,16 +16,17 @@ export const FormularioUsuarios = () => {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify({
-        username: username,
-        email: email,
-        password: password,
-        role: role,
+        username: valores.username,
+        email: valores.email,
+        password: valores.password,
+        role: valores.role,
         
       }),
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log(result)
+        //recargar la pagina
+        window.location.reload(true);
       })
       .catch((error) => console.log("error", error));
   };
@@ -64,11 +62,7 @@ export const FormularioUsuarios = () => {
         onSubmit={(valores, { resetForm }) => {
           resetForm();
           setFormulario(true);
-          setUsername(valores.username);
-          setEmail(valores.email);
-          setPassword(valores.password);
-          setRole(valores.role);
-
+          sendDataRegister(valores)
           setTimeout(() => setFormulario(false), 5000);
         }}
       >
@@ -81,7 +75,6 @@ export const FormularioUsuarios = () => {
                 id="username"
                 name="username"
                 placeholder="username"
-                onKeyUp={(e) => setUsername(e.target.value)}
               />
               <ErrorMessage
                 name="username"
@@ -95,7 +88,6 @@ export const FormularioUsuarios = () => {
                 id="email"
                 name="email"
                 placeholder="email"
-                onKeyUp={(e) => setEmail(e.target.value)}
               />
               <ErrorMessage
                 name="email"
@@ -109,7 +101,6 @@ export const FormularioUsuarios = () => {
                 id="password"
                 name="password"
                 placeholder="password"
-                onKeyUp={(e) => setPassword(e.target.value)}
               />
               <ErrorMessage
                 name="password"
@@ -119,18 +110,21 @@ export const FormularioUsuarios = () => {
             <div>
               <label htmlFor="role">Rol</label>
               <Field
-                type="text"
-                id="role"
+                as="select"
                 name="role"
-                placeholder="role"
-                onKeyUp={(e) => setRole(e.target.value)}
-              />
+                className="selectTurno"
+              >
+                <option value="" label="Selecciona" />
+                <option value="clasificadora" label="Clasificadora" />
+                <option value="mecanico" label="Mecanico" />
+                <option value="encargado" label="Encargado" />
+              </Field>
               <ErrorMessage
                 name="role"
                 component={() => <div className="error">{errors.role}</div>}
               />
             </div>
-            <button className="botonRegister" onClick={sendDataRegister}>
+            <button type="submit" className="botonSiguienteFormulario">
               Enviar
             </button>
             {enviarFormulario && (

@@ -70,6 +70,7 @@ def loginAdmin():
         return jsonify({'token': access_token,"user":user.id}), 200 
 
 
+
 #---------------------------------------- REGISTER ----------------------------------------#  
 @api.route('/register', methods=['POST'])
 def register():
@@ -93,16 +94,17 @@ def register():
 # 
 
 # ### DELETE USERS
-@api.route('/delete', methods= ['POST', 'PUT'])
+@api.route('/delete', methods= ['POST'])
 def deleteUser():
-    if request.method =='POST':
+    try:
         user_id = request.json.get('user_id')
         byeMember = db.session.query(User).get(user_id)
         db.session.delete(byeMember)
         db.session.commit()
-
         response_body = {"msg": "User borrado","user": user_id}
-        return jsonify(response_body) 
+        return jsonify(response_body)
+    except:
+        return jsonify({'mensaje':'no se ha borrado'}) 
 
     
 @api.route('/modificar',methods=['PUT'])
