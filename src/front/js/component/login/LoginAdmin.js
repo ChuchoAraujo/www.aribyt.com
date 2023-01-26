@@ -73,8 +73,8 @@ export const LoginAdmin = () => {
         }}
       >
         {({ errors }) => (
-          <Form className="formulario container row">
-            <h1 className="mb-5">Login</h1>
+          <Form className="formulario">
+            <h1 className="text-center">Login</h1>
             <div>
               <label htmlFor="email">Email</label>
               <Field
