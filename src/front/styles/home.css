@@ -190,20 +190,25 @@ font-family: "Titillum Web", Titillium Web, sans-serif
 	transition: .3s ease all;
 	margin-top: 20px;
 }
+.botonSiguienteFormulario:hover{
+	background: #418a82;
+}
 .botonRegresarFormulario {
 	display: block;
 	background: #4dada4;
 	font-weight: 600;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Titillium Web', sans-serif;
 	border: none;
-	
 	width: 100%;
 	padding: 10px;
 	border-radius: 5px;
-	color: rgb(255, 0, 0);
+	color: white;
 	font-size: 16px;
 	transition: .3s ease all;
 	margin-top: 20px;
+}
+.botonRegresarFormulario:hover{
+	background: #404b46;
 }
 .botonClasificadoraEnviar{
 	margin: 1rem 0;
@@ -1043,6 +1048,27 @@ pruebas opacidad*/
 	width: 200px;
 	border-style: none;
 	background-color: #e2e2e2;
+	margin: 5px;
+	border-radius: 15px;
+	color: black;
+	font-family: "Titillum Web", Titillium Web, sans-serif
+
+}
+.botonConsultarCajas{
+	padding: 15px;
+	width: 200px;
+	border-style: none;
+	background-color: #4dada4;
+	margin: 5px;
+	border-radius: 15px;
+	color: white;
+}
+	
+.botonConsultarCajas:hover{
+    padding: 15px;
+	width: 200px;
+	border-style: none;
+	background-color: #3b9c75;
 	margin: 5px;
 	border-radius: 15px;
 	color: black;

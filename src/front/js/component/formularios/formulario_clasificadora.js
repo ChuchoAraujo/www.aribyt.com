@@ -6,7 +6,9 @@ import Mantenimiento from "../icons/mantenimeinto";
 import Inyector from "../icons/inyector";
 import Papel from "../icons/papel";
 import Bidon from "../icons/bidon";
-import { DatePicker } from 'antd';
+import { Col, DatePicker, Row } from 'antd';
+import { FooterClasificadora } from "../footers/footerClasificadora";
+
 
 
 export const Formulario_clasificadora = () => {
@@ -99,7 +101,7 @@ export const Formulario_clasificadora = () => {
       .catch((error) => console.log("error", error));
   }, []);
   // ---------------------------- GET / SUMACAJAS----------------------------------//
-  const suma = (valores) => {
+  const suma = (turno) => {
     fetch(process.env.BACKEND_URL + "/api/join", {
       method: "POST",
       headers: {
@@ -108,12 +110,12 @@ export const Formulario_clasificadora = () => {
       },
       body: JSON.stringify({
         fecha: fecha,
-        turno: valores.turno,
+        turno: turno,
       }),
     })
       .then((response) => response.json())
       .then((result) => {
-        store.contadorCajas = result.sumaCajas;
+        store.contadorCajas = result.sumaCajas
       })
       .catch((error) => console.log("error", error));
   };
@@ -145,14 +147,14 @@ export const Formulario_clasificadora = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log("enviado correctamente",result)
+        suma(valores.turno)
         navigate(-1)
-        suma(valores);
       })
       .catch((error) => console.log("error al enviar datos", error));
   };
 
   return (
+    localStorage.getItem("token") &&(
     <>
       <Formik
         initialValues={{
@@ -227,7 +229,6 @@ export const Formulario_clasificadora = () => {
                   id="articulo"
                   name="articulo"
                   placeholder="Código de artículo"
-                  onKeyUp={(e) => setArticulo(e.target.value)}
                 />
                 <ErrorMessage
                   name="articulo"
@@ -258,7 +259,7 @@ export const Formulario_clasificadora = () => {
                   onClick={() => navigate(-1)}
                   className="botonRegresarFormulario"
                 >
-                  Regresar
+                  Pagina Anterior
                 </button>
               </div>
             </div>
@@ -312,10 +313,12 @@ export const Formulario_clasificadora = () => {
             {/*--------------------------Formulario pagina3*-------------------*/}
             <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
               <h6>--- Problemas recurrentes ---</h6>
-              <div className="d-flex justify-content-center">
+
+              <Row justify="center">
+                <Col>
                 <button
                   onClick={() => {
-                    setFieldValue("problema", "Se ha realizado mantenimiento");
+                    setFieldValue("problema","Se ha realizado mantenimiento");
                     setProblemaRecurrente(
                       "problemaClasificadoraGray text-center buttonIconsFormClasificadora"
                     );
@@ -346,10 +349,11 @@ export const Formulario_clasificadora = () => {
                     Mantenimiento
                   </h6>
                 </button>
-
+                </Col>
+                <Col>
                 <div
                   onClick={() => {
-                    setFieldValue("problema", "Falta papel");
+                    setFieldValue("problema","Papel agotado");
                     setProblemaRecurrente(
                       "problemaPapelGray text-center buttonIconsFormClasificadora"
                     );
@@ -380,10 +384,11 @@ export const Formulario_clasificadora = () => {
                     Papel
                   </h6>
                 </div>
-
+                  </Col>
+                  <Col>
                 <div
                   onClick={() => {
-                    setFieldValue("problema", "Problemas con el inyector");
+                    setFieldValue("problema","Problemas con inyectores");
                     setProblemaRecurrente(
                       "problemaInyectorGray text-center buttonIconsFormClasificadora"
                     );
@@ -414,10 +419,11 @@ export const Formulario_clasificadora = () => {
                     Inyector
                   </h6>
                 </div>
-
+                    </Col>
+                    <Col>
                 <div
                   onClick={() => {
-                    setFieldValue("problema", "Se ha averiado el bidón");
+                    setFieldValue("problema","Se ha agotado el bidón");
                     setProblemaRecurrente(
                       "problemaBidonGray text-center buttonIconsFormClasificadora"
                     );
@@ -447,8 +453,9 @@ export const Formulario_clasificadora = () => {
                   >
                     Bidón
                   </h6>
-                </div>
-              </div>
+                    </div>
+                </Col>
+              </Row>
               <div>
                 <label htmlFor="problema">Problema</label>
                 <Field
@@ -561,8 +568,8 @@ export const Formulario_clasificadora = () => {
               )}
             </div>
           </Form>
-        )}
+    )}
       </Formik>
     </>
-  );
+  ));
 };

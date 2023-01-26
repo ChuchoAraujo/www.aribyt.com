@@ -51,7 +51,10 @@ export const  Admin = () => {
     localStorage.getItem("token") && (
            <>
            <Row justify="center">
-            <Col md={8} sm={24}>
+           <Col xs={{order: 1, }}
+        sm={{order: 2,}}
+        md={{order: 3,}}
+        lg={{order: 4,}}>
               <div>
               <button className="botonUsers" onClick={verTodos}>
                 Ver todo

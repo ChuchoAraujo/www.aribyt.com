@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import { store } from "../../store/flux";
 import { Context } from "../../store/appContext";
-import { DatePicker } from 'antd';
+import { Col, DatePicker, Row } from 'antd';
 
 export const Formulario_rechazos = () => {
   const { store } = useContext(Context);
@@ -62,6 +62,8 @@ export const Formulario_rechazos = () => {
 
   return (
     <>
+    <Row justify="center">
+      <Col md={8} sm={24}>
       <Formik
         initialValues={{
           turno: "",
@@ -94,7 +96,6 @@ export const Formulario_rechazos = () => {
                 id="paneles"
                 name="paneles"
                 placeholder="Paneles"
-                onKeyUp={(e) => setPaneles(e.target.value)}
               />
             </div>
             <div>
@@ -104,7 +105,6 @@ export const Formulario_rechazos = () => {
                 id="jaula"
                 name="jaula"
                 placeholder="Jaula"
-                onKeyUp={(e) => setJaula(e.target.value)}
               />
             </div>
             <div>
@@ -140,6 +140,8 @@ export const Formulario_rechazos = () => {
           </Form>
         )}
       </Formik>
+      </Col>
+    </Row>
     </>
   );
 };
