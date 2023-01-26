@@ -1,26 +1,24 @@
-import React, { useContext} from "react";
-import { Context } from "../../store/appContext";
-
+import React from "react";
 import { Horas_mecanico } from "../../component/horas/horas_mecanico";
 import { FooterMecanico } from "../../component/footers/footerMecanico";
+import { Col, Row } from "antd";
 
 
 export const Vista_mecanico = () => {
-  const { store, actions } = useContext(Context);
+
   
 
   return (
     <>
       
-        <div className="container-fluid  text-center">
-          <div className="align-items-start m-5">
+        <div className=" text-center pb-5 mb-5">
+          <Row justify="center" className="pb-5 mb-5">
+            <Col>
             <Horas_mecanico />
-          </div>
-          <div className="container">
-         <FooterMecanico/>
-          </div>
+            </Col>
+          </Row>
         </div>
-      
+        <FooterMecanico/>
     </>
   );
 };

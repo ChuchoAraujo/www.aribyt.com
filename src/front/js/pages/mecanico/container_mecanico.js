@@ -1,11 +1,8 @@
-import React, { useContext, useEffect } from "react";
-import { Context } from "../../store/appContext";
+import React from "react";
 import { Formulario_mecanico } from "../../component/formularios/formulario_mecanico";
-import { FooterMecanico } from "../../component/footers/footerMecanico";
 import { Col, Row } from "antd";
 
 export const Container_mecanico = () => {
-  const { store, actions } = useContext(Context);
   return (
     <>
      <div className="container-fluid">
@@ -15,12 +12,6 @@ export const Container_mecanico = () => {
           </Col>
         </Row>
       </div>
-            <div className="col"></div>
-          <div className="container-fluid">
-            <FooterMecanico />
-          </div>
-        
-    
     </>
   );
 };

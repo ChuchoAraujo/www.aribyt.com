@@ -12,14 +12,15 @@ export const FooterMecanico = () => {
       textAlign: 'center',
       color: 'white;',
       backgroundColor: '#4dada4',
-      position: 'relative',
+      position: 'fixed',
+      padding: 0,
       left: 0,
       bottom: 0,
       width: '100%',
       };
       return( 
         <>
-<Space direction="vertical" style={{ width: '100%' }} >
+<Space direction="vertical" style={footerStyle} >
         <Layout >
         <Footer style={footerStyle}>
         <div className="textoFooter1 alinear">

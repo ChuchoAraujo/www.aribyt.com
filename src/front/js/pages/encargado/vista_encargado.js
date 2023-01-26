@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Formik, Form} from "formik";
-import { Button, Input, Space, Table,DatePicker} from "antd";
+import { Button, Input, Space, Table,DatePicker, Row, Col} from "antd";
 import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
 import { FooterEncargado } from "../../component/footers/footerEncargado";
@@ -81,7 +81,6 @@ export const Vista_encargado = () => {
       .then((response) => response.json())
       .then((result) => {
         if(result.mensaje="enviado"){
-          console.log("entro en el if")
           alert("Email enviado Correctamente")
         }
       })
@@ -306,21 +305,21 @@ export const Vista_encargado = () => {
   ];
   const columnsRechazos = [
     {
-      title: "Fichas",
+      title: "Fichas (KiloGramos)",
       dataIndex: "fichas",
       key: "fichas",
       width: "30%",
       ...getColumnSearchProps("fichas"),
     },
     {
-      title: "Paneles",
+      title: "Paneles (Kilo Gramos)",
       dataIndex: "paneles",
       key: "paneles",
       width: "30%",
       ...getColumnSearchProps("paneles"),
     },
     {
-      title: "Jaula",
+      title: "Jaula (KiloGramos)",
       dataIndex: "jaula",
       key: "jaula",
       width: "30%",
@@ -359,9 +358,9 @@ export const Vista_encargado = () => {
   ];
   return (
     <>
-    
-    <div className="container-fluid text-center">
-      <div className="row">
+    <div className="mb-5 pb-5 text-center">
+    <Row justify="center" className="mb-5 pb-5">
+      <Col>
       <Formik
         initialValues={{
           turno: "",
@@ -467,6 +466,8 @@ export const Vista_encargado = () => {
           </div>
         )}
       </Formik>
+      </Col>
+      <Col>
       <div className={pagina2 === "hidden" ? "visibility" : "hidden"}>
       <div className="mt-5">
             <div className="table-wrapper-scroll-y my-custom-scrollbar">
@@ -483,7 +484,7 @@ export const Vista_encargado = () => {
               <Table id="dtHorizontalExample" className="table table-bordered table-striped table-sm mb-0" columns={columnsMecanico} dataSource={resultMecanico} />
             </div>
         </div>
-            <div className="col-12 mt-5">
+            <div className="mt-5">
               <button
                 type="button"
                 className="buttonNuevaConsulta"
@@ -494,7 +495,7 @@ export const Vista_encargado = () => {
                 Nueva Consulta
               </button>
             </div>
-            <div className="col-12 mt-5">
+            <div className="mt-5">
               <button
                 type="button"
                 className="buttonNuevaConsulta"
@@ -506,9 +507,10 @@ export const Vista_encargado = () => {
               </button>
             </div>
       </div>
-      </div>
-      </div>
-<FooterEncargado/>
+      </Col>
+    </Row>
+    </div>
+      <FooterEncargado/>
     </>
   );
 };
