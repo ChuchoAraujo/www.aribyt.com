@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
-import { store, actions } from "../../store/flux";
 import { Context } from "../../store/appContext";
 
 
@@ -32,8 +31,9 @@ export const Login = () => {
           navigate(urlRole);
           store.userId=result.user
         }
-        console.log("Bienvenido! ... Token creado");
-
+        else{
+          alert("Usuario no registrado o rol incorrecto, ponganse en contacto con el administrador")
+        }
       })
       .catch((error) => console.log("error", error));
   };

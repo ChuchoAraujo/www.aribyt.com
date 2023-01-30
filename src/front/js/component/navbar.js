@@ -14,7 +14,6 @@ export const Navbar = () => {
 useEffect(() => {
   if (localStorage.getItem("token")) {
     setInicio("visible nav-item enlaceNav");
-    console.log(localStorage.getItem("token"));
     setCerrar("esconder nav-item enlaceNav");
   } if (!localStorage.getItem("token")) {
     setInicio("esconder nav-item enlaceNav");
@@ -26,7 +25,6 @@ useEffect(() => {
   const logOut = () => {
     localStorage.removeItem("token");
     navigate("/");
-    console.log("Token eliminado!! me piro vampiro!!");
   };
 
   return (

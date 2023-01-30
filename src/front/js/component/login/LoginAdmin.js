@@ -1,6 +1,7 @@
 import React, {  useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
+import Modal from "../../component/modal"
 
 
 export const LoginAdmin = () => {
@@ -26,8 +27,9 @@ export const LoginAdmin = () => {
           localStorage.setItem("token", result.token);
           navigate(urlRole);
         }
-        console.log(result)
-
+        else{
+          alert("Usuario no registrado")
+        }
       })
       .catch((error) => console.log("error", error));
   };
@@ -112,8 +114,6 @@ export const LoginAdmin = () => {
           </Form>
         )}
       </Formik>
-
-   
     </>
   );
 };

@@ -29,7 +29,6 @@ export const Formulario_rechazos = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        console.log("Muy bien !! ... Token encontrado", result);
         // if (!result.done) {
         //   navigate("/");
         // }
@@ -83,28 +82,28 @@ export const Formulario_rechazos = () => {
             <div>
               <label htmlFor="fichas">Fichas</label>
               <Field
-                type="text"
+                type="number"
                 id="fichas"
                 name="fichas"
-                placeholder="Cantidad de fichas"
+                placeholder="Cantidad de fichas en (KiloGramos)"
               />
             </div>
             <div>
               <label htmlFor="paneles">Paneles</label>
               <Field
-                type="text"
+                type="number"
                 id="paneles"
                 name="paneles"
-                placeholder="Paneles"
+                placeholder="Paneles en (KiloGramos)"
               />
             </div>
             <div>
               <label htmlFor="jaula">Jaula</label>
               <Field
-                type="text"
+                type="number"
                 id="jaula"
                 name="jaula"
-                placeholder="Jaula"
+                placeholder="Jaula en (KiloGramos)"
               />
             </div>
             <div>

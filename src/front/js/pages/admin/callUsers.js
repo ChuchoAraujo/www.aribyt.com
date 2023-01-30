@@ -187,18 +187,21 @@ export const Callusers = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="role">Rol</label>
-                  <Field
-                    type="text"
-                    id="role"
-                    name="role"
-                    placeholder="role"
-                    
-                  />
-                  <ErrorMessage
-                    name="role"
-                    component={() => <div className="error">{errors.role}</div>}
-                  />
+                <label htmlFor="role">Rol</label>
+              <Field
+                as="select"
+                name="role"
+                className="selectTurno"
+              >
+                <option value="" label="Selecciona" />
+                <option value="clasificadora" label="Clasificadora" />
+                <option value="mecanico" label="Mecanico" />
+                <option value="encargado" label="Encargado" />
+              </Field>
+              <ErrorMessage
+                name="role"
+                component={() => <div className="error">{errors.role}</div>}
+              />
                 </div>
                 <button type="submit" className="botonSiguienteFormulario">Enviar</button>
               </Form>
