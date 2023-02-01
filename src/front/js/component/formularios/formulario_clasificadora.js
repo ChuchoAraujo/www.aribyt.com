@@ -8,7 +8,8 @@ import Papel from "../icons/papel";
 import Bidon from "../icons/bidon";
 import { Col, DatePicker, Row } from "antd";
 import { FooterClasificadora } from "../footers/footerClasificadora";
-import Modal from "../modal";
+import AlertModal from "../alertModal";
+import { Button, Modal } from "antd";
 
 export const Formulario_clasificadora = () => {
   const { store, actions } = useContext(Context);
@@ -18,6 +19,21 @@ export const Formulario_clasificadora = () => {
   const [iconProblema, setIconProblema] = useState("");
   const [tituloProblema, setTituloProblema] = useState("");
   const [fecha, setFecha] = useState("");
+
+
+   const [isModalOpen, setIsModalOpen] = useState(false);
+   const showModal = () => {
+     setIsModalOpen(true);
+   };
+   const handleOk = () => {
+     setIsModalOpen(false);
+   };
+   const handleCancel = () => {
+     setIsModalOpen(false);
+   };
+
+
+
 
   const valorFecha = (date, dateString) => {
     setFecha(dateString);
@@ -581,9 +597,22 @@ export const Formulario_clasificadora = () => {
                   <DatePicker onChange={valorFecha} format={formatoFecha} />
                 </div>
                 <div>
-                  <button className="botonSiguienteFormulario" type="submit">
+                  <button
+                    className="botonSiguienteFormulario"
+                    type="submit"
+                    onClick={showModal}
+                  >
                     Enviar
                   </button>
+                  <Modal
+                    title="Registro hecho correctamente"
+                    open={isModalOpen}
+                    onOk={handleOk}
+                    onCancel={handleCancel}
+                  >
+                    <p>Registro hecho correctamente</p>
+                    <p>Some contents...</p>
+                  </Modal>
                 </div>
                 <div>
                   <button
@@ -593,9 +622,10 @@ export const Formulario_clasificadora = () => {
                     Regresar
                   </button>
                   {enviarFormulario && (
-                    <div className="alerta tex-center" role="alert">
-                      ¡Registro realizado!
-                    </div>
+                    <AlertModal />
+                    // <div className="alerta tex-center" role="alert">
+                    //   ¡Registro realizado!
+                    // </div>
                   )}
                 </div>
               </div>
