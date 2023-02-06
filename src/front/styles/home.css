@@ -1208,3 +1208,89 @@ pruebas opacidad*/
 	  .esconder {
 		display: none;
 	  }
+
+	  .boton5MinGreen {
+		background-color: #4dada4;
+		border: 3px solid #4dada4;
+		color: white;
+		margin-right: 10px;
+		margin: 5px;
+		padding: 5px;
+		font-size: 15px;
+	  }
+	  .boton5MinGray {
+		background-color: #4dada4;
+		border: 3px solid gray;
+		color: white;
+		margin-right: 10px;
+		margin: 5px;
+		padding: 5px;
+		font-size: 15px;
+	  }
+	  .boton10MinGreen {
+		background-color: #4dada4;
+		border: 3px solid #4dada4;
+		color: white;
+		margin-right: 10px;
+		margin: 5px;
+		padding: 5px;
+		font-size: 15px;
+	  }
+	  .boton10MinGray {
+		background-color: #4dada4;
+		border: 3px solid gray;
+		color: white;
+		margin-right: 10px;
+		margin: 5px;
+		padding: 5px;
+		font-size: 15px;
+	  }
+	  .boton15MinGreen {
+		background-color: #4dada4;
+		border: 3px solid #4dada4;
+		color: white;
+		margin-right: 10px;
+		margin: 5px;
+		padding: 5px;
+		font-size: 15px;
+	  }
+	  .boton15MinGray {
+		background-color: #4dada4;
+		border: 3px solid gray;
+		color: white;
+		margin-right: 10px;
+		margin: 5px;
+		padding: 5px;
+		font-size: 15px;
+	  }
+	  .boton20MinGreen {
+		background-color: #4dada4;
+		border: 3px solid #4dada4;
+		color: white;
+		margin-right: 10px;
+		margin: 5px;
+		padding: 5px;
+		font-size: 15px;
+	  }
+	  .boton20MinGray {
+		background-color: #4dada4;
+		border: 3px solid gray;
+		color: white;
+		margin-right: 10px;
+		margin: 5px;
+		padding: 5px;
+		font-size: 15px;
+	  }
+
+	  .containerButon {
+		margin: 5px;
+		display: flex;
+		justify-content: start;
+		align-items: center;
+		
+	  }
+
+	  .tituloproblemas {
+		font-size: 16px;
+		font-weight: 600;
+	  }

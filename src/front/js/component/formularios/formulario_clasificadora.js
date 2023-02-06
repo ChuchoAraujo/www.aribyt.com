@@ -19,6 +19,8 @@ export const Formulario_clasificadora = () => {
   const [iconProblema, setIconProblema] = useState("");
   const [tituloProblema, setTituloProblema] = useState("");
   const [fecha, setFecha] = useState("");
+  const [botonMin, setBotonMin] = useState("");
+
 
 
    const [isModalOpen, setIsModalOpen] = useState(false);
@@ -329,7 +331,7 @@ export const Formulario_clasificadora = () => {
               </div>
               {/*--------------------------Formulario pagina3*-------------------*/}
               <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
-                <h6>--- Problemas recurrentes ---</h6>
+                <h6 className="ms-5 tituloproblemas">--- Problemas recurrentes ---</h6>
 
                 <Row justify="center">
                   <Col>
@@ -340,16 +342,16 @@ export const Formulario_clasificadora = () => {
                           "Se ha realizado mantenimiento"
                         );
                         setProblemaRecurrente(
-                          "problemaClasificadoraGray text-center buttonIconsFormClasificadora"
+                          "problemaClasificadoraGray text-center buttonIconsFormClasificadora mb-2"
                         );
                         setIconProblema("iconManteGray");
                         setTituloProblema("tituloManteGray");
                       }}
                       className={
                         problemaRecurrente ===
-                        "problemaClasificadoraGray text-center buttonIconsFormClasificadora"
-                          ? "problemaClasificadoraGreen text-center buttonIconsFormClasificadora"
-                          : "problemaClasificadoraGray text-center buttonIconsFormClasificadora"
+                        "problemaClasificadoraGray text-center buttonIconsFormClasificadora mb-2"
+                          ? "problemaClasificadoraGreen text-center buttonIconsFormClasificadora mb-2"
+                          : "problemaClasificadoraGray text-center buttonIconsFormClasificadora mb-2"
                       }
                     >
                       <Mantenimiento
@@ -375,16 +377,16 @@ export const Formulario_clasificadora = () => {
                       onClick={() => {
                         setFieldValue("problema", "Papel agotado");
                         setProblemaRecurrente(
-                          "problemaPapelGray text-center buttonIconsFormClasificadora"
+                          "problemaPapelGray text-center buttonIconsFormClasificadora mb-2"
                         );
                         setIconProblema("iconPapelGray");
                         setTituloProblema("tituloIconPapelGray");
                       }}
                       className={
                         problemaRecurrente ===
-                        "problemaPapelGray text-center buttonIconsFormClasificadora"
-                          ? "problemaPapelGreen text-center buttonIconsFormClasificadora"
-                          : "problemaPapelGray text-center buttonIconsFormClasificadora"
+                        "problemaPapelGray text-center buttonIconsFormClasificadora mb-2"
+                          ? "problemaPapelGreen text-center buttonIconsFormClasificadora mb-2"
+                          : "problemaPapelGray text-center buttonIconsFormClasificadora mb-2"
                       }
                     >
                       <Papel
@@ -410,16 +412,16 @@ export const Formulario_clasificadora = () => {
                       onClick={() => {
                         setFieldValue("problema", "Problemas con inyectores");
                         setProblemaRecurrente(
-                          "problemaInyectorGray text-center buttonIconsFormClasificadora"
+                          "problemaInyectorGray text-center buttonIconsFormClasificadora mb-2"
                         );
                         setIconProblema("iconInyectGray");
                         setTituloProblema("tituloInyectGray");
                       }}
                       className={
                         problemaRecurrente ===
-                        "problemaInyectorGray text-center buttonIconsFormClasificadora"
-                          ? "problemaInyectorGreen text-center buttonIconsFormClasificadora"
-                          : "problemaInyectorGray text-center buttonIconsFormClasificadora"
+                        "problemaInyectorGray text-center buttonIconsFormClasificadora mb-2"
+                          ? "problemaInyectorGreen text-center buttonIconsFormClasificadora mb-2"
+                          : "problemaInyectorGray text-center buttonIconsFormClasificadora mb-2"
                       }
                     >
                       <Inyector
@@ -445,16 +447,16 @@ export const Formulario_clasificadora = () => {
                       onClick={() => {
                         setFieldValue("problema", "Se ha agotado el bidón");
                         setProblemaRecurrente(
-                          "problemaBidonGray text-center buttonIconsFormClasificadora"
+                          "problemaBidonGray text-center buttonIconsFormClasificadora mb-2"
                         );
                         setIconProblema("iconBidonGray");
                         setTituloProblema("tituloBidonGray");
                       }}
                       className={
                         problemaRecurrente ===
-                        "problemaBidonGray text-center buttonIconsFormClasificadora"
-                          ? "problemaBidonGreen text-center buttonIconsFormClasificadora"
-                          : "problemaBidonGray text-center buttonIconsFormClasificadora"
+                        "problemaBidonGray text-center buttonIconsFormClasificadora mb-2"
+                          ? "problemaBidonGreen text-center buttonIconsFormClasificadora mb-2"
+                          : "problemaBidonGray text-center buttonIconsFormClasificadora mb-2"
                       }
                     >
                       <Bidon
@@ -513,34 +515,63 @@ export const Formulario_clasificadora = () => {
               </div>
               {/*--------------------------Formulario pagina4*-------------------*/}
               <div className={pagina4 === "hidden" ? "visibility" : "hidden"}>
-                <div>
+                <label htmlFor="tiempo">Tiempo</label>
+                <div className="containerButon">
                   <button
+                    className={
+                      botonMin === "boton5MinGreen"
+                        ? "boton5MinGray"
+                        : "boton5MinGreen"
+                    }
                     type="button"
-                    onClick={() => setFieldValue("tiempo", "5")}
+                    onClick={() => {
+                      setFieldValue("tiempo", "5"),
+                        setBotonMin("boton5MinGreen");
+                    }}
                   >
                     5 min
                   </button>
                   <button
+                    className={
+                      botonMin === "boton10MinGreen"
+                        ? "boton10MinGray"
+                        : "boton10MinGreen"
+                    }
                     type="button"
-                    onClick={() => setFieldValue("tiempo", "10")}
+                    onClick={() => {
+                      setFieldValue("tiempo", "10"),
+                        setBotonMin("boton10MinGreen");
+                    }}
                   >
                     10 min
                   </button>
                   <button
+                    className={
+                      botonMin === "boton15MinGreen"
+                        ? "boton15MinGray"
+                        : "boton15MinGreen"
+                    }
                     type="button"
-                    onClick={() => setFieldValue("tiempo", "15")}
+                    onClick={() => {
+                      setFieldValue("tiempo", "15"),
+                        setBotonMin("boton15MinGreen");
+                    }}
                   >
                     15 min
                   </button>
                   <button
+                    className={
+                      botonMin === "boton20MinGreen"
+                        ? "boton20MinGray"
+                        : "boton20MinGreen"
+                    }
                     type="button"
-                    onClick={() => setFieldValue("tiempo", "20")}
+                    onClick={() =>{ setFieldValue("tiempo", "20"), setBotonMin("boton20MinGreen");}}
                   >
                     20 min
                   </button>
                 </div>
                 <div>
-                  <label htmlFor="tiempo">Tiempo</label>
                   <Field
                     type="number"
                     id="tiempo"
@@ -605,14 +636,11 @@ export const Formulario_clasificadora = () => {
                     Enviar
                   </button>
                   <Modal
-                    title="Registro hecho correctamente"
+                    title="¡Registro eralizado con éxito!"
                     open={isModalOpen}
                     onOk={handleOk}
                     onCancel={handleCancel}
-                  >
-                    <p>Registro hecho correctamente</p>
-                    <p>Some contents...</p>
-                  </Modal>
+                  ></Modal>
                 </div>
                 <div>
                   <button
