@@ -21,7 +21,7 @@ export const FooterEncargado =()=>{
 <Space direction="vertical" style={footerStyle} >
         <Layout>
         <Footer style={footerStyle}>
-            <Icon_encargado width={80} />
+            <Icon_encargado className="iconEncargado" />
             <div className="textoFooter2">Responsable :{store.role}</div>
         </Footer>
       </Layout>

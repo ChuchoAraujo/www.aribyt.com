@@ -1298,3 +1298,10 @@ pruebas opacidad*/
 	  .modal {
 		display: none;
 	  }
+
+	  .iconEncargado {
+		width: 80px;
+		fill: white;
+		margin: 10px;
+		padding: 10px;
+	  }

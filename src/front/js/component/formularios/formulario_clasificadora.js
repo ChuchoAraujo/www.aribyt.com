@@ -188,7 +188,6 @@ export const Formulario_clasificadora = () => {
           }}
           validate={(valores) => {
             let errores = {};
-
             // Validacion cajas
             if (!valores.cajas) {
               errores.cajas = "Por favor ingresa las cajas por hora*";
@@ -518,21 +517,23 @@ export const Formulario_clasificadora = () => {
               {/*--------------------------Formulario pagina4*-------------------*/}
               <div className={pagina4 === "hidden" ? "visibility" : "hidden"}>
                 <label htmlFor="tiempo">Tiempo</label>
-                <div className="containerButon">
-                  <button
-                    className={
-                      botonMin === "boton5MinGreen"
-                        ? "boton5MinGray"
-                        : "boton5MinGreen"
-                    }
-                    type="button"
-                    onClick={() => {
-                      setFieldValue("tiempo", "5"),
-                        setBotonMin("boton5MinGreen");
-                    }}
-                  >
-                    5 min
-                  </button>
+                <Row justify="center">
+                  <Col>
+                    <button
+                      className={
+                        botonMin === "boton5MinGreen"
+                          ? "boton5MinGray"
+                          : "boton5MinGreen"
+                      }
+                      type="button"
+                      onClick={() => {
+                        setFieldValue("tiempo", "5"),
+                          setBotonMin("boton5MinGreen");
+                      }}
+                    >
+                      5 min
+                    </button>
+                  </Col>
                   <button
                     className={
                       botonMin === "boton10MinGreen"
@@ -547,35 +548,40 @@ export const Formulario_clasificadora = () => {
                   >
                     10 min
                   </button>
-                  <button
-                    className={
-                      botonMin === "boton15MinGreen"
-                        ? "boton15MinGray"
-                        : "boton15MinGreen"
-                    }
-                    type="button"
-                    onClick={() => {
-                      setFieldValue("tiempo", "15"),
-                        setBotonMin("boton15MinGreen");
-                    }}
-                  >
-                    15 min
-                  </button>
-                  <button
-                    className={
-                      botonMin === "boton20MinGreen"
-                        ? "boton20MinGray"
-                        : "boton20MinGreen"
-                    }
-                    type="button"
-                    onClick={() => {
-                      setFieldValue("tiempo", "20"),
-                        setBotonMin("boton20MinGreen");
-                    }}
-                  >
-                    20 min
-                  </button>
-                </div>
+                  <Col>
+                    <button
+                      className={
+                        botonMin === "boton15MinGreen"
+                          ? "boton15MinGray"
+                          : "boton15MinGreen"
+                      }
+                      type="button"
+                      onClick={() => {
+                        setFieldValue("tiempo", "15"),
+                          setBotonMin("boton15MinGreen");
+                      }}
+                    >
+                      15 min
+                    </button>
+                  </Col>
+                  <Col>
+                    <button
+                      className={
+                        botonMin === "boton20MinGreen"
+                          ? "boton20MinGray"
+                          : "boton20MinGreen"
+                      }
+                      type="button"
+                      onClick={() => {
+                        setFieldValue("tiempo", "20"),
+                          setBotonMin("boton20MinGreen");
+                      }}
+                    >
+                      20 min
+                    </button>
+                  </Col>
+                </Row>
+
                 <div>
                   <Field
                     type="number"
@@ -647,7 +653,6 @@ export const Formulario_clasificadora = () => {
                     onCancel={handleCancel}
                     // style = {{display: "none"}}
                   ></Modal>
-                  
                 </div>
                 <div>
                   <button
