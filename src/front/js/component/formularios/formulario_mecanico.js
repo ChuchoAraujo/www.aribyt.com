@@ -149,9 +149,6 @@ export const Formulario_mecanico = () => {
                 Regresar
               </button>
             </div>
-            {enviarFormulario && (
-              <p className="exito">¡Formulario enviado con éxito!</p>
-            )}
           </Form>
         )}
       </Formik>

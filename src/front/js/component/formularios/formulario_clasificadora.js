@@ -201,7 +201,7 @@ export const Formulario_clasificadora = () => {
             }
             if (!valores.velocidad) {
               errores.velocidad = "Por favor ingresa la velocidad*";
-            } else if (!/^\d*\.\d+$/.test(valores.velocidad)) {
+            } else if (!/^\d*\.\d+$/ && !/^[0-9]+$/.test(valores.velocidad)) {
               errores.velocidad = "Solo puede contener números*";
             }
             //validacion gramos
@@ -331,7 +331,9 @@ export const Formulario_clasificadora = () => {
               </div>
               {/*--------------------------Formulario pagina3*-------------------*/}
               <div className={pagina3 === "hidden" ? "visibility" : "hidden"}>
-                <h6 className="ms-5 tituloproblemas">--- Problemas recurrentes ---</h6>
+                <h6 className="ms-5 tituloproblemas">
+                  --- Problemas recurrentes ---
+                </h6>
 
                 <Row justify="center">
                   <Col>
@@ -566,7 +568,10 @@ export const Formulario_clasificadora = () => {
                         : "boton20MinGreen"
                     }
                     type="button"
-                    onClick={() =>{ setFieldValue("tiempo", "20"), setBotonMin("boton20MinGreen");}}
+                    onClick={() => {
+                      setFieldValue("tiempo", "20"),
+                        setBotonMin("boton20MinGreen");
+                    }}
                   >
                     20 min
                   </button>
@@ -640,7 +645,9 @@ export const Formulario_clasificadora = () => {
                     open={isModalOpen}
                     onOk={handleOk}
                     onCancel={handleCancel}
+                    // style = {{display: "none"}}
                   ></Modal>
+                  
                 </div>
                 <div>
                   <button
@@ -649,12 +656,6 @@ export const Formulario_clasificadora = () => {
                   >
                     Regresar
                   </button>
-                  {enviarFormulario && (
-                    <AlertModal />
-                    // <div className="alerta tex-center" role="alert">
-                    //   ¡Registro realizado!
-                    // </div>
-                  )}
                 </div>
               </div>
             </Form>
