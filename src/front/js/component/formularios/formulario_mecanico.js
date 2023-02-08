@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { store } from "../../store/flux";
 import { Context } from "../../store/appContext";
 import { DatePicker } from 'antd';
+import AlertModal from "../alertModal";
+import { Button, Modal } from "antd";
 
 export const Formulario_mecanico = () => {
   const { store } = useContext(Context);
@@ -17,6 +19,18 @@ export const Formulario_mecanico = () => {
     setFecha(dateString);
   };
   const formatoFecha = 'DD/MM/YYYY';
+
+   const [isModalOpen, setIsModalOpen] = useState(false);
+   const showModal = () => {
+     setIsModalOpen(true);
+   };
+   const handleOk = () => {
+     setIsModalOpen(false);
+   };
+   const handleCancel = () => {
+     setIsModalOpen(false);
+   };
+
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/private", {
@@ -51,14 +65,16 @@ export const Formulario_mecanico = () => {
     })
       .then((response) => response.json())
       .then((result) => {
-        navigate(-1)
+        setTimeout(() => {
+          navigate(-1);
+        }, "3000");
       })
       .catch((error) => console.log("error", error));
   };
 
   return (
     <>
-      <Formik 
+      <Formik
         initialValues={{
           problema: "",
           accion: "",
@@ -68,7 +84,7 @@ export const Formulario_mecanico = () => {
           resetForm();
           setFormulario(true);
           setTimeout(() => setFormulario(false), 5000);
-          sendDataMecanico(valores)
+          sendDataMecanico(valores);
         }}
       >
         {() => (
@@ -80,7 +96,6 @@ export const Formulario_mecanico = () => {
                 id="problema"
                 name="problema"
                 placeholder="Problemas ocurridos"
-
               />
             </div>
             <div>
@@ -90,35 +105,49 @@ export const Formulario_mecanico = () => {
                 id="accion"
                 name="accion"
                 placeholder="Solución al problema o problemas"
-
               />
             </div>
             <div>
-                  <label htmlFor="turno">Turno</label>
-                  <Field
-                    as="select"
-                    id="turno"
-                    name="turno"
-                    className="selectTurno"
-                  >
-                    <option>Seleccione</option>
-                    <option value="mañana">Mañana</option>
-                    <option value="tarde">Tarde</option>
-                    <option value="noche">Noche</option>
-                  </Field>
-                  </div>
-              <div>
-                  <label htmlFor="fecha">Fecha</label>
-                      <DatePicker onChange={valorFecha} format={formatoFecha}/>
-              </div>
-              <div>
-            <button
-            className="botonSiguienteFormulario" type="submit">
-              Enviar
-            </button>
+              <label htmlFor="turno">Turno</label>
+              <Field
+                as="select"
+                id="turno"
+                name="turno"
+                className="selectTurno"
+              >
+                <option>Seleccione</option>
+                <option value="mañana">Mañana</option>
+                <option value="tarde">Tarde</option>
+                <option value="noche">Noche</option>
+              </Field>
             </div>
             <div>
-            <button type="button" onClick={()=>navigate(-1)} className="botonRegresarFormulario">Regresar</button>
+              <label htmlFor="fecha">Fecha</label>
+              <DatePicker onChange={valorFecha} format={formatoFecha} />
+            </div>
+            <div>
+              <button
+                onClick={showModal}
+                className="botonSiguienteFormulario"
+                type="submit"
+              >
+                Enviar
+              </button>
+              <Modal
+                title="¡Registro realizado con éxito!"
+                open={isModalOpen}
+                onOk={handleOk}
+                onCancel={handleCancel}
+              ></Modal>
+            </div>
+            <div>
+              <button
+                type="button"
+                onClick={() => navigate(-1)}
+                className="botonRegresarFormulario"
+              >
+                Regresar
+              </button>
             </div>
             {enviarFormulario && (
               <p className="exito">¡Formulario enviado con éxito!</p>

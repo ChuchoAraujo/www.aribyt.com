@@ -636,7 +636,7 @@ export const Formulario_clasificadora = () => {
                     Enviar
                   </button>
                   <Modal
-                    title="¡Registro eralizado con éxito!"
+                    title="¡Registro realizado con éxito!"
                     open={isModalOpen}
                     onOk={handleOk}
                     onCancel={handleCancel}
